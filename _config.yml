@@ -1,14 +1,14 @@
 # Site settings
 title: Feats: Workshop 14
-email: i_have_a_cunning_plan@workshop14.io  
+email: i_have_a_cunning_plan@workshop14.io
 description: > # this means to ignore newlines until "baseurl:"
   Write an awesome description for your new site here. You can edit this
   line in _config.yml. It will appear in your document head meta (for
   Google search results) and in your feed.xml site description.
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://yourdomain.com" # the base hostname & protocol for your site
-twitter_username: jekyllrb
-github_username:  jekyll
+url: "http://feats.workshop14.io" # the base hostname & protocol for your site
+twitter_username: CrowdHailer
+github_username:  CrowdHailer
 
 # Build settings
 markdown: kramdown
