@@ -1,0 +1,78 @@
+// SETUP
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+// BASE
+
+body {
+  background: url('http://workshop14.io/styles/splat.svg'), linear-gradient(45deg, $sea-green 26%, $blue 91%);
+  background-attachment: fixed;
+  background-position: center right;
+  background-size: cover;
+}
+
+body {
+    font-family: $base-font-family;
+    font-size: $base-font-size;
+    line-height: $base-line-height;
+    font-weight: 300;
+    color: $text-color;
+    -webkit-text-size-adjust: 100%;
+}
+
+main {
+  max-width: $content-width;
+  margin-left: auto;
+  margin-right: auto;
+  background: $background-color;
+}
+
+header {
+  @extend main;
+  padding: 0;
+  font-size: 200%;
+  address {
+    padding-left: 15%;
+    margin-right: 15%;
+    text-align: right;
+    font-size: 60%;
+  }
+
+  ul {
+    padding-left: 15%;
+    margin-right: 15%;
+    font-size: 60%;
+  &:after {
+      content: "";
+      display: table;
+      clear: both;
+  }
+
+  }
+  li {
+    display: inline-block;
+    padding: 1em;
+    float:right;
+    &:hover {
+    }
+  }
+}
+
+
+.markdown-body {
+    min-width: 200px;
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+h1{
+  padding-left: 15%;
+margin-right: 15%;
+border-bottom: 2px solid black;
+text-align: right;
+margin-bottom: 0;
+}

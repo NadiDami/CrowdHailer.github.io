@@ -21,7 +21,7 @@ $dark-green: #00692E;
 $bright-green: #0FE36B;
 $fine-font: 'Raleway', sans-serif;
 
-$text-color:       #111;
+$text-color:       $charcol;
 $background-color: #fdfdfd;
 $brand-color:      #2a7ae2;
 
@@ -30,7 +30,7 @@ $grey-color-light: lighten($grey-color, 40%);
 $grey-color-dark:  darken($grey-color, 25%);
 
 // Width of the content area
-$content-width:    800px;
+$content-width:    80rem;
 
 $on-palm:          600px;
 $on-laptop:        800px;
@@ -54,7 +54,8 @@ $on-laptop:        800px;
 
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import
+        "syntax-highlighting",
+        "git_markdown",
         "base",
-        "layout",
-        "syntax-highlighting"
+        "me"
 ;
