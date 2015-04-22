@@ -16,6 +16,19 @@ a {
   }
 }
 
+/**
+ * Clearfix
+ */
+%clearfix {
+
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+
 // BASE
 
 body {
@@ -137,4 +150,19 @@ header {
     margin: 0 auto;
     padding: 30px;
     font-family: $base-font-family;
+}
+.site-footer {
+  @extend main;
+  @extend %clearfix;
+  background: none;
+  div {
+    @extend %clearfix;
+
+    padding: 4rem 15%;
+  }
+  section {
+    padding: 1em;
+    width: 50%;
+    float: left;
+  }
 }
