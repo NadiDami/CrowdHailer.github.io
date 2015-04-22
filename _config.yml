@@ -6,7 +6,7 @@ description: > # this means to ignore newlines until "baseurl:"
   I focus on developing lightweight solutions to modern standards.
   This blog will cover these, effecient workflow and other items of interest
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://feats.workshop14.io" # the base hostname & protocol for your site
+url: "http://insights.workshop14.io" # the base hostname & protocol for your site
 twitter_username: CrowdHailer
 github_username:  CrowdHailer
 
