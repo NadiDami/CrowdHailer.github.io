@@ -1,0 +1,184 @@
+// SETUP
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  &:visited {
+    color: inherit;
+  }
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+/**
+ * Clearfix
+ */
+%clearfix {
+
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+
+// BASE
+
+body {
+  background: url('http://workshop14.io/styles/splat.svg'), linear-gradient(45deg, $sea-green 26%, $blue 91%);
+  background-attachment: fixed;
+  background-position: center right;
+  background-size: cover;
+}
+
+
+body {
+    font-family: $base-font-family;
+    font-size: $base-font-size;
+    line-height: $base-line-height;
+    font-weight: 300;
+    color: $text-color;
+    -webkit-text-size-adjust: 100%;
+}
+
+main {
+  max-width: $content-width;
+  margin-left: auto;
+  margin-right: auto;
+  background: $background-color;
+}
+
+header {
+  @extend main;
+  padding: 0;
+  font-size: 200%;
+  margin-bottom: 1rem;
+  h1{
+    padding-left: 15%;
+    margin-right: 15%;
+    border-bottom: 2px solid black;
+    text-align: right;
+    margin-bottom: 0;
+  }
+  nav {
+    padding-left: 15%;
+    padding-right: 15%;
+    text-align: right;
+  }
+  address {
+    display: inline-block;
+    padding: 0.2em 1em;
+    font-size: 80%;
+  }
+}
+
+.post-list {
+  list-style: none;
+  li {
+    margin: 0 15%;
+    padding: 4rem 0;
+    // text-align: right;
+    border-bottom: 2px solid $charcol;
+    h2 {
+      font-size: 220%;
+    }
+    p {
+      font-size: 150%;
+    }
+    hr {
+      display: none;
+    }
+  }
+}
+.post-meta {
+  // text-align: right;
+}
+.publication-details {
+  text-align: right;
+  time {
+
+    color: lighten($charcol, 40%);
+  }
+  a {
+    display: inline-block;
+    margin-left: 1em;
+    color: #00A3EF ;
+    font-weight: bold;
+    font-style: italic;
+    // margin-right: 1em;
+  }
+}
+
+.rss-subscribe {
+    padding: 0.5em 0;
+    margin: 0 15%;
+      font-size: 150%;
+
+  a{
+
+    color: #00A3EF ;
+  }
+}
+.markdown-body {
+    min-width: 200px;
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 30px;
+    font-family: $base-font-family;
+}
+.site-footer {
+  @extend main;
+  @extend %clearfix;
+  background: none;
+  div {
+    @extend %clearfix;
+
+    padding: 4rem 15%;
+  }
+  section {
+    padding: 1em;
+    width: 50%;
+    float: left;
+  }
+}
+@media screen and (max-width: 82rem) {
+  main {
+    margin-right: 10%;
+  }
+  header h1 {
+
+  }
+}
+@media screen and (max-width: 38rem) {
+  main {
+    margin-right: 0;
+    .post-list {
+      li {
+        margin: 0 5%;
+      }
+    }
+  }
+  header {
+    font-size: 120%;
+      h1 {
+
+        margin: 0 5%;
+      }
+  }
+  .site-footer {
+    div {
+
+      padding: 0 5%;
+    }
+    section {
+    width: 100%;
+    }
+  }
+}
