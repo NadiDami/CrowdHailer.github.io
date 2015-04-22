@@ -2,6 +2,7 @@
 layout: post
 title:  "Markdown xample"
 date:   2015-04-21 15:01:05
+tags: static 
 ---
 
 An h1 header
