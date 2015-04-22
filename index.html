@@ -12,7 +12,9 @@ layout: default
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea ipsa, est, cum dignissimos,
             </p>
-            Peter Saxton - <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span> <a href="#">JavaScript, Project</a>
+            <p class="publication-details">
+                Peter Saxton - <time class="post-date" datetime="{{ post.date }}">{{ post.date  | date: "%b %-d, %Y" }}</time> <a href="#">Markdown</a> <a href="#">Jekyll</a>
+            </p>
             <hr>
         </li>
     {% endfor %}

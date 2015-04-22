@@ -96,7 +96,21 @@ header {
   }
 
 }
+.publication-details {
+  text-align: right;
+  time {
 
+    color: lighten($charcol, 40%);
+  }
+  a {
+    display: inline-block;
+    margin-left: 1em;
+    color: #00A3EF ;
+    font-weight: bold;
+    font-style: italic;
+    // margin-right: 1em;
+  }
+}
 
 .markdown-body {
     min-width: 200px;
