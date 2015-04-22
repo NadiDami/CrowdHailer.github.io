@@ -77,6 +77,26 @@ header {
   // }
 }
 
+.post-list {
+  list-style: none;
+  li {
+    margin: 0 15%;
+    padding: 4rem 0;
+    // text-align: right;
+    border-bottom: 2px solid $charcol;
+    h2 {
+      font-size: 220%;
+    }
+    p {
+      font-size: 150%;
+    }
+    hr {
+      display: none;
+    }
+  }
+
+}
+
 
 .markdown-body {
     min-width: 200px;
@@ -87,8 +107,8 @@ header {
 
 h1{
   padding-left: 15%;
-margin-right: 15%;
-border-bottom: 2px solid black;
-text-align: right;
-margin-bottom: 0;
+  margin-right: 15%;
+  border-bottom: 2px solid black;
+  text-align: right;
+  margin-bottom: 0;
 }
