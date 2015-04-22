@@ -1,10 +1,12 @@
 ---
 layout: post
-title:  "Markdown xample"
+title:  "New Blog for a New Company"
 date:   2015-04-21 15:01:05
 tags: static
 author: Peter Saxton
 ---
+
+
 
 An h1 header
 ============
