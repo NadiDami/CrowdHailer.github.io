@@ -112,6 +112,16 @@ header {
   }
 }
 
+.rss-subscribe {
+    padding: 0.5em 0;
+    margin: 0 15%;
+      font-size: 150%;
+
+  a{
+
+    color: #00A3EF ;
+  }
+}
 .markdown-body {
     min-width: 200px;
     max-width: 80rem;
