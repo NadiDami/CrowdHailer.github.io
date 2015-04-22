@@ -59,7 +59,7 @@ header {
     text-align: right;
   }
   address {
-    // display: inline-block;
+    display: inline-block;
     padding: 0.2em 1em;
     font-size: 80%;
   }
@@ -101,7 +101,9 @@ header {
       display: none;
     }
   }
-
+}
+.post-meta {
+  // text-align: right;
 }
 .publication-details {
   text-align: right;

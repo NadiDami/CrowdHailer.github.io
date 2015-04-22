@@ -2,7 +2,8 @@
 layout: post
 title:  "Markdown xample"
 date:   2015-04-21 15:01:05
-tags: static 
+tags: static
+author: Peter Saxton
 ---
 
 An h1 header
