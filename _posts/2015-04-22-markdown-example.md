@@ -2,7 +2,6 @@
 layout: post
 title:  "Markdown xample"
 date:   2015-04-21 15:01:05
-categories: jekyll update
 ---
 
 An h1 header

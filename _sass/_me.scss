@@ -5,6 +5,17 @@
   box-sizing: border-box;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+  &:visited {
+    color: inherit;
+  }
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 // BASE
 
 body {
@@ -34,31 +45,36 @@ header {
   @extend main;
   padding: 0;
   font-size: 200%;
-  address {
+  margin-bottom: 1rem;
+  nav {
     padding-left: 15%;
-    margin-right: 15%;
+    padding-right: 15%;
     text-align: right;
-    font-size: 60%;
+  }
+  address {
+    // display: inline-block;
+    padding: 0.2em 1em;
+    font-size: 80%;
   }
 
-  ul {
-    padding-left: 15%;
-    margin-right: 15%;
-    font-size: 60%;
-  &:after {
-      content: "";
-      display: table;
-      clear: both;
-  }
-
-  }
-  li {
-    display: inline-block;
-    padding: 1em;
-    float:right;
-    &:hover {
-    }
-  }
+  // ul {
+  //   padding-left: 15%;
+  //   margin-right: 15%;
+  //   font-size: 60%;
+  // &:after {
+  //     content: "";
+  //     display: table;
+  //     clear: both;
+  // }
+  //
+  // }
+  // li {
+  //   display: inline-block;
+  //   padding: 1em;
+  //   float:right;
+  //   &:hover {
+  //   }
+  // }
 }
 
 
