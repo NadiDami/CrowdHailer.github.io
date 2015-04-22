@@ -98,7 +98,7 @@ header {
   }
 }
 .post-meta {
-  // text-align: right;
+  text-align: right;
 }
 .publication-details {
   text-align: right;
@@ -130,8 +130,10 @@ header {
     min-width: 200px;
     max-width: 80rem;
     margin: 0 auto;
-    padding: 30px;
+    padding: 30px 0;
     font-family: $base-font-family;
+    margin-right:15%;
+    margin-left:15%;
 }
 .site-footer {
   @extend main;
@@ -180,5 +182,9 @@ header {
     section {
     width: 100%;
     }
+  }
+  .markdown-body {
+    margin-left: 5%;
+    margin-right: 5%;
   }
 }

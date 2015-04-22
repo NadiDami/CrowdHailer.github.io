@@ -17,7 +17,9 @@
               {% endfor %}
           </ul> -->
       </header>
-      <main class="markdown-body">
+      <main class="">
+
+        <article class="markdown-body">
         <p class="post-meta">
             {{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}
             {% if site.github_username %}
@@ -44,6 +46,7 @@
             {% endif %}
         </p>
           {{ content }}
+        </article>
       </main>
         {% include footer.html %}
     </body>
