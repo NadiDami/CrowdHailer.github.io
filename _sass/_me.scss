@@ -38,6 +38,7 @@ body {
   background-size: cover;
 }
 
+
 body {
     font-family: $base-font-family;
     font-size: $base-font-size;
@@ -76,25 +77,6 @@ header {
     padding: 0.2em 1em;
     font-size: 80%;
   }
-
-  // ul {
-  //   padding-left: 15%;
-  //   margin-right: 15%;
-  //   font-size: 60%;
-  // &:after {
-  //     content: "";
-  //     display: table;
-  //     clear: both;
-  // }
-  //
-  // }
-  // li {
-  //   display: inline-block;
-  //   padding: 1em;
-  //   float:right;
-  //   &:hover {
-  //   }
-  // }
 }
 
 .post-list {
@@ -164,5 +146,39 @@ header {
     padding: 1em;
     width: 50%;
     float: left;
+  }
+}
+@media screen and (max-width: 82rem) {
+  main {
+    margin-right: 10%;
+  }
+  header h1 {
+
+  }
+}
+@media screen and (max-width: 38rem) {
+  main {
+    margin-right: 0;
+    .post-list {
+      li {
+        margin: 0 5%;
+      }
+    }
+  }
+  header {
+    font-size: 120%;
+      h1 {
+
+        margin: 0 5%;
+      }
+  }
+  .site-footer {
+    div {
+
+      padding: 0 5%;
+    }
+    section {
+    width: 100%;
+    }
   }
 }
