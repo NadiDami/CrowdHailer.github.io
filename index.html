@@ -10,7 +10,7 @@ layout: default
                 <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
             </h2>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea ipsa, est, cum dignissimos,
+                {{ post.description }}
             </p>
             <p class="publication-details">
                 {% if post.author %}{{ post.author }} - {% endif %}<time class="post-date" datetime="{{ post.date }}">{{ post.date  | date: "%b %-d, %Y" }}</time>

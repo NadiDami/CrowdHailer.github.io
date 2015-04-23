@@ -1,9 +1,9 @@
 ---
 layout: post
 title:  "Introducing the new blog"
-description: "website styling on a blank canvas"
+description: "Building on a blank canvas, my new blog without bootstrap"
 date:   2015-04-23 17:20:05
-tags: css 
+tags: css
 author: Peter Saxton
 ---
 
