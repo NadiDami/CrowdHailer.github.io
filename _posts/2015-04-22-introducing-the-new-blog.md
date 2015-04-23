@@ -41,6 +41,7 @@ I have found that if I have the luxury to keep revisiting the styles I have writ
 
 ### *finally*
 Two excellent resources that made me take the final leap to no framework.
+
 - [Front End Design Patterns](https://vimeo.com/97315940)
 - [Build a Better Bootstrap](https://vimeo.com/97318798)
 
