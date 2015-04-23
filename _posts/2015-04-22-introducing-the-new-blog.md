@@ -1,8 +1,9 @@
 ---
 layout: post
 title:  "Introducing the new blog"
-date:   2015-04-21 15:01:05
-tags: static
+description: "website styling on a blank canvas"
+date:   2015-04-23 17:20:05
+tags: css 
 author: Peter Saxton
 ---
 
