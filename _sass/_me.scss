@@ -16,6 +16,11 @@ a {
   }
 }
 
+.markdown-body a {
+  color: $blue;
+  // font-style: italic;
+}
+
 /**
  * Clearfix
  */
