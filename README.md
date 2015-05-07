@@ -36,9 +36,3 @@ Posts saved in the `_drafts` directory will not be available when using the serv
 ```
 jekyll serve --drafts
 ```
-
-Experimenting with domain names
-adventures,
-feats
-deeds
-tales
