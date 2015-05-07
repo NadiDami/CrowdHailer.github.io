@@ -20,6 +20,13 @@ a {
   color: $blue;
   // font-style: italic;
 }
+.markdown-body img {
+  max-height: 240px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid $charcol;
+}
 
 /**
  * Clearfix
