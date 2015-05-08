@@ -8,7 +8,7 @@ author: Peter Saxton
 
 #### *Sheet music for developing musicians, pieces expertly written to suit the instrument and the player's level.*
 
-![Homepage of the Useful Music site](/assets/useful_music_home_page.png){:.small}
+![Homepage of the Useful Music site](/assets/useful_music_home_page.png)
 
 ## Professional & Collaborative working
 
