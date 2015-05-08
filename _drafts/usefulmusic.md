@@ -6,12 +6,9 @@ tags: portfolio git
 author: Peter Saxton
 ---
 
-Useful Music
-============
+#### *Sheet music for developing musicians, pieces expertly written to suit the instrument and the player's level.*
 
-*Sheet music for developing musicians, pieces expertly written to suit the instrument and the player's level.*
-
-![Clarinet image](http://usefulmusic.com/images/home-page-main.jpg){:.small}
+![Homepage of the Useful Music site](/assets/useful_music_home_page.png){:.small}
 
 ## Professional & Collaborative working
 
@@ -25,12 +22,12 @@ I have loved [git](http://git-scm.com/) and [github](https://github.com/) ever s
 
 ### Slack
 
-We used our channel as a centralised place for chatter on the project. As this was my first use of [slack](https://slack.com/) I integrated everything I could (a slightly over excited moment of automate all the things). After a few days of a very noisy channel I turned off a few integrations and kept just the ones we needed. A failing build definetly want to hear about it. A new commit on a feature branch probably not necessary. It is a great tool, however I do not use it for all my communications leaving the most important things to be sent by email. This works well because it means I can close my slack channel and still be prompted on developments requiring my attention.
+We used our channel a centralised place for chatter on the project. As this was my first use of [slack](https://slack.com/) I integrated everything I could (a slightly over excited moment of automate all the things). After a few days of a very noisy channel we turned off a few integrations and kept just the ones we needed. A failing build definetly want to hear about it. A new commit on a feature branch probably not necessary. It is a great tool, I do not use it for all my communications leaving the most important things to be sent by email. This works well because it means I can close my slack channel and still be prompted on developments requiring my attention.
 
 ### Bugsnag
 An effective bug tracking solution was essential as the pool of contributors increased. [Bugsnag](https://bugsnag.com) allows me to separate bug reports on staging from those on production, combined with user tracking any unexpected behaviour in development became a productive conversation. I was able to see who had experienced the bug ask questions of what they had been doing and what the expected behaviour was. The source details on the error allowed me to write tests enforcing the correct behaviour from then onwards.
 
 ### Results
-- Truely simple changes, such as typos, can now be made by anyone. This is great as a typo often wants fixing immediately. Regardless of how simple they can be quite a distraction when wqorking on new features
+- Truely simple changes, such as typos, can now be made by anyone. This is great as a typo often wants fixing imediatly. Regardless of how simple they can be quite a distraction when wqorking on new features
 - Trickier changes can be started by anyone and left on an open pull request. A stakeholder can write some new content and leave comments in the pull request on the dynamic content that needs adding, such as always showing the current date.
 - Allowing people who would only see the running website a view of the source helps everyone see what has been developed. It is often difficult as a develpoer to explain why some changes are much harder than others, this can help.
