@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Starting a Routine
-description: 'Detailing my commitment to blog.'
+description: 'Commitment to write about our exciting world'
 date: '2013-10-21T08:45:14+01:00'
 tags:
 - crowdfunding
