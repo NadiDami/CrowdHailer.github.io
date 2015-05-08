@@ -10,7 +10,7 @@ author: Peter Saxton
 share-image: http://media.tumblr.com/de87278b4eb9e195112f431b48c1663f/tumblr_inline_mv0di6Wmk81s4ay8u.jpg
 tumblr_url: http://crowdhailer.tumblr.com/post/64664718993/starting-a-routine
 ---
-It has taken some time to come around to writing my second post here. This is in fact the eighth draft post since my first and the ruminating I did over those first seven will be posted here some time, hopefully soon.
+It has taken some time to come around to writing this post. This is in fact the eighth draft post since my first and the ruminating I did over those first seven will be posted here some time, hopefully soon.
 
 I originally started writing this blog to tie the projects that I have completed with the ones I am working on and the ideas I have for future projects. So far the completed projects list has one <a href="http://www.kickstarter.com/projects/petersaxton/london-layout" title="London Layout Kickstarter">item</a>.  My current efforts are to learn the coding required to build interactive <a href="http://www.londonlayout.co.uk/online.htm" title="London Layout Interactive">webpages</a>. I think it is going well and in the near future I hope to extend these skills to building native apps. My list of ideas for the future now runs to several pages and includes everything, from the easily achievable to the rather more ambitious. At the easy end is a new idea for visualizing bus routes locally. Whereas the rather more ambitious plans would include 3D printing a remote control airplane capable of vertical take off.
 
