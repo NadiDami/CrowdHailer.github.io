@@ -9,6 +9,7 @@ baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://insights.workshop14.io" # the base hostname & protocol for your site
 twitter_username: CrowdHailer
 github_username:  CrowdHailer
+share-image: http://workshop14.io/share.png
 
 # Build settings
 markdown: kramdown
