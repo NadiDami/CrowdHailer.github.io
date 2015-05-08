@@ -11,7 +11,7 @@ Useful Music
 
 *Sheet music for developing musicians, pieces expertly written to suit the instrument and the player's level.*
 
-![Clarinet image](http://usefulmusic.com/images/home-page-main.jpg)
+![Clarinet image](http://usefulmusic.com/images/home-page-main.jpg){:.small}
 
 ## Professional & Collaborative working
 
