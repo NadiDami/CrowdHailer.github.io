@@ -7,6 +7,7 @@ tags:
 - crowdfunding
 - technology
 author: Peter Saxton
+share-image: http://media.tumblr.com/de87278b4eb9e195112f431b48c1663f/tumblr_inline_mv0di6Wmk81s4ay8u.jpg
 tumblr_url: http://crowdhailer.tumblr.com/post/64664718993/starting-a-routine
 ---
 It has taken some time to come around to writing my second post here. This is in fact the eighth draft post since my first and the ruminating I did over those first seven will be posted here some time, hopefully soon.
