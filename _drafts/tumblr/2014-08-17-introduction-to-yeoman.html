@@ -1,0 +1,42 @@
+---
+layout: post
+title: Introduction to Yeoman
+date: '2014-08-17T22:18:00+01:00'
+tags:
+- javascript
+- build tool
+- grunt.js
+- yeoman
+- bower
+- test automation
+- building automation
+tumblr_url: http://crowdhailer.tumblr.com/post/95033041928/introduction-to-yeoman
+---
+<p><a href="http://yeoman.io/" title="The web's scaffolding tool" target="_blank">Yeoman</a> describes itself as the &lsquo;The web&rsquo;s scaffolding tool for modern webapps&rsquo;. When I first looked at yeoman, a few months ago, I very quickly dismissed it as not for me. The main reason I did is it looked liked a magical wrapper around <a href="http://gruntjs.com/" title="Grunt: The JavaScript task runner" target="_blank">Grunt</a> and <a href="http://bower.io/" title="Bower" target="_blank">Bower</a>. Calling itself a scaffolding tool I thought I would hide many of the implementation details that I thought I should be learning. I also foresaw very little benefit atop mastering grunt and bower individually, which looked like they were doing the majority of the work.</p>
+<p><img alt="image" src="https://31.media.tumblr.com/92279d3fc111a53aa4a5dee56ff485dd/tumblr_inline_nagwzbMrF51s4ay8u.png"/></p>
+<p><!-- more --></p>
+<p>Well I have started looking again and I have changed my mind drastically. I decided I needed to look again after watch this excellent talk from <a href="https://www.youtube.com/watch?feature=player_embedded&amp;v=Mk-tFn2Ix6g" title="Better Web App Development Through Tooling" target="_blank">Paul Irish</a>. Yeoman fulfils one role fantastically and that role is as a demonstrator. When pushing yourself to learn new techniques I find myself looking at a lot of other peoples code. This is great but most of the time you find yourself looking at a finished product. This means that the implementation details such as build steps are hidden around all the actual code. Trying to learn about simple grunt tasks by looking at the JQuery repository will feel overwhelming. Even though you might be aware that you should only need to look through their grunt file you are never sure if something they are running in the gruntfile is dependent on a particular structure elsewhere in the repo. This is were Yeoman steps in, Yeoman&rsquo;s scaffolds are all the unglamorous bits of a project with all the excitement of the application stripped away.</p>
+<p>Being a scaffolding system it is opinionated, many of the individual scaffolds are not overly flexible. Being a relative newcomer however studying these scaffolds has ended up me arriving at the realisation that the workflows promoted in these proto applications are superior to what I was managing on my own. I now make frequent use of Yeomans webapp scaffold.</p>
+<p><strong>Getting started with yeoman.</strong></p>
+<p>Read about grunt, <a href="http://crowdhailer.tumblr.com/2014/06/25/quick-intro-to-bower.html" title="Quick intro to Bower" target="_blank">bower</a>, <a href="http://crowdhailer.tumblr.com/2014/04/30/starting-with-node-js-and-npm.html" title="Starting with node.js and Npm" target="_blank">node &amp; npm</a>. You don&rsquo;t need a deep understanding of any one of these. However understanding what each is for can be useful when working out how the whole thing fits together. </p>
+<p>With that out of the way lets get started. Assuming that npm is up and running yeoman is installed using</p>
+<blockquote>
+<p>npm install -g yo</p>
+</blockquote>
+<p>yo then becomes a global command. Running yo brings up a helpful list of options which will walk you through things like finding and installing a generator (project template) as well as building a new project from a template.</p>
+<p>All yeoman generators are separate packages and can be installed directly with npm. To install the webapp generator and use it.</p>
+<blockquote>
+<p>npm install -g generator-webapp</p>
+<p>mkdir newProject</p>
+<p>cd newProject</p>
+<p>yo webapp</p>
+</blockquote>
+<p><strong>Next steps</strong></p>
+<p>Open the project and have a look around. Even if you never use a generator in one of your own projects you will learn a lot.</p>
+<p>Some other scaffolds I have found interesting</p>
+<ul><li><a href="https://www.npmjs.org/package/generator-socketio" target="_blank">Socketio</a></li>
+<li><a href="https://www.npmjs.org/package/generator-zf5" target="_blank">Zf5</a></li>
+<li><a href="https://www.npmjs.org/package/generator-mobile" target="_blank">mobile</a></li>
+<li><a href="https://www.npmjs.org/package/generator-gulp-webapp" target="_blank">gulp-webapp</a></li>
+<li><a href="https://www.npmjs.org/package/generator-browserify" target="_blank">browserify</a></li>
+</ul>

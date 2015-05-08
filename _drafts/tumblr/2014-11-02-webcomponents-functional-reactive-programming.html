@@ -1,0 +1,33 @@
+---
+layout: post
+title: Webcomponents, Functional Reactive Programming, and Microservices
+date: '2014-11-02T19:15:54+00:00'
+tags:
+- web components
+- frp
+- microservices
+- javascript
+tumblr_url: http://crowdhailer.tumblr.com/post/101604707433/webcomponents-functional-reactive-programming
+---
+<p><span>The title of this post mentions three area that have been interesting me over the last few months. They are three very different technologies but all have a similar goal. I believe that they are all aiming to increase the </span>expressiveness of the code you write by making it say more about what you are doing and less about implementation. <span> In essence they all tackle this </span><span>in different domains. It may be argued that to some level many patterns and trends in programming exist to increase </span>expressiveness.</p>
+<p><span>So this post could grow to an epic if I tried to discuss all three in detail. So I will just give a quick overview. No opinions but needless to say I am excited by all of them.</span></p>
+<p><span><img alt="image" src="https://31.media.tumblr.com/71530eb05299ee61881768c0ee398b0c/tumblr_inline_nefessfJCV1s4ay8u.jpg"/></span></p>
+
+<p><span><!-- more --></span></p>
+<p><strong>Web Components</strong></p>
+<p>This is a conglomeration of emergent specifications that will allow pages to be divided more along the lines of widgets/sections. This is instead of separation into just three functional pieces namely content(HTML), style(CSS) and behaviour(JavaScript). The four new web standards for web components are</p>
+<ol><li>Custom Elements</li>
+<li>HTML Imports</li>
+<li>Templates</li>
+<li>Shadow DOM</li>
+</ol><p>Browser support is variable and progress can be checked <a href="http://jonrimmer.github.io/are-we-componentized-yet/" title="Are we componentized yet" target="_blank">here</a>. They can be experimented with now using a polyfill library called <a href="https://www.polymer-project.org/" title="Polymer" target="_blank">polymer</a>. A decent introduction can be found <a href="http://webcomponents.org/" title="WebComponents.org" target="_blank">here</a>.</p>
+<p><strong>Functional Reactive Programming (FRP)</strong></p>
+<p>I first came across this in the excellent JavaScript library <a href="http://baconjs.github.io/" title="bacon js" target="_blank">bacon.js</a>. There are other implementations such as <a href="https://github.com/Reactive-Extensions/RxJS" title="rxjs" target="_blank">rx.js</a>. FRP is a structure to handle events and data manipulation. It aims to provide a consistent language for manipulating event stream that have much in common with collection operations such as map, reduce and filer. The analogue being that a stream of clicks can be considered an array in time of click. How helpful that visualisation is I am unsure off but the code is definitely a wonderful step up the abstraction ladder. To have an overview I would definitely recommend <a href="http://philipnilsson.github.io/badness/" title="Implementing Snake in Bacon.js" target="_blank">this</a> walk through of implementing snake</p>
+<p><strong>Microservices</strong></p>
+<p>Fundamentally this is about breaking up a well organised large application into several smaller applications that run in concert to create on application agglomeration to a user. There are several benefits to this approach, each can be written in the language most suitable to its task, they can easily be rewritten when the business environment changes. The downsides are mostly the added complexity with deploying many services but this can be mitigated with automation and making use of services such as heroku. An excellent introduction is <a href="http://martinfowler.com/articles/microservices.html" title="Microservices" target="_blank">here</a>.</p>
+<p><strong>Single Responsibility</strong></p>
+<p>The <a href="http://en.wikipedia.org/wiki/Single_responsibility_principle" title="Wikipedia" target="_blank">Single Responsibility Principle (SRP)</a> is a cornerstone of good code design but there is more to it that the simplicity of its statement gives away. It took me a while to discover what I see as a key feature of single responsibility and that is a concept of scale.</p>
+<blockquote>
+<p>In a restaurant the chef has the single responsibility to prepare food while the waiter has the single responsibility to deliver food. However into this mix we can add a tin opener that has the single responsibility to open tins. These are however not three equal partners. It is evident that the chef can use the tin opener without having two responsibilities, namely preparing food and operating a tin opener. Operating a tin opener is part of the preparing food responsibility.</p>
+</blockquote>
+<p>In conclusion I see these three things providing new ways to organise code. In the Model View Controller world the application is broken up by functionality. As an application grows you can find yourself with a large application that is still only broken into three clean pieces, the model layer the view layer and a controller layer. Instead we can move to separating code around features. As an application grows it gets more features and the number of distinct pieces grows. This is good because each can be understood in isolation.</p>

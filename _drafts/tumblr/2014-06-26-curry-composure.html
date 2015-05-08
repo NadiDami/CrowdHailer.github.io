@@ -1,0 +1,71 @@
+---
+layout: post
+title: Curry composure
+date: '2014-06-26T09:01:00+01:00'
+tags:
+- javascript
+- underscore
+- curried
+- functional programming
+- functional
+- closure
+- lambda
+tumblr_url: http://crowdhailer.tumblr.com/post/89944998591/curry-composure
+---
+<p><img alt="image" src="https://31.media.tumblr.com/f1d42c8a34e922ab26cd8c7bec5310c7/tumblr_inline_n7ogzeHTFu1s4ay8u.jpg"/></p>
+
+<p>I have been exploring functional programming over the last few weeks, and rather enjoying it. The topic is huge and so far I have only scratched the surface. This post is an explaining of my two favourite concepts so far, <a href="http://en.wikipedia.org/wiki/Currying" title="Currying - Wikipedia" target="_blank">currying</a> and <a href="http://en.wikipedia.org/wiki/Function_composition" title="Function composition - Wikipedia" target="_blank">composition</a>. Taken individually they are useful but combined can perform so very powerful operations.</p>
+<p><!-- more --></p>
+<p>All of the examples will be in JavaScript as it is very easy to pass around functions. in fact this is one of the reasons I like JavaScript.</p>
+<p><strong>Currying</strong></p>
+<p>I have found it best described as a way of incrementally declaring arguments. Currying relies on the fact that functions can return functions. First some code for a function to add two numbers, in what could be considered as the classic way.</p>
+<blockquote>
+<p>var add = function(a, b){</p>
+<p>  return a + b;</p>
+<p>};</p>
+<p>add(3, 5)</p>
+<p>=&gt; 8</p>
+</blockquote>
+<p>This code is very simple and appears to have no downsides so why would you change it. The hidden downside is that it requires you to provide both &lsquo;a&rsquo; &amp; 'b&rsquo; at the same time. Contrast with the curried function below</p>
+<blockquote>
+<p>var add = function(a){</p>
+<p>  return function(b){</p>
+<p>    return a + b;</p>
+<p>  };</p>
+<p>};</p>
+<p>var add3 = add(3);</p>
+<p>add3(5);</p>
+</blockquote>
+<p>In this code first the value of 3 is passed to the add function. This creates a brand new function that will always add 3 to which the value of 5 is passed. This may not seam that revolutionary but can be very useful with operations that are often used. e.g calculating a tax percentage at always 17.5%.</p>
+<p><strong>Function composition</strong></p>
+<p>Composition is the process of 'piping&rsquo; the output of one function 'f&rsquo; to the input of a second 'g&rsquo; before the first input is present. In the process creating a third function 'h&rsquo; which is the equivalent of sequentially applying 'f&rsquo; then 'g&rsquo;.</p>
+<blockquote>
+<p>h(x) = g(f(x)) </p>
+</blockquote>
+<p>This is all very theoretical and will be better explained by an example. Imagine we want to add 3 to a number and then double the result.</p>
+<p>First lets introduce a curried multiply function similar to the curried add function. </p>
+<blockquote>
+<p>var multiply = function(a){</p>
+<p>  return function(b){</p>
+<p>    return a * b;</p>
+<p>  };</p>
+<p>};</p>
+</blockquote>
+<p>Then we create the components of add3 and double</p>
+<blockquote>
+<p>var add3 = add(3);</p>
+<p>var double = multiply(2);</p>
+</blockquote>
+<p>We can then pass both of these to our compose function and just use the resulting function.</p>
+<blockquote>
+<p>var operation = compose(double, add3)</p>
+<p>operation(1)</p>
+<p>=&gt; 8</p>
+<p>operation(3)</p>
+<p>=&gt; 12</p>
+</blockquote>
+<p>The benefit of this is it allows us to set up very sophisticated operations, all describe in one variable, before any of the data has arrived. The 'dumb&rsquo; data is then manipulated in very few steps and intermediate often uninteresting variables are skipped over.</p>
+<p><strong>Implementation</strong></p>
+<p>Function composition is simple in theory but it implementation can be more tricky, due to complexity in preserving the composed function&rsquo;s context (what the 'this&rsquo; object refers to when executing the function). Solving this requires a good understanding of JavaScripts <a href="http://javascriptissexy.com/javascript-apply-call-and-bind-methods-are-essential-for-javascript-professionals/" title="JavaScript's Apply, Call and Bind methods" target="_blank">bind, call and apply</a>. Ideally implementation details would be taken care of and the functionality described above would be available in a Library.</p>
+<p>To this end I have been developing &rsquo;<a href="https://github.com/CrowdHailer/cuminjs" title="cumin.js" target="_blank">cumin.js</a>&rsquo; a functional utilities library to experiment with these techniques. To build a solid base I have started by reflecting much of the functions available in <a href="http://underscorejs.org/" title="Underscore.js" target="_blank">underscore.js</a>. The single rule is that the data should come last. This is explained in this great talk &rsquo;<a href="https://www.youtube.com/watch?v=m3svKOdZijA" title="Underscore talk" target="_blank">Hey Underscore, your doing it wrong</a>&rsquo; from Brian Lonsdorf.</p>
+<p>Do take a look at <a href="https://github.com/CrowdHailer/cuminjs" title="cumin.js" target="_blank">cumin</a>. Its far from finished but it tries to show off this and other powerful functional ideas. In addition to the standard test suite there are also <a href="https://github.com/CrowdHailer/cuminjs/blob/master/spec/examples_spec.js" title="Example tests" target="_blank">example tests</a> that show more possibilities, such as calculated hypotenuse length in nDimensions and working with country data. There are more coming and welcome contributions could be to have some more examples added.</p>

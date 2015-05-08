@@ -1,0 +1,40 @@
+---
+layout: post
+title: Grunt
+date: '2014-11-04T10:00:33+00:00'
+tags:
+- javascript
+- grunt.js
+- jsmin
+- uglify
+tumblr_url: http://crowdhailer.tumblr.com/post/101748844091/grunt
+---
+<p><em>A quick disclaimer: I no longer use grunt. I have changed to <a href="http://gulpjs.com/" title="gulp.js The streaming build system" target="_blank">gulp</a> because I prefer its code over configuration approach. However I think grunt still has great value for someone who wants the advantages of automation without all the details of JavaScript.</em></p>
+<p>This is not an introduction to grunt, that is very well explained on the <a href="http://gruntjs.com/" title="Grunt: The JavaScript Task Runner" target="_blank">official site</a>. Grunt is a task runner for JavaScript. That sounds very simple, you can use grunt to do tasks for you, however isn&rsquo;t all programming running prescribed tasks or programs. I would say yes and so what is the use of grunt? </p>
+<p><img alt="image" src="https://31.media.tumblr.com/80a80e81e6c916552b5401ebb95b2deb/tumblr_inline_neff75lljM1s4ay8u.png"/></p>
+
+<p><!-- more --></p>
+<p>Grunt is nothing but a neat way to package tasks which are added as plugins. Essentially grunt has no value without the plugins that its community has generated. With these grunt is wonderful.</p>
+<p>So with that here is a whirlwind intro to some of the grunt tasks I have made use of.</p>
+<p><strong>Concatenation </strong><em><a href="https://github.com/gruntjs/grunt-contrib-concat" target="_blank">contrib-concat</a></em></p>
+<p>With this plugin you can automatically gather JavaScript/CSS saved in several locations and combine them to one file. This is best practise for performance by reducing HTTP request and speeding page load time. </p>
+<p><strong>Minification </strong><em><a href="https://github.com/gruntjs/grunt-contrib-uglify">contrib-uglify</a>, <a href="https://github.com/gruntjs/grunt-contrib-cssmin">css-min</a></em></p>
+<p>There are plugins to minify JS, CSS and HTML. This decreases the sizes of assets by removing comments, white space and several other things that human readers find very useful. This reduced size of files to be served is also helpful in speeding up a page load time.</p>
+<p><strong>Watch </strong><em><a href="https://github.com/gruntjs/grunt-contrib-watch" target="_blank">contrib-watch</a></em></p>
+<p>Automate the automated tasks, this task watches for changes to files, upon which it will run other grunt tasks. Save any changes in your js files and a new minified version will be ready almost instantaneously</p>
+<p><strong>Linting </strong><em><a href="https://github.com/stephenmathieson/grunt-jslint">jslint</a></em><a href="https://github.com/stephenmathieson/grunt-jslint"> </a></p>
+<p>Existing for JavaScript and CSS these task will check the quality of code you are writing, The value of jslint at catching mistakes is really huge.</p>
+<p><strong>Some More interesting task</strong></p>
+<p>The above are a powerful toolkit on there own, this next selection are more for the  curious</p>
+<p><em><a href="https://github.com/sindresorhus/load-grunt-tasks" target="_blank">load-grunt-tasks</a></em></p>
+<p>Efficiency or Laziness, whichever it is, it becomes contagious once grunt is running. This task saves you from having to individually add every grunt plugin to your grunt file. And will instead load every node package that is prefixed with &lsquo;grunt-&rsquo;</p>
+<p><a href="https://github.com/sindresorhus/time-grunt" target="_blank"><em>time-grunt</em></a></p>
+<p>This will record the time that each task takes to run. If a task is build of several tasks it will tell you the percentage time on each. So far this is more interesting than useful. It might provide early warning if you are minifying lots of images that you have too many as the time creeps up.</p>
+<p><a href="https://github.com/tschaub/grunt-newer" target="_blank"><em>grunt-newer</em></a></p>
+<p>This task provides can prefix any other task and will only run that task again if the files it is acting upon have changed since the last time the task was run. A useful way of speeding things up.</p>
+<p><a href="http://localtunnel.me/" target="_blank"><strong>localtunnel-me</strong></a></p>
+<p>Not a grunt task but a great addition to the development workflow. Previously I was pushing a version of my project to heroku to show it to other people. This meant that my project was littered with commits such as 'test this new thing on phone&rsquo;. Now this is all replaced with localtunnel. Grunt has several plugins that allow you to spin up a server with your project. with local tunnel you can take a locally running server and with no knowledge of how make it available the world over with one command</p>
+<blockquote>
+<p>$ lt &ndash;port 8000</p>
+</blockquote>
+<p>your local server port 800 will be made available at 'random.localtunnel.me&rsquo; A really great service </p>

@@ -1,0 +1,37 @@
+---
+layout: post
+title: Mocking API calls with Webmock
+date: '2014-04-04T20:36:05+01:00'
+tags:
+- rspec
+- tdd
+- rails
+- cucumber
+- ruby
+tumblr_url: http://crowdhailer.tumblr.com/post/81702185326/mocking-api-calls-with-webmock
+---
+<p><strong>I have been working on calling and parsing data from the github API</strong>. In this case reading readme files from a users CV repository for a developer <a href="http://ma-student-directory.herokuapp.com/user/CrowdHailer" title="Full Stack People" target="_blank">showcase</a>. I want to test this code and this is how I stubbed out the API calls.</p>
+<p>I wanted to stub out external requests for two key reasons:</p>
+<ol><li>We had a limited number of calls to the API per hour (60)</li>
+<li>To speed up the testing.</li>
+</ol><p>For this I used the webmock gem after reading <a href="http://robots.thoughtbot.com/how-to-stub-external-services-in-tests" title="How to stub external services in tests." target="_blank">this helpful intro</a> from thoughbot.</p>
+<p><!-- more --></p>
+<p><strong>The first thing that Webmock provides is block all HTTP requests simply by its inclusion</strong>. Therefore it is important that it is added to the Gemfile in the test environment only. For the purpose of these tests we allowed localhost requests as there is no network overhead, in the spec_helper.rb is included.</p>
+<p>    <em>require &lsquo;webmock/rspec&rsquo;</em><br/><em>    WebMock.disable_net_connect!(allow_localhost: true)</em></p>
+<p>At this point the request are guaranteed blocked and any tests not effectively mocked will fail.</p>
+<p><strong>Next is to stub the responses for certain requests.</strong> Webmock provides a myriad of ways to stub requests. In this case using external files to provide the response content made most sense. This method allows a maximum separation of logic from content. It also means mocked responses can serve up a large amount of content without obscuring code. </p>
+<p>    <em>stub_request(:get, &lt;uri&gt;).to_return(File.new(path/to/file.txt))</em></p>
+<p>When using rspec this code should be used in a before block.</p>
+<p><em>NB. Requests need to be stubbed in each test, a before(:all) block is insufficient.</em></p>
+<p><strong>Last is to generate the content in the response.</strong> This content can easily be created by hand if you are confident. In my experience so far I have to advise against it. The more obscure HTTP headers that you will neglect from a fabricated response may still have an effect. </p>
+<p>It is possible to use the terminal command curl to store an exact copy of a request from the api. This is done as follows.</p>
+<p>    $ <a href="http://explainshell.com/explain?cmd=curl+-is+www.example.com+%3E+trial.txt" title="Explain Shell" target="_blank">curl -is www.example.com &gt; trial.txt</a></p>
+<p><em>NB. The &rsquo;-i&rsquo; switch makes curl return the request headers and content.</em></p>
+<p>We saved these files in the fixtures folder within the rspec folder. Finally for convenience we wrapped the functionality for generating this copied responses into a rake task. This was done as follows and it meant that the command rake git_stub would make all the requests to the github api once.</p>
+<p>    task :git_stub do<br/>      `curl -is <a href="https://api.github.com/users/CrowdHailer">https://api.github.com/users/CrowdHailer</a> &gt; trial.txt`<br/>      `curl -is <a href="https://api.github.com/users/CrowdHailer/repos">https://api.github.com/users/CrowdHailer/repos</a> &gt; trial2.txt`<br/>    end</p>
+<p>Benefits of this method are:-</p>
+<ol><li><span>genuine response data to test models</span></li>
+<li><span>Not a single request needs to be made during test runs for maximum speed</span></li>
+<li><span>The disabling of net connections means no requests can get through </span>accidentally</li>
+<li><span>Renewing the test data is as easy as possible with a single rake call</span></li>
+</ol><p>This method is not yet perfect. At the moment there is some code duplication to create stubs in rspec test and cucumber tests. I have found <a href="http://marnen.github.io/webmock-presentation/webmock.html#(1)" title="Testing remote services with Webmock and VCR" target="_blank">this article</a> which demonstrates a similar procedure using the <a href="https://github.com/vcr/vcr" title="vcr/vcr" target="_blank">VCR gem</a>. Any comments or improvements on this method are welcome</p>
