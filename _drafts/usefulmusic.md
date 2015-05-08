@@ -31,6 +31,6 @@ We used our channel as a centralised place for chatter on the project. As this w
 An effective bug tracking solution was essential as the pool of contributors increased. [Bugsnag](https://bugsnag.com) allows me to separate bug reports on staging from those on production, combined with user tracking any unexpected behaviour in development became a productive conversation. I was able to see who had experienced the bug ask questions of what they had been doing and what the expected behaviour was. The source details on the error allowed me to write tests enforcing the correct behaviour from then onwards.
 
 ### Results
-- Truely simple changes, such as typos, can now be made by anyone. This is great as a typo often wants fixing imediatly. Regardless of how simple they can be quite a distraction when wqorking on new features
+- Truely simple changes, such as typos, can now be made by anyone. This is great as a typo often wants fixing immediately. Regardless of how simple they can be quite a distraction when wqorking on new features
 - Trickier changes can be started by anyone and left on an open pull request. A stakeholder can write some new content and leave comments in the pull request on the dynamic content that needs adding, such as always showing the current date.
 - Allowing people who would only see the running website a view of the source helps everyone see what has been developed. It is often difficult as a develpoer to explain why some changes are much harder than others, this can help.
