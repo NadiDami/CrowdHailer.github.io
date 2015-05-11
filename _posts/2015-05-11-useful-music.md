@@ -2,13 +2,14 @@
 layout: post
 title: "Useful Music"
 description: "Report on Collaborative working, technologies and practises"
+date:   2015-05-11 13:02:30
 tags: portfolio git
 author: Peter Saxton
 ---
 
 #### *Sheet music downloads for developing musicians, expertly written to suit the instrument and the player’s level.*
 
-![Homepage of the Useful Music site](/assets/useful_music_home_page.png)
+[![Homepage of the Useful Music site](/assets/useful_music_home_page.png)](http://usefulmusic.com/)
 
 ## Professional & Collaborative working
 
