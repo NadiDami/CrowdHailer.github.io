@@ -39,9 +39,12 @@ jekyll serve --drafts
 
 
 ## Development
+[seo fundamentals](http://webdesign.tutsplus.com/series/seo-fundamentals-for-web-designers--webdesign-9715)
+
 - sitelinks
 - sitemap
 - Microdata
+http://edusagar.com/articles/view/72/how-to-add-microdata-to-markup-structured-data-in-your-blog
 - Blog word count for schema
 - Twitter cards
 - Create a portfolio page
