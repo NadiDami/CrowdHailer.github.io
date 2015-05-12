@@ -39,5 +39,10 @@ jekyll serve --drafts
 
 
 ## Development
+- sitelinks
+- sitemap
+- Microdata
+- Blog word count for schema
+- Twitter cards
 - Create a portfolio page
 - Add Disquss to pages
