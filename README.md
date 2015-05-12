@@ -42,7 +42,10 @@ jekyll serve --drafts
 [seo fundamentals](http://webdesign.tutsplus.com/series/seo-fundamentals-for-web-designers--webdesign-9715)
 
 - sitelinks
+*Note are auto generated can only be demoted*
 - sitemap
+*Does site map use date for last updated*
+*sitemap generating with drafts*
 - Microdata
 http://edusagar.com/articles/view/72/how-to-add-microdata-to-markup-structured-data-in-your-blog
 - Blog word count for schema
