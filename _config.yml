@@ -13,3 +13,5 @@ share-image: http://workshop14.io/share.png
 
 # Build settings
 markdown: kramdown
+gems:
+  - jekyll-sitemap
