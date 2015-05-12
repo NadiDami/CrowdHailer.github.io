@@ -36,3 +36,8 @@ Posts saved in the `_drafts` directory will not be available when using the serv
 ```
 jekyll serve --drafts
 ```
+
+
+## Development
+- Create a portfolio page
+- Add Disquss to pages
