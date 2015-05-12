@@ -1,11 +1,11 @@
 ---
 layout: post
 title: Is the future closer than I thought?
+description: 'Exciting developments from SpaceX and Boston Dynamics'
 date: '2013-11-07T11:40:00+00:00'
 tags:
 - technology
-- spacex
-- future
+author: Peter Saxton
 tumblr_url: http://crowdhailer.tumblr.com/post/66271131162/is-the-future-closer-than-i-thought
 ---
 <p>Just recently I noticed the future had arrived. A few things which recently I had regarded as all talk have been happening.</p>
