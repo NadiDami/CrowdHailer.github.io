@@ -5,6 +5,7 @@ description: "Report on Collaborative working, technologies and practices"
 date:   2015-05-11 13:02:30
 tags: portfolio git
 author: Peter Saxton
+share-image: http://insights.workshop14.io/assets/useful_music_home_page.png
 ---
 
 #### *Sheet music downloads for developing musicians, expertly written to suit the instrument and the player’s level.*
