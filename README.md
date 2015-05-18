@@ -20,11 +20,9 @@ cd blog
 *Note Gemfile.lock not needed in version control*
 load dependencies
 
-
 ```
 bundle install
 ```
-
 
 ## Usage
 
@@ -48,6 +46,7 @@ bundle exec jekyll serve --drafts
 tweet man who gave md style
 tweet man who did markdown template
 tweet github thanks for pages
+Opened issue on sitemaps, checkup
 
 - sitelinks
 *Note are auto generated can only be demoted*
