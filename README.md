@@ -41,6 +41,10 @@ jekyll serve --drafts
 ## Development
 [seo fundamentals](http://webdesign.tutsplus.com/series/seo-fundamentals-for-web-designers--webdesign-9715)
 
+tweet man who gave md style
+tweet man who did markdown template
+tweet github thanks for pages
+
 - sitelinks
 *Note are auto generated can only be demoted*
 - sitemap
