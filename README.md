@@ -16,25 +16,29 @@ change into the blog directory
 cd blog
 ```
 
-*requires jekyll to be installed, install from RubyGems or follow [instructions](http://jekyllrb.com/docs/installation/)*
+*Jekyll is installed from recommendation for setting up with github pages http://jekyllrb.com/docs/github-pages/*
+*Note Gemfile.lock not needed in version control*
+load dependencies
+
 
 ```
-gem install jekyll
+bundle install
 ```
+
 
 ## Usage
 
 To start the server execute:
 
 ```
-jekyll serve
+bundle exec jekyll serve
 ```
 
 #### Working with drafts
 Posts saved in the `_drafts` directory will not be available when using the serve command or on the production site(github pages). To see the draft posts execute
 
 ```
-jekyll serve --drafts
+bundle exec jekyll serve --drafts
 ```
 
 

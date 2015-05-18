@@ -12,6 +12,7 @@ github_username:  CrowdHailer
 share-image: http://workshop14.io/share.png
 
 # Build settings
+exclude: [Gemfile, Gemfile.lock]
 markdown: kramdown
 gems:
   - jekyll-sitemap
