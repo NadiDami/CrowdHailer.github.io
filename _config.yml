@@ -16,3 +16,10 @@ exclude: [Gemfile, Gemfile.lock]
 markdown: kramdown
 gems:
   - jekyll-sitemap
+defaults:
+  -
+    scope:
+      path: "."
+      type: "drafts"
+    values:
+      sitemap: false
