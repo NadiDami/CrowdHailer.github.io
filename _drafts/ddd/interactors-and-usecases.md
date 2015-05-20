@@ -73,6 +73,10 @@ class UpdateProfile
 
 end
 ```
+
+tell dont ask, eastward oriented code
+sandy metz bath ruby talk on small talk
+
 ### Why?
 The hard boundary between the M and VC
 The thin blue line between the M and VC
@@ -96,7 +100,7 @@ Testing the domain with Interactors is helped because the explicitly depend on t
   ```
 
 ### Testing the view
-stub the result, none of this improves dealing with HTML parsing to check things are working but it does make those tests as a whole much simpler. Not only are you not hitting the database but you are not hitting the entire domain. On occasion I have developed an applications front end with stubbed 
+stub the result, none of this improves dealing with HTML parsing to check things are working but it does make those tests as a whole much simpler. Not only are you not hitting the database but you are not hitting the entire domain. On occasion I have developed an applications front end with stubbed
 
 ```rb
 interactor.stub :result, [:success, dummy_post]
