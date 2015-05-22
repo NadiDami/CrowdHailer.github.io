@@ -5,6 +5,36 @@
 
   <body>
 
+      <aside class="call" id="globe">
+          <style media="screen">
+              #globe.call {
+                  height: 25px;
+              }
+              #globe.call a {
+                  position: absolute;
+                  top: 2px;
+                  left: 5px;
+                  z-index: 20;
+                  background-color: #26353F;
+                  border: 2px solid #131823;
+                  font-weight: bold;
+                  box-shadow: 2px 6px 2px 2px rgba(0, 0, 0, 0.3);
+                  color: white;
+                  border-radius: 5px;
+                  padding: 5px 10px;
+                  font-family: 'Raleway' sans-serif;
+                  cursor: pointer;
+              }
+              #globe.call:hover a {
+                  transform: translate(2px, 2px);
+                  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
+              }
+              #globe.call:hover a {
+                  text-decoration: none;
+              }
+          </style>
+          <a href="http://globe.workshop14.io">Latest from GLOBE</a>
+      </aside>
 
     {% include header.html %}
     <main>
