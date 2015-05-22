@@ -1,4 +1,5 @@
 # Insights at Workshop 14
+**[insights.workshop14.io](http://insights.workshop14.io/)**
 
 Work and insights from Crowdhailer at Workshop 14. This blog showcases projects, best practises and curated miscellany
 
