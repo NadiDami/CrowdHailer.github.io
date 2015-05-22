@@ -49,6 +49,9 @@ tweet man who did markdown template
 tweet github thanks for pages
 Opened issue on sitemaps, checkup
 
+simple link to tweat key text
+http://blog.codeship.com/ruby-class-to-write-functional-code/?utm_source=rubyweekly&utm_medium=email
+
 - sitelinks
 *Note are auto generated can only be demoted*
 - sitemap
