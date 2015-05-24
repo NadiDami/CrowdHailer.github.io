@@ -2,7 +2,7 @@
 layout: post
 title: A persistance problem
 description: Solutions with entities, Repositories and ruby
-date:
+date: 2015-04-23 17:20:05
 tags: ruby design
 author: Peter Saxton
 ---

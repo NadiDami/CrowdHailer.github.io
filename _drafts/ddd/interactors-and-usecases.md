@@ -2,7 +2,7 @@
 layout: post
 title: Your usecase
 description: Using interactors to encapsulate you business logic
-date:
+date: 2015-04-23 17:20:05
 tags: ruby design
 author: Peter Saxton
 ---
