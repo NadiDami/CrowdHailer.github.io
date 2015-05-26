@@ -50,6 +50,7 @@ bundle exec jekyll serve --drafts
 [seo fundamentals](http://webdesign.tutsplus.com/series/seo-fundamentals-for-web-designers--webdesign-9715)
 
 Opened issue on sitemaps, checkup
+ahakins state of ruby community, jorja scala require, makis clojure require, james swift require.
 
 simple link to tweat key text
 http://blog.codeship.com/ruby-class-to-write-functional-code/?utm_source=rubyweekly&utm_medium=email
