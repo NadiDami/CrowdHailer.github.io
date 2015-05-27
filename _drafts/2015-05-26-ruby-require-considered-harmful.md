@@ -25,7 +25,7 @@ The problem comes when what you are requiring is not exactly what you need. If t
 
 Lets clarify this with an example the [money gem](https://github.com/RubyMoney/money). I have a project that works with several currencies some are accepted and some are not. It would be nice to have a method saying if a given money instance was in an accepted currency. We can easily implement one as follows.
 
-~~~rb
+{% highlight ruby %}
 require('money')
 
 class Money
@@ -33,13 +33,13 @@ class Money
     ACCEPTED_CURRENCIES.include? self.currency
   end
 end
-~~~
+{% endhighlight %}
 
 This is very clear so why am I saying it is a problem. Maybe the 'accepted?' method was already defined and other code using this class is now broken. Don't forget we have changed the Class everywhere. In addition what was a very clean value object now has an unexpectedly sophisticated level of knowledge about our business.
 
 The accepted fix for this is to instead to subclass or use a wrapper/adapter class.
 
-~~~rb
+{% highlight ruby %}
 require('money')
 
 class MyMoney < Money
@@ -47,7 +47,7 @@ class MyMoney < Money
     ACCEPTED_CURRENCIES.include? self.currency
   end
 end
-~~~
+{% endhighlight %}
 
 Domain knowledge has now not leaked into the core class and we can use that core class if we ever need to use the old implementation of accepted?
 
@@ -59,11 +59,11 @@ However I don't like the fact that my new class cannot have the name money. In m
 
 The equivalent process in Python is import. This has several extensions above the ruby functionality. The relevant one being 'as' which allows you to rename imports.
 
-~~~py
+{% highlight python %}
 import money as base_money
 
 # Now extend base_money
-~~~
+{% endhighlight %}
 
 The money variable is now free to use anyway to wish or indeed not at all.
 
@@ -71,13 +71,13 @@ The money variable is now free to use anyway to wish or indeed not at all.
 
 Possibly even better is the node require function which allows code to be imported anonymously
 
-~~~js
+{% highlight javascript %}
 var money = require('money').extend({
   is_available: function () {
     // Code goes here
   },
 })
-~~~
+{% endhighlight %}
 
 The money variable is the one we want and there is no way to access the base object without rerequiring it.
 
@@ -85,7 +85,7 @@ The money variable is the one we want and there is no way to access the base obj
 
 I have recently been building a collection of types such as email for use in my projects. to tackle exactly this issue I have put them in a silly namespace. It's not quite anonymous but it is hopefully not one I will ever need to use the [Typetanic]() namespace.
 
-~~~rb
+{% highlight ruby %}
 require 'typetanic/email'
 
 class Email < Typetanic::Email
@@ -94,14 +94,14 @@ class Email < Typetanic::Email
     self.domain == 'workshop14.io'
   end
 end
-~~~
+{% endhighlight %}
 
 ### Final thoughts
 
 I would like to see ruby move in the direction laid out by [Adam Hawkins](http://hawkins.io/2015/05/the-ruby-community-the-next-version/) with a preference for small libraries. I think the JavaScript require system is not only enabling but encouraging the current trend of small, focused modules in that community.
 It would be a huge change but I would rather name my required objects than have the gem assume it knows what I want them to be.
 
-~~~rb
+{% highlight ruby %}
 Money = require 'money'
 
 # and
@@ -109,7 +109,7 @@ Money = require 'money'
 class Country < require 'country'
   # Custom code
 end
-~~~
+{% endhighlight %}
 
 In the meantime the Ruby Money and Countries gems are among my favorite because of their focus. However with the current system I would rather they took up a fun namespace and left the business domain to me.
 Perhaps `Gaia::Countries` and `MonopolyMan::Money`.
