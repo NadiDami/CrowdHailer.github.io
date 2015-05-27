@@ -1,13 +1,11 @@
 ---
 layout: post
 title: Walk through registering as self employed (UK)
+description: An overview on getting setup as self employed, it's not that bad
 date: '2013-11-20T11:13:00+00:00'
 tags:
-- crowdfunding
-- tax
-- uk tax
-- self-employed
 - employment
+author: Peter Saxton
 tumblr_url: http://crowdhailer.tumblr.com/post/67553709748/walk-through-registering-as-self-employed-uk
 ---
 <p><strong>Today I registered myself as self-employed. </strong></p>
