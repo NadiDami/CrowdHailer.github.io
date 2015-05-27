@@ -14,6 +14,7 @@ share-image: http://insights.workshop14.io/assets/cove_house_mevagissey_home_pag
 
 ## Performance is a feature
 
+TODO twitter card
 my first project
 recently I have been review performance of websites
 in addition I have also discovered divshot
