@@ -32,6 +32,11 @@ To start the server execute:
 ```
 bundle exec jekyll serve
 ```
+## Development
+
+#### syntax highlight
+{% highlight python %}
+{% endhighlight %}
 
 #### Working with drafts
 Posts saved in the `_drafts` directory will not be available when using the serve command or on the production site(github pages). To see the draft posts execute

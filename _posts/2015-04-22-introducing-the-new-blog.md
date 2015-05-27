@@ -23,11 +23,11 @@ Create a full page of content to work with, set up as much of markup as possible
 ### 3. Know what you like
 Perhaps best shown with an example.
 
-~~~css
+{% highlight css %}
 * {
     box-sizing: border-box;
 }
-~~~
+{% endhighlight %}
 
 You might or might not prefer working like this, however I know I do and so I set it up straight away. What would be impossible is sometimes working with border boxes and sometimes with content boxes.
 
@@ -100,14 +100,14 @@ define foobar() {
 (which makes copying & pasting easier). You can optionally mark the
 delimited block for Pandoc to syntax highlight it:
 
-~~~python
+{% highlight python %}
 import time
 # Quick, count to ten!
 for i in range(10):
     # (but not *too* quick)
     time.sleep(0.5)
     print i
-~~~
+{% endhighlight %}
 
 
 
