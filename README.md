@@ -44,16 +44,11 @@ bundle exec jekyll serve --drafts
 ## Development
 [seo fundamentals](http://webdesign.tutsplus.com/series/seo-fundamentals-for-web-designers--webdesign-9715)
 
-tweet man who gave md style
-tweet man who did markdown template
-tweet github thanks for pages
 Opened issue on sitemaps, checkup
 
 simple link to tweat key text
 http://blog.codeship.com/ruby-class-to-write-functional-code/?utm_source=rubyweekly&utm_medium=email
 
-- sitelinks
-*Note are auto generated can only be demoted*
 - sitemap
 *Does site map use date for last updated*
 *sitemap generating with drafts*
