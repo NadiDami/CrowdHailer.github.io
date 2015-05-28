@@ -83,7 +83,7 @@ The money variable is the one we want and there is no way to access the base obj
 
 ### A possible solution
 
-I have recently been building a collection of types such as email for use in my projects. To tackle exactly this issue, I have put them in a silly namespace. It's not quite anonymous but hopefully I will not ever need to use the [Typetanic]() namespace for anything else.
+I have recently been building a collection of types such as email for use in my projects. To tackle exactly this issue, I have put them in a silly namespace. It's not quite anonymous but hopefully I will not ever need to use the [Typetanic](https://github.com/CrowdHailer/typtanic) namespace for anything else.
 
 {% highlight ruby %}
 require 'typetanic/email'
