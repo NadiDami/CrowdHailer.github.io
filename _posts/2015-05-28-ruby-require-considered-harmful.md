@@ -2,7 +2,7 @@
 layout: post
 title: Ruby require considered harmful
 description: What's wrong with Ruby's require and the bad code that follows
-date:   2015-05-26 13:02:30
+date:   2015-05-28 07:05:00
 tags: opinion ruby
 author: Peter Saxton
 ---
