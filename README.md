@@ -63,4 +63,5 @@ http://edusagar.com/articles/view/72/how-to-add-microdata-to-markup-structured-d
 - Blog word count for schema
 - Twitter cards
 - Create a portfolio page
-- Add Disquss to pages
+
+- mark posts as posts and make comments and ratings available in Microdata
