@@ -65,3 +65,4 @@ http://edusagar.com/articles/view/72/how-to-add-microdata-to-markup-structured-d
 - Create a portfolio page
 
 - mark posts as posts and make comments and ratings available in Microdata
+- loose is harmful title and put up a redirect page
