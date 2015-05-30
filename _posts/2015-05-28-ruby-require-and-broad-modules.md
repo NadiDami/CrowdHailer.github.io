@@ -1,10 +1,11 @@
 ---
 layout: post
-title: Ruby require considered harmful
-description: What's wrong with Ruby's require and the bad code that follows
+title: Ruby require and broad modules
+description: Does Ruby's require encourage overreach in modules
 date:   2015-05-28 07:05:00
 tags: opinion ruby
 author: Peter Saxton
+redirect_from: "/2015/05/28/ruby-require-considered-harmful.html"
 ---
 
 ### Overview
@@ -110,6 +111,8 @@ class Country < require 'country'
   # Custom code
 end
 {% endhighlight %}
+
+Both methods would limit effects to one namespace. Extending core classes would have to be done explicitly, that would be a few extra lines but would be worth it to be sure of the extent of the changes the required code could make. I have used the term broad module for one that spreads out, as they are often large but the raw size is not the problem.
 
 In the meantime the Ruby Money and Countries gems are among my favorite because of their focus. However with the current system I would rather they took up a fun namespace and left the business domain to me.
 Perhaps `Gaia::Countries` and `MonopolyMan::Money`.

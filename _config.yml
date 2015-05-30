@@ -16,6 +16,7 @@ exclude: [Gemfile, Gemfile.lock]
 markdown: kramdown
 gems:
   - jekyll-sitemap
+  - jekyll-redirect-from
 defaults:
   -
     scope:
