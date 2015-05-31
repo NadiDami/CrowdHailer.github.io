@@ -7,6 +7,9 @@ tags: ruby design
 author: Peter Saxton
 ---
 
+##titles
+Pushing logic below the model layer
+
 This series has been through a number of titles.
 One was Discovering the Joy of Over design.
 This is I think apt because alot of the things discussed here are far from necessary, if you have a separate view object(not template), interactor, repository entity and data layer for a simple list of all entries then that is plainly overkill. I started this process with a desire to deliberatly over design and see which ones made sense. I discovered that in alot of cases several of these patterns made sense. There may be issues with scaling when all of these are implemented but issues with scaling are exactly the issues I want to have. A question that is often asked is do I put these in from the beginning. The answer is yes. Everything the same is valuable
