@@ -33,7 +33,13 @@ tl:dr
 
 This post introduces value objects. I think they are a good idea. If you know what they are and agree then good. wait for the next article
 
-There are some great tutorials out there are on value objects in ruby, as well as when to use them. So check out these articles for another point of view on them. I want to build on top of these value objects so lets quickly introdue them.
+There are some great tutorials out there are on value objects in ruby, as well as when to use them. So check out these articles for another point of view on them. I want to build on top of these value objects so lets quickly introduce them.
+https://github.com/tcrayford/Values
+http://erniemiller.org/2012/11/01/ruby-tidbit-string-the-original-value-object/
+http://www.informit.com/articles/article.aspx?p=2220311&seqNum=11
+http://www.sitepoint.com/value-objects-explained-with-ruby/
+http://blog.codeclimate.com/blog/2012/10/17/7-ways-to-decompose-fat-activerecord-models/
+https://www.youtube.com/watch?v=7Obobjq8g_U
 
 ### What are value objects?
 A value object is any object who's identity is characterized it's attributes. Ruby primitives such as `String`, `Integer`, `DateTime` are all value objects. The antithesis of value objects are entities, they have an identity beyond there attributes. Lets clear this up with an example.
