@@ -67,6 +67,13 @@ january.length
 # => 7
 ```
 
+### equality
+if not just equality then comparison
+
+### good methods to definetly
+to_s
+to_str
+
 Almost certainly if you tell you buisness partner that january has a length of 7 they will not agree.
 
 ### Speed
@@ -112,3 +119,13 @@ end
 ```
 
 it looks nice but i think is over kill
+
+## Extensions
+
+#### Forge protocol
+The forge method can take any number of arguments to create a new value. It should also accept a block which is called with the error should creating the value object fail.
+
+All typetanic types have the forge method implemented again to speed up development
+
+#### stash protocol
+this implements a dump and load method where the object can be reduced to primitive suitable for storage.
