@@ -13,34 +13,37 @@ share-image: http://insights.workshop14.io/assets/cove_house_mevagissey_home_pag
 [![Homepage of the Cove House Mevagissey site](/assets/cove_house_mevagissey_home_page.png)](http://covehousemevagissey.co.uk/)
 
 ## Performance is a feature
-
-TODO twitter card
-my first project
-recently I have been review performance of websites
-in addition I have also discovered divshot
-price rumptions
+Recently I was revisiting the first project I ever did for a client. I had decided to move it from heroku to divshot. A far more appropriate choice as it was a single static page. While moving it across I decided to review the sites performance as I have learnt much since then and as the original project was only a 2hr job to rescue the site out of a drag and drop builder so I had very little idea as what to expect. Turns out I was in for a bit of a surprise however there are some easy wins in performance and these are a few of them.
 
 ### Step 0,  Know thy enemy
-The unbreakable rule of optimization is to measure measure measure. Us humans are extremely poor at understand how fast a computer will be. Optimization is a compromise with other features of a project, such as ease of understanding to new developers or speed of development. There are several tools online to measure a pages speed the two I use are [web page test](http://www.webpagetest.org/) and [page speed insights]() from google. It is possible to get lost in the details of these metrics. To keep things simple I will use the google tool. It has an overall score out of 100 and provides useful suggestions on what to improve.
+The unbreakable rule of optimization is to measure measure measure. Us humans are extremely poor at understanding how fast a computer will be. Optimization is a compromise with other features of a project, such as having comprehensible code or a speedy development.
 
-So to establish a baseline put in the old site, and there was a bit of a surprise here.
+There are many tools online to measure a sites speed. The two I use most are [page speed insights](https://developers.google.com/speed/pagespeed/insights/) from google and [web page test](http://www.webpagetest.org/). It is possible to get lost in the details of these metrics. To keep things simple I will use just page speed insights. It provides an overall score out of 100 as well as useful suggestions on what to improve.
+
+So to establish a baseline I put in the old site, oh dear.
+
+![Initial page speed insights for Cove House Mevagissey site](/assets/initial_page_speed_insights.png)
+
+Incase that is too small here is the numbers again.
 
 | Platfom | Speed Score |
 | ------- | ----------: |
 | Desktop | 0/100       |
 | Mobile  | 0/100       |
 
-So what is happening here. The number one suggestion is to optimize the images. On further investigation it turns out that I had been serving up full size images. 1000's of pixels wide so that leaves an obvious first step.
+So what is happening here, well turns out its a few gigantic images direct from a camera and optimizing images is the top suggestion. So on to the optimization.
 
 ### Step 1. Resize images
-To resize images I use a tool called [ImageMagick](), this is easy to install on Linux and provides a number of command line tools. The one we want is the convert tool. Another good rule when optimizating is to always try the simple solution first. Instead of creating multiple images at different resolutions what improvement can be made by in bulk just limiting all pictures to a width of 500px. This is about the largest image on the page and resizing them all to the same size means I can move them around in the design without revisiting the optimization steps.
+To resize images I use a tool called [ImageMagick](http://www.imagemagick.org). This is easy to install on Linux and provides a number of command line tools including convert for resizing images.
+
+Another good rule when optimizing is to always try the simple solution first. Instead of creating multiple images at different resolutions I want to see  what improvement can be made by just limiting all pictures to a width of 500px. This is about the size of the largest image on the page and resizing them all to the same size means I can move them around in the design without having to resize again.
 To resize every image in my `images/` directory and save a copy in the `www/` directory execute
 
 ```
-for file in images/*; do convert $file -resize 500 ./www/$file; done
+$ for file in images/*; do convert $file -resize 500 ./www/$file; done
 ```
 
-**So what is the benifit?** Checking with page speed insights our new score is now substantially improved. Our simple resize has worked and google now has a new suggestion of what to tackle next
+**So what's the improvement?** Checking with page speed insights our new score is now substantially improved. Our simple resize has worked and we have a new suggestion on what to tackle next
 
 | Platfom | Speed Score |
 | ------- | ----------: |
@@ -50,15 +53,15 @@ for file in images/*; do convert $file -resize 500 ./www/$file; done
 ### Step 2. Optimize images
 Pixel image formats save images as an array of pixels. The best way to save this data is dependant on the image and for that reason it is possible to reduce the size of an image file without in any way changing the image. This really is as close to a no compromise win you can get.
 
-To do this compression I use a node tool [imagemin](). To use this requires you to have node and npm installed[^1].
+To do this compression I use a node tool [imagemin](https://github.com/imagemin/imagemin). To use this requires you to have node and npm installed[^1].
 
-As I am only interested in the original copies of the images and the fully optimized images I overwrite the resized images with the resized and optimized images.
+As I am only interested in the original images and the fully optimized versions I overwrite the resized images with the resized and optimized images.
 
 ```
-./node_modules/.bin/imagemin www/images/* www/images/
+$ ./node_modules/.bin/imagemin www/images/* www/images/
 ```
 
-**So what is the benifit?** Checking with page speed insights our score has again seen substantial improvment. Our opmtimization was worth it and google now has a new suggestion of what to tackle next
+**So what's the improvement?** Checking with page speed insights our score has again seen substantial improvement. Our optimization was worth it and yet again a new suggestion of what to tackle next
 
 | Platfom | Speed Score |
 | ------- | ----------: |
@@ -66,15 +69,15 @@ As I am only interested in the original copies of the images and the fully optim
 | Mobile  | 75/100      |
 
 ### Step 3. Compress CSS
-CSS is an external resource to the page an each request has an overhead associated with setting it up. To speed loading the CSS it is important to reduce the total size but to also minimize the number of requests.
+CSS is an external resource to the page an each request has an overhead associated with setting it up. To speed loading the CSS it is important to reduce the total size but to also minimize the number of requests. To reduce requests css should be concatinated into one file and to reduce the size the contents should be minimized.
 
-CleanCSS is another node tool[^1]. It's function is to remove cruft from the code and minify what remains. It also has a nice method for concatinating multiple files by simply piping in multiple files. To concatinate and minify all my source css I execute the following
+CleanCSS is another node tool[^1]. It's function is to remove cruft from the CSS and minify what remains. It also has a nice method for concatinating multiple files by simply piping in multiple files. To concatinate and minify all my source CSS I execute the following.
 
 ```
-cat css/*.css | cleancss > www/css/main.min.css
+$ cat css/*.css | cleancss > www/css/main.min.css
 ```
 
-**So what is the benifit?** A much smaller improvement now, So already we can see that for this site the images are the major factor
+**So what's the improvement?** A smaller improvement this time. Already we can see that for this site the images are the major factor for performance.
 
 | Platfom | Speed Score |
 | ------- | ----------: |
@@ -82,7 +85,7 @@ cat css/*.css | cleancss > www/css/main.min.css
 | Mobile  | 77/100      |
 
 ### Step 4. Inline CSS and minify html
-As there is no JavaScript on this page the only resource loaded in the head is the stylesheet. Googles next suggestion was to eliminate this render blocking fetch of the CSS. To do this I copied the entire minified css into the document. As this site has only one page and changes infrequently the simplest way to do this was to simply copy and paste it in. At the same time I also ran the HTML through html-minifier (another node tool[^1]).
+As there is no JavaScript on this page the only resource loaded in the head is the stylesheet. Googles next suggestion was to eliminate this render blocking fetch of the CSS. To do this I copied the entire minified css into the document. As this site has simple styling and changes infrequently this was the easiest solutrion. At the same time I also ran the HTML through html-minifier(another node tool[^1]). Giving us our final page.
 
 **And the final Score?**
 
@@ -92,9 +95,9 @@ As there is no JavaScript on this page the only resource loaded in the head is t
 | Mobile  | 88/100      |
 
 ### Reflect on progress
-At this point we have a very respectable score, and the time spent has been minimal. We could go further but the question is now do we need to. This page is image rich and that will not change, hunting for higher scores can be a [drain on time](premium.wpmudev.org/blog/why-trying-to-get-95-on-google-pagespeed-insights-will-drive-you-mad/).  
+At this point we have a very respectable score, and the time spent has been minimal. We could go further but the question is now do we need to. I would guess not, this page is image rich so we will always have those requests. Hunting for higher scores can be a [drain on time](premium.wpmudev.org/blog/why-trying-to-get-95-on-google-pagespeed-insights-will-drive-you-mad/).  
 
-Simply put performance is a feature but it is not the only feature. This site is no longer held back by its performance and the success will now depend on other factors such as its optimization for search engines(SEO) and social media(SMO).
+Simply put performance is a feature and one of many. This site is no longer held back by its performance and the success will now depend on other factors such as its optimization for search engines(SEO) and social media(SMO). Which is definitely a topic for another post.
 
 
-[^1]: *Getting these is explained [here]().* There are tools which do not require node. However the node community is most active in pushing front end development and if moving on to more advanced builds a node environment will be invaluable.
+[^1]: *Getting node and npm is explained [here](https://docs.npmjs.com/getting-started/installing-node).* There are tools which do not require node. However the node community is most active in pushing front end development and if moving on to more advanced builds a node environment will be invaluable.
