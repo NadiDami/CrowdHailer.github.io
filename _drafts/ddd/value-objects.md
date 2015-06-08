@@ -84,11 +84,12 @@ user1 == user2
 Entities can have a history user2 can update there name and they will still be user2.
 
 ### Using value objects.
-Values can be used in place of a Ruby primitive anywhere your problem domain specifies extra behavior. In recent projects I have discovered this means almost everywhere there is a primitive conceptual gains can be made by changing to a value object.
-The classic extra behavior is validations. If a username must be at least 3 characters then it is not just a string. If an quantity cannot be negative then it is not simply an integer.
+Values can be used in place of a Ruby primitive anywhere your problem domain specifies extra behavior. In recent projects I have discovered this means almost everywhere there is a primitive conceptual gains can be made by changing to a value object. If a username must be at least 3 characters then it is not just a string. If an quantity cannot be negative then it is not simply an integer.
 
+After creating your value objects they should be used throughout the program. This means input should should be wrapped as soon as possible. They should also be cast back into strings as late as possible.
 
-Input should will always come in as strings and should be wrapped as soon as possible and converted back to a string as far as possible.
+> Maybe something here or casting them to strings to save in a database as late as possible
+> Or that values can be built on values.
 
 ### Building a value object
 Implementation is up to the programmer and as long as the interface is passing all your tests you should not care whats going on inside. However there are some things to bear in mind when building your value objects.
@@ -118,6 +119,7 @@ I think value objects had the greatest impact on the code I write. I think this 
 A downside to using value objects for everything is that you need to build them, which takes time. It's just so much easier to use the ever versatile string. Even then the time spent clarifying these concepts into dedicated objects helps with understanding the domain that saves time in the long run.
 
 So have you used value objects. Let me know how it went and what you think.
+Input should be transformed to domain objects as soon as possible. Form objects are a good way to do that and will be the next post. 
 
 ### Resources
 
