@@ -1,45 +1,47 @@
-### Escaping the strings
-Lets dive in with some code.
+---
+layout: post
+title: Building on Solid foundations
+description: Moving from your tools to your domain.
+date: 2015-07-23 17:20:05
+tags: ruby design
+author: Peter Saxton
+---
 
-```rb
+A fundamental tenant of domain driven design(DDD) is that you create software in an environment rooted in the problem domain. Before prescribing some new objects, I would like to start with a question. Which of these lines of code should return true and which should return false?
+
+{% highlight ruby %}
 'January'.winter?
 'password'.secure?
 'B-'.pass?
-```
+{% endhighlight %}
 
-Which of these should return true and which should return false? Perhaps it will be easier if I rephrase the question.
+Perhaps you got it, perhaps not. Lets make it clearer with some small changes.
 
-```rb
+{% highlight ruby %}
 'January'.secure?
 'password'.pass?
 'B-'.winter?
-```
-They all will, as the should, raise NoMethodError's. In the first example we see 'January' as a month and so make sense of the question is it winter. However our system needs a concept of a month before we can ask it about winter.
+{% endhighlight %}
 
-Now maybe your system doesn't need to know about seasons but I bet you have come across validations
+The answer is neither. Every line will, as it should, raise a `NoMethodError`. These two code samples have exactly the same outcome and yet they read very differently to us as humans. In the first example we see 'January' as a month and so make sense of the question is it winter.
 
-```rb
-'peter@workshop14.io'.valid?
-Month.new('peter@workshop14.io').valid?
-```
+Let us imagine the system is asking about months and seasons and we want to implement the `winter?` method how do we do that. Well we can reopen the string class and monkey patch in a `winter?` method. However as we can see the question is it winter doesn't make sense to 'B-'. So this method can't be added to the string class.
 
-Obviously the second example should return false.
-*I would go even further and say that we shouldn't get to the point of asking a month if it is valid. Calling `Month.new` with anything that cannot be reconised as a month should fail with and exception*
+Now DDD had an answer to this all along. Our problem domain doesn't have strings it has months. When talking to stakeholders no one ever said 'then the user enters the string of there birthday', its month of there birthday. And thus the answer is to create a Month object to encapsulate the data and behavior of what our what a month means to our system. With that concept added to our program we can write code that looks like the following.
+
+{% highlight ruby %}
+month = Month.new 'January'
+month.winter?
+# => true
+{% endhighlight %}
+
+And if we start putting in invalid months the program fails before we even ask the question 'is it winter?'
+{% highlight ruby %}
+month = Month.new 'B-'
+# !! InvalidMonth
+{% endhighlight %}
 
 
-
-### Welcome to the Value objects
-tl:dr
-
-This post introduces value objects. I think they are a good idea. If you know what they are and agree then good. wait for the next article
-
-There are some great tutorials out there are on value objects in ruby, as well as when to use them. So check out these articles for another point of view on them. I want to build on top of these value objects so lets quickly introduce them.
-https://github.com/tcrayford/Values
-http://erniemiller.org/2012/11/01/ruby-tidbit-string-the-original-value-object/
-http://www.informit.com/articles/article.aspx?p=2220311&seqNum=11
-http://www.sitepoint.com/value-objects-explained-with-ruby/
-http://blog.codeclimate.com/blog/2012/10/17/7-ways-to-decompose-fat-activerecord-models/
-https://www.youtube.com/watch?v=7Obobjq8g_U
 
 ### What are value objects?
 A value object is any object who's identity is characterized it's attributes. Ruby primitives such as `String`, `Integer`, `DateTime` are all value objects. The antithesis of value objects are entities, they have an identity beyond there attributes. Lets clear this up with an example.
@@ -135,3 +137,18 @@ All typetanic types have the forge method implemented again to speed up developm
 
 #### stash protocol
 this implements a dump and load method where the object can be reduced to primitive suitable for storage.
+### Welcome to the Value objects
+tl:dr
+
+This post introduces value objects. I think they are a good idea. If you know what they are and agree then good. wait for the next article
+
+There are some great tutorials out there are on value objects in ruby, as well as when to use them. So check out these articles for another point of view on them. I want to build on top of these value objects so lets quickly introduce them.
+https://github.com/tcrayford/Values
+http://erniemiller.org/2012/11/01/ruby-tidbit-string-the-original-value-object/
+http://www.informit.com/articles/article.aspx?p=2220311&seqNum=11
+http://www.sitepoint.com/value-objects-explained-with-ruby/
+http://blog.codeclimate.com/blog/2012/10/17/7-ways-to-decompose-fat-activerecord-models/
+https://www.youtube.com/watch?v=7Obobjq8g_U
+
+Comments
+The most important sentance is 'in your problem'

@@ -8,6 +8,11 @@ author: Peter Saxton
 ---
 
 ##titles
+last 18months I have been programming properly. I havd programmed for some time before that but not with careful consideration.
+found the rails way
+A model is not made of models
+A view is not made of views
+and controllers are not inherited from controllers
 Pushing logic below the model layer
 
 This series has been through a number of titles.
