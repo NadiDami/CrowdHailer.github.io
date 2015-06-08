@@ -22,11 +22,13 @@ A fundamental tenant of domain driven design(DDD) is that you create software in
 
 Perhaps you got it, perhaps not. Lets make it clearer with some small changes.
 
-{% highlight ruby %}
+```rb
+# {% highlight ruby %}
 'January'.secure?
 'password'.pass?
 'B-'.winter?
-{% endhighlight %}
+# {% endhighlight %}
+```
 
 The answer is neither. Every line will, as it should, raise a `NoMethodError`. These two code samples have exactly the same outcome and yet they read very differently to us as humans. In the first example we see 'January' as a month and so make sense of the question is it winter.
 
@@ -34,17 +36,22 @@ Let us imagine the system is asking about months and seasons and we want to impl
 
 Now DDD had an answer to this all along. Our problem domain doesn't have strings it has months. When talking to stakeholders no one ever said 'then the user enters the string of there birthday', its month of there birthday. And thus the answer is to create a Month object to encapsulate the data and behavior of what our what a month means to our system. With that concept added to our program we can write code that looks like the following.
 
-{% highlight ruby %}
+```rb
+# {% highlight ruby %}
 month = Month.new 'January'
 month.winter?
 # => true
-{% endhighlight %}
+# {% endhighlight %}
+```
 
 And if we start putting in invalid months the program fails before we even ask the question 'is it winter?'
-{% highlight ruby %}
+
+```rb
+# {% highlight ruby %}
 month = Month.new 'B-'
 # !! InvalidMonth
-{% endhighlight %}
+# {% endhighlight %}
+```
 
 The solution to our problem is to create a value object for our program that represents a month.
 
@@ -53,21 +60,25 @@ The solution to our problem is to create a value object for our program that rep
 A value object is any object who's identity is characterized by it's attributes. Ruby primitives such as `String`, `Integer`, `DateTime` are all value objects. It is not possible for value objects to have a history, any instance of our Month class should be treated as exactly the same regardless of source Lets clear this up with an example. For example with strings.
 
 ```rb
+# {% highlight ruby %}
 string1 = 'hello'
 string2 = 'hello'
 
 string1 == string2
 # => true
+# {% endhighlight %}
 ```
 
 This is in contrast to entities that can have an identity that is based on more than there attributes. For example a user object that has only a single attribute.
 
 ```rb
+# {% highlight ruby %}
 user1 = User.new :name => 'Peter'
 user2 = User.new :name => 'Peter'
 
 user1 == user2
 # => false
+# {% endhighlight %}
 ```
 
 Entities can have a history user2 can update there name and they will still be user2.
@@ -85,10 +96,12 @@ Implementation is up to the programmer and as long as the interface is passing a
 First think hard about subclassing the primitive you are trying to escape when building your domain object. It can implement things that might not make any sense any more. For example lets extend our Month class so it can be initialized with 'Jan' but still keeps the internal string representation as 'January'. We now have this code.
 
 ```rb
+# {% highlight ruby %}
 # if subclassed from String
 january = Month.new 'Jan'
 january.length
 # => 7
+# {% endhighlight %}
 ```
 
 In reality we probably want the length of January to be 31days, or no method. If there is no requirement for the length of a month don't implement it.
