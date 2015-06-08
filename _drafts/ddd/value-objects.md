@@ -7,13 +7,18 @@ tags: ruby design
 author: Peter Saxton
 ---
 
+### Background
+
 A fundamental tenant of domain driven design(DDD) is that you create software in an environment rooted in the problem domain. Before prescribing some new objects, I would like to start with a question. Which of these lines of code should return true and which should return false?
 
-{% highlight ruby %}
+```rb
+# {% highlight ruby %}
 'January'.winter?
 'password'.secure?
 'B-'.pass?
-{% endhighlight %}
+# {% endhighlight %}
+```
+
 
 Perhaps you got it, perhaps not. Lets make it clearer with some small changes.
 
@@ -41,12 +46,12 @@ month = Month.new 'B-'
 # !! InvalidMonth
 {% endhighlight %}
 
-
+The solution to our problem is to create a value object for our program that represents a month.
 
 ### What are value objects?
-A value object is any object who's identity is characterized it's attributes. Ruby primitives such as `String`, `Integer`, `DateTime` are all value objects. The antithesis of value objects are entities, they have an identity beyond there attributes. Lets clear this up with an example.
 
-value objects
+A value object is any object who's identity is characterized by it's attributes. Ruby primitives such as `String`, `Integer`, `DateTime` are all value objects. It is not possible for value objects to have a history, any instance of our Month class should be treated as exactly the same regardless of source Lets clear this up with an example. For example with strings.
+
 ```rb
 string1 = 'hello'
 string2 = 'hello'
@@ -55,100 +60,63 @@ string1 == string2
 # => true
 ```
 
-entity
+This is in contrast to entities that can have an identity that is based on more than there attributes. For example a user object that has only a single attribute.
+
 ```rb
 user1 = User.new :name => 'Peter'
 user2 = User.new :name => 'Peter'
+
 user1 == user2
 # => false
 ```
-and most importantly user2 can update there name and still be user2.
+
+Entities can have a history user2 can update there name and they will still be user2.
+
+### Using value objects.
+Values can be used in place of a Ruby primitive anywhere your problem domain specifies extra behavior. In recent projects I have discovered this means almost everywhere there is a primitive conceptual gains can be made by changing to a value object.
+The classic extra behavior is validations. If a username must be at least 3 characters then it is not just a string. If an quantity cannot be negative then it is not simply an integer.
+
+
+Input should will always come in as strings and should be wrapped as soon as possible and converted back to a string as far as possible.
 
 ### Building a value object
-So I have announced there should be a month object but what should it look like.
-One option is to subclass String when creating these new methods. I normally prefer being explicing and starting with a new class. We can show possible odd behaviour with out month implementation
+Implementation is up to the programmer and as long as the interface is passing all your tests you should not care whats going on inside. However there are some things to bear in mind when building your value objects.
+
+First think hard about subclassing the primitive you are trying to escape when building your domain object. It can implement things that might not make any sense any more. For example lets extend our Month class so it can be initialized with 'Jan' but still keeps the internal string representation as 'January'. We now have this code.
 
 ```rb
-# subclassed from String
-january = Month.new 'January'
+# if subclassed from String
+january = Month.new 'Jan'
 january.length
 # => 7
 ```
 
-### equality
-if not just equality then comparison
+In reality we probably want the length of January to be 31days, or no method. If there is no requirement for the length of a month don't implement it.
 
-### good methods to definetly
-to_s
-to_str
+Second remember to implement basic ruby methods as needed. Don't know the difference between `to_s` and `to_str`? now is a good time to find out.
 
-Almost certainly if you tell you buisness partner that january has a length of 7 they will not agree.
+### Conclusion
+Value objects allow you to define more of your program in the language of the domain. Most importantly The objects you create should be specific to your domain this means they are not necessarily reusable.
 
-### Speed
+If my project is UK based then January is in winter. I Australia the answer should be false and my buisness is international then maybe we shouldn't be deciding the season on month alone.
 
-One disadvantage is the speed of progress that is made when needing to specify all the details of each type that might be needed in a new application.
-My leading principle is to work towards evergreen. i.e. don't rush at the beginning.
-It is important to settle down for the long run, that said that people want to see progress quickly. Including ourselves as developers.
+I think value objects had the greatest impact on the code I write. I think this is not because they are the most important but because they are often neglected. It is obvious you don't want to model each user as a gigantic hashes. This quickly become cumbersome and extra behavior is more. It is however much easier to leave usernames represented as strings because creating a string is just so convenient.
 
-To combat this I have set up a library of types that I come across. It has or will have soon types for. emails, titles, names.
+A downside to using value objects for everything is that you need to build them, which takes time. It's just so much easier to use the ever versatile string. Even then the time spent clarifying these concepts into dedicated objects helps with understanding the domain that saves time in the long run.
 
-But wait surely the conditions on a title are different from project to project.
-Yes but they don't all need to be in place from the off.
-The typetanic title is full of some handy defaults. and if you want a new thing just write your own.
+So have you used value objects. Let me know how it went and what you think.
 
-Good code means changing one thing.
-
-So when developing values/title.rb looks like the following
-
-```rb
-class Title < Typetanic::Title
-
-end
-```
-
-when our title has been specified
-```rb
-class Title
-  # My code
-  # It is a simple object. Just write one
-end
-```
-
-My library is typetanic. It is open source and contributions are of course welcome.
-but its real value is too me. Im not sure I want to create
-
-```rb
-class Title < Typetanic::String
-  min_length 5
-  max_length 10
-  value_format /^[A-Z][a-zA-Z0-9\s]+$/
-  capitalise true
-end
-```
-
-it looks nice but i think is over kill
-
-## Extensions
-
-#### Forge protocol
-The forge method can take any number of arguments to create a new value. It should also accept a block which is called with the error should creating the value object fail.
-
-All typetanic types have the forge method implemented again to speed up development
-
-#### stash protocol
-this implements a dump and load method where the object can be reduced to primitive suitable for storage.
-### Welcome to the Value objects
-tl:dr
-
-This post introduces value objects. I think they are a good idea. If you know what they are and agree then good. wait for the next article
+### Resources
 
 There are some great tutorials out there are on value objects in ruby, as well as when to use them. So check out these articles for another point of view on them. I want to build on top of these value objects so lets quickly introduce them.
+- [Overcoming our obsession with stringly typed Ruby](https://www.youtube.com/watch?v=7Obobjq8g_U)  
+  An excellent video from [David Copeland](https://twitter.com/davetron5000) on overusing Ruby strings
+- [String, the original value object](http://erniemiller.org/2012/11/01/ruby-tidbit-string-the-original-value-object/)
+  Article suggesting times when you should subclass string to create your value objects by [Ernie Miller](https://twitter.com/erniemiller)
 https://github.com/tcrayford/Values
-http://erniemiller.org/2012/11/01/ruby-tidbit-string-the-original-value-object/
-http://www.informit.com/articles/article.aspx?p=2220311&seqNum=11
-http://www.sitepoint.com/value-objects-explained-with-ruby/
-http://blog.codeclimate.com/blog/2012/10/17/7-ways-to-decompose-fat-activerecord-models/
-https://www.youtube.com/watch?v=7Obobjq8g_U
-
-Comments
-The most important sentance is 'in your problem'
+- [Using VAlue Objects](http://www.informit.com/articles/article.aspx?p=2220311&seqNum=11)
+  Using value objects as ActiveRecord attributes.
+- [Value Objects Explained with Ruby](http://www.sitepoint.com/value-objects-explained-with-ruby/)
+  A thorough grounding in the concept of value objects with ruby.
+- [Typetanic](https://github.com/CrowdHailer/typtanic)
+  My repository of value objects that I have found do cross between projects.
