@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Building on Solid foundations
-description: Moving from your tools to your domain.
+description: Moving from your language to your domain.
 date: 2015-07-23 17:20:05
 tags: ruby design
 author: Peter Saxton
