@@ -8,16 +8,16 @@ author: Peter Saxton
 ---
 
 ### Introducing the gatekeepers
-Somewhere somehow your program is available to the outside world which will need to send data use your application. In a web application input comes from the users in forms. This is always as strings, in the previous post we discussed the value of a domain specific language. Form objects can ensure we use that language. Form objects take raw input, check it and transform it to domain objects. Once data has passed this layer of border control it is not verified again.
+Somewhere somehow your program is available to the outside world which will need to send data use your application. In a web application input comes from the users in forms. This is always as strings, in the previous post I disscussed why use domain specific objects in place of Ruby Primitives. Form objects can ensure we are thinking in our domain language rather than Ruby primitives. Form objects take raw input, check it and transform it to domain objects. Once data has passed this layer of border control it is not verified again.
 
 ### Using form objects
 
-A form object's singular responsibility is to shield the core of your program from unreliable and possibly unsafe input. On a web application a form object is normally used at the start of a controller action. There are always three steps, first initialize the object with raw data. Check the form is valid. Finally use the form values in you process.
+A form object's singular responsibility is to shield the core of your program from unreliable and possibly unsafe input. On a web application a form object is normally used at the start of a controller action. There are always three steps. First initialize the object with raw data. Second check the form is valid. Finally use the form values in you process.
 
 ```rb
 # {% highlight ruby %}
 
-# Instatiate with raw input
+# Initialize with raw input
 input = request.params
 form = Form.new input
 
@@ -30,7 +30,7 @@ email = form.email
 # {% endhighlight %}
 ```
 
-There is no limit to how simple a for object can be. I almost always implement one even if there is only one input. An extremely basic form object could be created as follows.
+There is no limit to how simple a form object can be. I almost always implement one even if there is only one input. An extremely basic form object could be created as follows.
 
 ```rb
 # {% highlight ruby %}
@@ -50,15 +50,17 @@ end
 # {% endhighlight %}
 ```
 
-Trivial examples can make form objects seam very simple. They can quickly get complicated for a few reasons.
+### Considerations
 
-- They have to communicate with both the delivery mechanism and business logic.
+Trivial examples can make coding form objects seam very simple. Unfortunetly they can quickly get complicated for a few reasons.
+
+- They have to communicate with both the delivery mechanism and business logic, it is not possible for them to avoid ruby primitives.
 - Rapid change from the front end filters to them. If an input changes from a datepicker to separate day/month/year inputs then this changes has to be reflected in the form object
 - Error reporting. everywhere else in the system bad input should throw an error, however in the form we need to keep a track of all the errors and invalid input so we can send it back to the user for changes.
 
 That these three issues surface here on the edge of the system is a good thing. It means that they are not issues in the core of the application. The error reporting in particular is a gritty issue. Some times you want to clear an input if the value was invalid, sometimes show they value they entered. Sometimes it's enough to report that an input was invalid other times you need to say too short, too long or invalid characters.
 
-I have tried abstracting my form objects into a library but have yet to find a compelling abstraction to handle all these issues. At the moment I write custom forms for each application.
+### Creating form Objects
 
 When writing form objects I have developed one golden rule and that is to build on the solid foundation of [domain objects](). A form object should know if an input is missing or invalid, but it should not know the reason it is invalid. That should handled when creating a dedicated type. Making use of an email class and our simple form can become far more useful.
 
