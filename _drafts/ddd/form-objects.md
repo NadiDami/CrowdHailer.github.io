@@ -1,22 +1,112 @@
-This is our first layer building on top of the basic types that we discussed in the previous post.
-To work out what we are trying to do it is helpful to have a clear definition of the problem and what part of it that problem we are wanting to solve here.
+---
+layout: post
+title: Border control with form objects
+description: Using form objects to enforce your domain language.
+date: 2015-07-23 17:20:06
+tags: ruby design
+author: Peter Saxton
+---
 
-A form object is one of the more important objects in this discussion as it can cross the interface from the delivery mechanism to the domain.
-In all cases where this is possible the main language should be the language of the domain.
-A form objects purpose is to take an input (read unsafe/unreliable).
-It has to then present this input in the language of the domain.
-As a secondary purpose it should keep track of any missing or invalid input.
+### Introducing the gatekeepers
+Somewhere somehow your program is available to the outside world which will need to send data use your application. In a web application input comes from the users in forms. This is always as strings, in the previous post we discussed the value of a domain specific language. Form objects can ensure we use that language. Form objects take raw input, check it and transform it to domain objects. Once data has passed this layer of border control it is not verified again.
+
+### Using form objects
+
+A form object's singular responsibility is to shield the core of your program from unreliable and possibly unsafe input. On a web application a form object is normally used at the start of a controller action. There are always three steps, first initialize the object with raw data. Check the form is valid. Finally use the form values in you process.
 
 ```rb
+# {% highlight ruby %}
+
+# Instatiate with raw input
+input = request.params
 form = Form.new input
 
-form.valid?
-form.validate?
+# Check input is valid
+return unless form.valid?
+
+# Carry on processing assuming everything is good.
+email = form.email
+
+# {% endhighlight %}
 ```
 
-## Note on validations
-A form object should know when an item is invalid.
-However it should not need to know the validation logic of every input it might receive.
+There is no limit to how simple a for object can be. I almost always implement one even if there is only one input. An extremely basic form object could be created as follows.
+
+```rb
+# {% highlight ruby %}
+class SignUpForm
+  def initialize(**input)
+    raw = input.fetch('email') { '' }
+    @email = raw.strip
+  end
+
+  attr_reader :email
+
+  def valid?
+    !email.empty?
+  end
+end
+
+# {% endhighlight %}
+```
+
+Trivial examples can make form objects seam very simple. They can quickly get complicated for a few reasons.
+
+- They have to communicate with both the delivery mechanism and business logic.
+- Rapid change from the front end filters to them. If an input changes from a datepicker to separate day/month/year inputs then this changes has to be reflected in the form object
+- Error reporting. everywhere else in the system bad input should throw an error, however in the form we need to keep a track of all the errors and invalid input so we can send it back to the user for changes.
+
+That these three issues surface here on the edge of the system is a good thing. It means that they are not issues in the core of the application. The error reporting in particular is a gritty issue. Some times you want to clear an input if the value was invalid, sometimes show they value they entered. Sometimes it's enough to report that an input was invalid other times you need to say too short, too long or invalid characters.
+
+I have tried abstracting my form objects into a library but have yet to find a compelling abstraction to handle all these issues. At the moment I write custom forms for each application.
+
+When writing form objects I have developed one golden rule and that is to build on the solid foundation of [domain objects](). A form object should know if an input is missing or invalid, but it should not know the reason it is invalid. That should handled when creating a dedicated type. Making use of an email class and our simple form can become far more useful.
+
+```rb
+# {% highlight ruby %}
+class SignUpForm
+  def initialize(**input)
+    raw = input.fetch('email') { '' }
+    @email = Email.new raw
+    @valid = true
+  rescue ArgumentError => err
+    @email = raw
+    @valid = false
+  end
+
+  attr_reader :email
+
+  def valid?
+    @valid
+  end
+end
+
+# {% endhighlight %}
+```
+
+### Naming
+
+Form objects are so called because they handle form input. The logic of coercing input as soon as possible extends to all input. For a more generally they can be adapters in hexagonal architecture or interface adapters in clean architecture.
+
+### Resources
+
+- [Writing form objects with virtus](http://hawkins.io/2014/01/form_objects_with_virtus/)  
+  The post that convinced me to try form objects. However I no longer agree with bundling detailed validation rules into forms.
+
+And
+
+- [Vulcanize](https://github.com/CrowdHailer/vulcanize)  
+  My best attempt at defining an abstraction for form objects
+
+# END
+
+
+## Building form objects
+
+There are a few ruby libraries that help with constructing form objects. One of these is Virtus which I have used in several projects but recently decided can lead to some problems. These shortcomings I feel are worth discussing.
+
+
+However so far I have not found any of them to work as I would like.
 
 There are several very helpful libraries when it comes to writing forms.
 One of the best is virtus which I used in a few projects. It has a very convenient DSL that lets you quickly write forms.
@@ -29,7 +119,9 @@ Or to be more specific there are two problems it can't help tackle.
 To illustrate this lets look at some code.
 This is code taken directly from a project that was using virtus
 
+
 ```rb
+# {% highlight ruby %}
 class PasswordResetForm
   include Virtus.model
 
@@ -74,6 +166,7 @@ class UpdatePasswordForm
   end
 
 end
+# {% endhighlight %}
 ```
 
 So this code is quite declarative. The parts written in the DSL are very clear and the rest is not too confusing.
@@ -89,6 +182,7 @@ There are shortcuts i.e. you don't  need to validate the password confirmation a
 However the problem as I see it is that the forms where told to expect strings but then had to realise they where working with a supset of all possiblestrings.
 With a full featured password object. It would be possible to have the following code.
 ```rb
+# {% highlight ruby %}
 class PasswordResetForm
   include Virtus.model
 
@@ -123,9 +217,13 @@ class Password
     @value
   end
 end
+# {% endhighlight %}
 ```
 
 Such value objects as the password object are described in my previous post.
+
+A form object should know when an item is invalid.
+However it should not need to know the validation logic of every input it might receive.
 
 ## Typtanic extension
 A value object when given invalid input throws an error. This is because the string 'ballons' is NOT an email.
