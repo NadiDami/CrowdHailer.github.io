@@ -8,16 +8,18 @@ author: Peter Saxton
 ---
 
 ### Introducing the gatekeepers
-Somewhere somehow your program is available to the outside world which will need to send data use your application. In a web application input comes from the users in forms. This is always as strings, in the previous post I disscussed why use domain specific objects in place of Ruby Primitives. Form objects can ensure we are thinking in our domain language rather than Ruby primitives. Form objects take raw input, check it and transform it to domain objects. Once data has passed this layer of border control it is not verified again.
+At some point your programs will need to be available to the outside world. This will result in a need to send data to the application. In a web application data comes from the users in forms. This input is always as strings and we want to transform it into the form that is most useful to us. Input is most useful to us when it is transformed to concepts(in Ruby that means objects) that are native to our problem. That is to use our domain specific language, the value of which I discussed [in the previous post]().
+
+Form objects exist to ensure we use our domain language. They take raw input and transform it into understandable data, along the way they may also track errors in the transform. Once data has passed this layer of border control it is not verified again.
 
 ### Using form objects
 
-A form object's singular responsibility is to shield the core of your program from unreliable and possibly unsafe input. On a web application a form object is normally used at the start of a controller action. There are always three steps. First initialize the object with raw data. Second check the form is valid. Finally use the form values in you process.
+A form object's singular responsibility is to shield the core of your program from unreliable and possibly unsafe input. In a web application a form object is normally used at the start of a controller action. There are always three steps, first initialize the object with raw data. Check the form is valid. Finally use the form values in you process.
 
 ```rb
 # {% highlight ruby %}
 
-# Initialize with raw input
+# Instatiate with raw input
 input = request.params
 form = Form.new input
 
@@ -30,7 +32,7 @@ email = form.email
 # {% endhighlight %}
 ```
 
-There is no limit to how simple a form object can be. I almost always implement one even if there is only one input. An extremely basic form object could be created as follows.
+There is no limit to how simple a for object can be. I almost always implement one even if there is only one input. An extremely basic form object could be created as follows.
 
 ```rb
 # {% highlight ruby %}
@@ -50,45 +52,80 @@ end
 # {% endhighlight %}
 ```
 
-### Considerations
+Trivial examples can make form objects seam very simple. However they can quickly get complicated for a few reasons.
 
-Trivial examples can make coding form objects seam very simple. Unfortunetly they can quickly get complicated for a few reasons.
-
-- They have to communicate with both the delivery mechanism and business logic, it is not possible for them to avoid ruby primitives.
+- They have to communicate with both the delivery mechanism and business logic.
 - Rapid change from the front end filters to them. If an input changes from a datepicker to separate day/month/year inputs then this changes has to be reflected in the form object
 - Error reporting. everywhere else in the system bad input should throw an error, however in the form we need to keep a track of all the errors and invalid input so we can send it back to the user for changes.
 
 That these three issues surface here on the edge of the system is a good thing. It means that they are not issues in the core of the application. The error reporting in particular is a gritty issue. Some times you want to clear an input if the value was invalid, sometimes show they value they entered. Sometimes it's enough to report that an input was invalid other times you need to say too short, too long or invalid characters.
 
-### Creating form Objects
+### Handling Errors
 
-When writing form objects I have developed one golden rule and that is to build on the solid foundation of [domain objects](). A form object should know if an input is missing or invalid, but it should not know the reason it is invalid. That should handled when creating a dedicated type. Making use of an email class and our simple form can become far more useful.
+When creating forms I always ensure I cannot return an invalid value. If I forget to check the form is valid, I want errors to be thrown if I try to access bad data. This is different to the behavior that is implemented in most validation libraries, such as Active Model Validation, which will return invalid data so you can redisplay it to the user.
+
+```rb
+# {% highlight ruby %}
+# Form based on ActiveRecord Validations
+form = SignUpForm.new 'email' => '!!'
+
+form.email
+# => '!!'
+# This is not a sensible response
+
+# {% endhighlight %}
+```
+
+To be able to access the original input and reason for failure in coercing input, I make the form methods accept a block to be called if the coercion fails. It is passed the original value and the error that would have been raised if no block was given. This allows me to access the details about the failure and still raise exceptions in code that does not know how to handle bad data.
+
+```rb
+# {% highlight ruby %}
+form = SignUpForm.new 'email' => '!!'
+
+# I require an email from the form
+form.email
+# !! ArgumentError
+
+# I want an email from the form but have a backup plan if not possible
+form.email do |raw, error|
+  puts "Tried to create email '#{raw}'"
+  puts "This was invalid: '#{error.message}'"
+  return nil
+end
+# {% endhighlight %}
+```
+
+### Building a form object
+
+A form object should know if input is missing or invalid, but I do not give my form objects the knowledge to decide why a given piece of data is invalid. I find that validation rules are best handled by initializing a dedicated type.
+
+Earlier we had an example form that returned email input as a string. Let's revist that form assuming we have an email class. The email class handles validation and will fail with an `ArgumentError` should it be unable to handle the input. [See an example implementation of email class](https://github.com/CrowdHailer/typtanic/blob/master/lib/typetanic/email.rb). The simple form can be changed to the following and gains the ability to handle errors.
 
 ```rb
 # {% highlight ruby %}
 class SignUpForm
   def initialize(**input)
-    raw = input.fetch('email') { '' }
-    @email = Email.new raw
-    @valid = true
-  rescue ArgumentError => err
-    @email = raw
-    @valid = false
+    @input = input
   end
 
-  attr_reader :email
-
-  def valid?
-    @valid
+  def email
+    raw = input.fetch('email') { '' }
+    Email.new raw
+  rescue ArgumentError => err
+    raise unless block_given?
+    return yield raw, err
   end
 end
-
 # {% endhighlight %}
 ```
 
-### Naming
+### Conclusion
 
-Form objects are so called because they handle form input. The logic of coercing input as soon as possible extends to all input. For a more generally they can be adapters in hexagonal architecture or interface adapters in clean architecture.
+Form objects are so called because they handle form input. Coercing raw data to domain constructs as soon as possible if worthwhile for all input regardless of source. In other contexts they have different names. For example in hexagonal architecture they are adapters and in clean architecture interface adapters.
+
+It can often be difficult working with form objects, they are at the point where your code and the outside world meet. Well constructed they can improve your experience working in most of the rest of your codebase.
+
+*Are you protecting your code with form objects? If so, let me know it is going and what you think of them.*
 
 ### Resources
 
@@ -98,7 +135,7 @@ Form objects are so called because they handle form input. The logic of coercing
 And
 
 - [Vulcanize](https://github.com/CrowdHailer/vulcanize)  
-  My best attempt at defining an abstraction for form objects
+  An early stage library to build form objects that work well with custom types.
 
 # END
 

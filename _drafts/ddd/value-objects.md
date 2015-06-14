@@ -119,6 +119,7 @@ A downside to using value objects for everything is that you need to build them,
 
 Input should be transformed to domain objects as soon as possible. Form objects are a good way to do that and will be the next post.
 
+*Have you been building with value objects? If so, let me know how it went and what you think of them.*
 
 ### Resources
 
