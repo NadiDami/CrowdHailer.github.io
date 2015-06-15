@@ -1,15 +1,17 @@
 ---
 layout: post
-title: A persistance problem
+title: A persistence problem
 description: Solutions with entities, Repositories and ruby
-date: 2015-04-23 17:20:05
+date: 2015-07-23 17:20:06
 tags: ruby design
 author: Peter Saxton
 ---
 
-ActiveRecord is a beast. There are many other people who have expanded on this point. ActiveRecord is a fantastic Piece of software. THere are many people who would agree with this. Persistance of data seams like a single responsibility and this idea is often seen as equivalent to the domain. Rails and active model compounds this view in a newbie. I am sure of that however rails at no point precludes you from seeing this disctiction and moving on to a much happier way of working.
 
- Well if persistance is to big an item to tackle on its own then lets break it down a bit.
+
+ActiveRecord is a beast. There are many other people who have expanded on this point. ActiveRecord is a fantastic piece of software. There are many people who would agree with this. Persistence of data seams like a single responsibility and this idea is often seen as equivalent to the domain. Rails and active model compounds this view in a newbie. I am sure of that however rails at no point precludes you from seeing this distinction and moving on to a much happier way of working.
+
+ Well if persistence is to big an item to tackle on its own then lets break it down a bit.
 
 - Data, The data is stored somehow it needs to be in a format that the data store mechanism (database) understands.
 
@@ -23,6 +25,7 @@ ActiveRecord is a beast. There are many other people who have expanded on this p
 Lets start with the punchline first. I will introduce an organisation of three objects that I use to handle projects of a given complexity. They are the Repository, The Entity, and the Record. These are all lean items. New behaviour should not just be added to the entity, there shall be no cry of lean 'x' fat entity. It is lean everything. If any of the above items is getting to large it is a sign that there it is time for another division along business lines. I have found quite a nice way to do this. This belongs at the end
 
 ```rb
+# {% highlight ruby %}
 class User
   def name
     "#{record.first_name} #{record.last_name}"
@@ -56,6 +59,7 @@ class AccountRecord
     self.email_column_value = email.to_s
   end
 end
+# {% endhighlight %}
 ```
 
 ### Record

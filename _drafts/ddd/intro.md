@@ -72,3 +72,7 @@ $ git reset --hard HEAD
 
 questions
 expand model with decorators or split views into templates and view models
+
+
+covers quickly the three building blocks, entities, value objects, and services
+http://www.iain.nl/domain-driven-design-building-blocks-in-ruby
