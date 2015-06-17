@@ -8,13 +8,13 @@ author: Peter Saxton
 ---
 
 ### Introducing the gatekeepers
-At some point your programs will need to be available to the outside world. This will result in a need to send data to the application. In a web application data comes from the users in forms. This input is always as strings and we want to transform it into the form that is most useful to us. Input is most useful to us when it is transformed to concepts(in Ruby that means objects) that are native to our problem. That is to use our domain specific language, the value of which I discussed [in the previous post]().
+At some point your programs will need to be available to the outside world. This will result in a need to send data to the application. In a web application data comes from the users in forms. This input is always as strings and we want to transform it into the form that is most useful to us. Input is most useful to us when it is transformed to concepts that are native to our problem. In Ruby, this means objects. This is to use our domain specific language, the value of which I discussed [in the previous post]().
 
-Form objects exist to ensure we use our domain language. They take raw input and transform it into understandable data, along the way they may also track errors in the transform. Once data has passed this layer of border control it is not verified again.
+Form objects exist to ensure we use our domain language. They take raw input and transform it into understandable data. Along the way they may also track errors in the transform. Once data has passed this layer of border control it is not verified again.
 
 ### Using form objects
 
-A form object's singular responsibility is to shield the core of your program from unreliable and possibly unsafe input. In a web application a form object is normally used at the start of a controller action. There are always three steps, first initialize the object with raw data. Check the form is valid. Finally use the form values in you process.
+A form object's singular responsibility is to shield the core of your program from unreliable and possibly unsafe input. In a web application a form object is normally used at the start of a controller action. There are always three steps. First, initialize the object with raw data. Then check the form is valid. Finally, use the form values in your process.
 
 ```rb
 # {% highlight ruby %}
@@ -32,7 +32,7 @@ email = form.email
 # {% endhighlight %}
 ```
 
-There is no limit to how simple a for object can be. I almost always implement one even if there is only one input. An extremely basic form object could be created as follows.
+There is no limit to how simple a form object can be. I almost always implement one even if there is only one input. An extremely basic form object could be created as follows.
 
 ```rb
 # {% highlight ruby %}
@@ -52,13 +52,13 @@ end
 # {% endhighlight %}
 ```
 
-Trivial examples can make form objects seam very simple. However they can quickly get complicated for a few reasons.
+Trivial examples can make form objects seem very simple. However, they can quickly get complicated for a few reasons:
 
-- They have to communicate with both the delivery mechanism and business logic.
-- Rapid change from the front end filters to them. If an input changes from a datepicker to separate day/month/year inputs then this changes has to be reflected in the form object
-- Error reporting. everywhere else in the system bad input should throw an error, however in the form we need to keep a track of all the errors and invalid input so we can send it back to the user for changes.
+- They have to communicate with both the delivery mechanism and business logic
+- Rapid change from the front end filters down to them. If an input changes from a datepicker to separate day/month/year inputs then these changes has to be reflected in the form object
+- Error reporting: everywhere else in the system bad input should throw an error. However, in the form we need to keep a track of all the errors and invalid input so we can send it back to the user for changes.
 
-That these three issues surface here on the edge of the system is a good thing. It means that they are not issues in the core of the application. The error reporting in particular is a gritty issue. Some times you want to clear an input if the value was invalid, sometimes show they value they entered. Sometimes it's enough to report that an input was invalid other times you need to say too short, too long or invalid characters.
+That these three issues surface on the edge of the system is a good thing. It means that they are not issues in the core of the application. The error reporting in particular is a gritty issue. Sometimes you want to clear an input if the value was invalid, sometimes show the value they entered. Sometimes it's enough to report that an input was invalid whereas other times you need to say 'too short', 'too long' or 'invalid characters'.
 
 ### Handling Errors
 
@@ -76,7 +76,7 @@ form.email
 # {% endhighlight %}
 ```
 
-To be able to access the original input and reason for failure in coercing input, I make the form methods accept a block to be called if the coercion fails. It is passed the original value and the error that would have been raised if no block was given. This allows me to access the details about the failure and still raise exceptions in code that does not know how to handle bad data.
+To be able to access the original input and the reason for failure during coercing input, I make the form methods accept a block to be called if the coercion fails. It is passed the original value and the error that would have been raised if no block was given. This allows me to access the details about the failure and still raise exceptions in code that does not know how to handle bad data.
 
 ```rb
 # {% highlight ruby %}
@@ -99,7 +99,7 @@ end
 
 A form object should know if input is missing or invalid, but I do not give my form objects the knowledge to decide why a given piece of data is invalid. I find that validation rules are best handled by initializing a dedicated type.
 
-Earlier we had an example form that returned email input as a string. Let's revist that form assuming we have an email class. The email class handles validation and will fail with an `ArgumentError` should it be unable to handle the input. [See an example implementation of email class](https://github.com/CrowdHailer/typtanic/blob/master/lib/typetanic/email.rb). The simple form can be changed to the following and gains the ability to handle errors.
+Earlier we had an example form that returned email input as a string. Let's revist that form assuming that we have an email class. The email class handles validation and will fail with an `ArgumentError` should it be unable to handle the input. [See an example implementation of email class](https://github.com/CrowdHailer/typtanic/blob/master/lib/typetanic/email.rb). The simple form can be changed to the following and gains the ability to handle errors:
 
 ```rb
 # {% highlight ruby %}
@@ -121,9 +121,9 @@ end
 
 ### Conclusion
 
-Form objects are so called because they handle form input. Coercing raw data to domain constructs as soon as possible if worthwhile for all input regardless of source. In other contexts they have different names. For example in hexagonal architecture they are adapters and in clean architecture interface adapters.
+Form objects are so called because they handle form input. Coercing raw data to domain constructs as soon as possible is worthwhile for all input regardless of source. In other contexts, they have different names. For example in hexagonal architecture they are adapters and in clean architecture, interface adapters.
 
-It can often be difficult working with form objects, they are at the point where your code and the outside world meet. Well constructed they can improve your experience working in most of the rest of your codebase.
+It can often be difficult working with form objects. They are at the point where your code and the outside world meet. Well constructed they can improve your experience working in most of the rest of your codebase.
 
 *Are you protecting your code with form objects? If so, let me know it is going and what you think of them.*
 
