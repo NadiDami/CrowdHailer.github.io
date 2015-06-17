@@ -109,3 +109,5 @@ assert_includes last_response.body dummy_post.title
 interactor.stub :result, [:fail, form]
 assert_includes last_response.body.input form.title
 ```
+
+http://technology.stitchfix.com/blog/2015/06/02/anatomy-of-service-objects-in-rails/
