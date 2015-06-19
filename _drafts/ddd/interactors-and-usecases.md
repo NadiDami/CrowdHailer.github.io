@@ -111,3 +111,5 @@ assert_includes last_response.body.input form.title
 ```
 
 http://technology.stitchfix.com/blog/2015/06/02/anatomy-of-service-objects-in-rails/
+
+https://medium.com/@KamilLelonek/what-service-objects-are-not-7abef8aa2f99
