@@ -64,3 +64,5 @@ end
 
 ### Record
 I like the active record pattern and I do not dislike the ActiveRecord library(ok thats a lie I think it is over engineered and just full of temptation for doing the wrong thing.)
+
+http://mozaicworks.com/blog/5-steps-to-mistake-proof-software-design/
