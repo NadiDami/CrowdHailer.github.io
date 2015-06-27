@@ -63,6 +63,8 @@ http://edusagar.com/articles/view/72/how-to-add-microdata-to-markup-structured-d
 - Blog word count for schema
 - Twitter cards
 - Create a portfolio page
+- share links
+- twitter share text sections
 
 - mark posts as posts and make comments and ratings available in Microdata
 - loose is harmful title and put up a redirect page
