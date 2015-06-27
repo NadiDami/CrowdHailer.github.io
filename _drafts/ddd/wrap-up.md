@@ -39,3 +39,10 @@ $ rmdir app test/app
 $ rake test
 $ git reset --hard HEAD
 ```
+best talks 
+
+east oriented
+
+stringly
+
+confident ruby
