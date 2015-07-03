@@ -7,23 +7,26 @@ tags: ruby design
 author: Peter Saxton
 ---
 
-As part of an my ongoing exploration of design patterns
-
 ### Whats in a Name?
-Interactors suffer from a bit of an identity crisis particularly in the ruby community. I have seen then called interactors, use cases and serice objects. I feel have though somewhat on this and decided that I believe interactor to be the most useful term for the following logic.
+Interactors suffer from a bit of an identity crisis. I have seen them called 'interactors', 'use cases' and 'serice objects'. I believe interactor is the most useful term when talking about an implementation and will try to stick to that. Here is my take on each term.
 
-> **Service object** is sometimes used to describe the encapsulation of an external service that you system uses. E.g. you might have a email service object.
+> **Service object** is used to describe the encapsulation of an external service that you system uses. E.g. you might have a email service object.
 
 > **Usecase** makes the most sense on a non technical level, so the Login usecase is what the customer does.
 
-> **Interactor** is the technical term for the Ruby object that is used to realise a given usecase.
+> **Interactor** is the technical term for the Ruby object that is used to perform a given usecase.
 
 ### What are interactors?
-A general definintion of an Interactor is liable to end up nebulous as it is the part of the system that is most personal to a given project.
-An interactor orchestrates a specific business usecase. It achives this by coordinating the interaction of other business objects in the system.
+An interactor orchestrates components in a system to complete a specific business usecase. It is important that an interactor knows how to delegate and should achieve the result while carrying out none of the work itself. It should also know nothing about how the result of its action should be sent or presented to the user. As something that is defined by what they do not do it is tricky to see there value out of context. However they separation they enforce between the code of rendering, http and session from the code with the important business logic is rapidly increases in value as the system grows.
 
 ### Basic Structure
-A interactor instance should run only once. They are initialized with parameters and context. should always report the same outcome once the interation has occurred and so have no changable state. They should also use the business logic terms as much as possible.
+An interaction can occur only once. A user many try the same interaction multiple times but as a different out come is possible on each occasion it is a separation interaction. What happened as the result of an interaction cannot be changed after it has occurred.
+
+An instance of an interactor is used to represent a single interaction. To reflect the desired behavior it is initialized will all the parameters and context that is needed, these cannot be modified after initialization. On the object the only methods that are available are query methods to report on what occurred, people often add `success?/failure?` methods but I try to use tems that are specific to the interaction such as `created?/deleted?/approved?`.
+
+That interactors cannot be modified means they are immutable. Ruby makes immutability hard so I do not write any code to enforce this and simply follow convention of only querying they response object.
+
+
 ```rb
 class CreatePost
   def initialize(form, context)
