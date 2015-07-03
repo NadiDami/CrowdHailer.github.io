@@ -1,14 +1,13 @@
 ---
 layout: post
 title: Minimum Viable Product vs Accessability
+description: An overview on getting setup as self employed, it's not that bad
 date: '2013-12-02T14:50:00+00:00'
 tags:
-- crowdfunding
-- disabled access
-- London Underground
-- london
-- minimum viable product
-- mvp
+- web
+- MVP
+- accessability
+share-image: http://londonlayout.co.uk/img/sample.png
 tumblr_url: http://crowdhailer.tumblr.com/post/68781121765/minimum-viable-product-vs-accessability
 ---
 <p>This post covers my thoughts about including extra information in a website/app, such as wheelchair access. Such things should be included but with reduced resources how do you handle it. This post is written as much for my benefit as anyone else. I have been reading a great deal from Peter Gasston and his <a href="http://petergasston.co.uk/writing-about-thinking-about-thinking/" title="Writing about thinking about thinking">writing about thinking resonates here</a>.</p>
