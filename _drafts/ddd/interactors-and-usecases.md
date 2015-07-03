@@ -35,7 +35,7 @@ def create
   form = CreatePostForm.new params[:post]
   create_post = CreatePost.new self, form
 
-  if create_post.created
+  if create_post.created?
     redirect_to post_url(create_post.post)
   else
     @form = create_post.form
@@ -57,8 +57,7 @@ class CreatePost
   def run
     if form.valid?
       @post = Post.create form
-    else
-
+      @created = true
     end
   end
 
@@ -77,6 +76,32 @@ Testing the domain with Interactors is helped because the explicitly depend on t
   vs
   assert_includes last_response.body, form.title
   ```
+
+Integration test because hits all parts of the domain.
+Much easer to write that an integration test that needs to make http request and understand html responses
+```rb
+# {% highlight ruby %}
+class CreatePostTest < Minitest::Test
+  def valid_form
+    CreatePostForm.new :title => 'A nice title'
+  end
+
+  def invalid_form
+    CreatePostForm.new :title => '<script>bad code</script>'
+  end
+
+  def context
+    OpenStruct.new :current_user => nullUser
+  end
+
+  def test_will_not_create_post_with_invalid_title
+    create_post = CreatePost.new context, valid_form
+    refute create_post.created?
+  end
+
+end
+# {% endhighlight %}
+```
 
 ### Testing the view
 stub the result, none of this improves dealing with HTML parsing to check things are working but it does make those tests as a whole much simpler. Not only are you not hitting the database but you are not hitting the entire domain. On occasion I have developed an applications front end with stubbed
