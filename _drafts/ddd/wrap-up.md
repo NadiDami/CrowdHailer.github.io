@@ -39,10 +39,12 @@ $ rmdir app test/app
 $ rake test
 $ git reset --hard HEAD
 ```
-best talks 
+best talks
 
 east oriented
 
 stringly
 
 confident ruby
+tell dont ask, eastward oriented code
+sandy metz bath ruby talk on small talk
