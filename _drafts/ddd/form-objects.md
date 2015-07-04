@@ -62,7 +62,7 @@ That these three issues surface on the edge of the system is a good thing. It me
 
 ### Handling Errors
 
-When creating forms I always ensure I cannot return an invalid value. If I forget to check the form is valid, I want errors to be thrown if I try to access bad data. This is different to the behavior that is implemented in most validation libraries, such as Active Model Validation, which will return invalid data so you can redisplay it to the user.
+When creating forms I always ensure I cannot return an invalid value. If I forget to check the form is valid, I want errors to be thrown if I try to access bad data. This is different to the behaviour that is implemented in most validation libraries, such as Active Model Validation, which will return invalid data so you can redisplay it to the user.
 
 ```rb
 # {% highlight ruby %}

@@ -24,7 +24,7 @@ As something that is defined by what they do not do it is tricky to see there va
 ### Basic Structure
 An interaction can occur only once. A user many try the same interaction multiple times but as a different out come is possible on each occasion it is a separation interaction. What happened as the result of an interaction cannot be changed after it has occurred.
 
-An instance of an interactor is used to represent a single interaction. To reflect the desired behavior it is initialized will all the parameters and context that is needed, these cannot be modified after initialization. On the object the only methods that are available are query methods to report on what occurred, people often add `success?/failure?` methods but I try to use terms that are specific to the interaction such as `created?/deleted?/approved?`.
+An instance of an interactor is used to represent a single interaction. To reflect the desired behaviour it is initialized will all the parameters and context that is needed, these cannot be modified after initialization. On the object the only methods that are available are query methods to report on what occurred, people often add `success?/failure?` methods but I try to use terms that are specific to the interaction such as `created?/deleted?/approved?`.
 
 That interactors cannot be modified means they are immutable. Ruby makes immutability hard so I do not write any code to enforce this and simply follow convention of only querying they response object.
 
