@@ -8,6 +8,10 @@ The problem with misunderstood MVC. Breaking things into small pieces is pretty 
 
 The problem with rails. Rails is an excellent too which has a problem that because it does everything you need for so long you don't know when to leave.
 
+###
+Where entitises really shine is once you start making muliple for each record class from that point on there is now a path to handle any amount of business logic.  A user might have complicated authetication records with remember me tokens, password reset tokens, oauth this can all be farmed out to a credentials objects which. There might be a bunch of questions that where asked during signup make a Questionaire Entity that works off the same record
+
+This pattern is not limited to database records, user sessions are often represented by a simple object that 
 
 ## Round up
 #### Layout
