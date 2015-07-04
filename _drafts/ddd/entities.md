@@ -164,6 +164,7 @@ class UserTest < Minitest::Test
 end
 # {% endhighlight %}
 ```
+
 ### Conclusion
 
 This is my take on entities and records. I encourage you to give them a try as multiple entities can be an effective cure for god objects. This is not quite the whole persistence problem solved as we still need to pull the correct records out of our database. That is my next post and it's on repositories.
@@ -172,3 +173,8 @@ This is my take on entities and records. I encourage you to give them a try as m
 
 - [How I use ActiveRecord serialize with custom data types]( http://viget.com/extend/how-i-used-activerecord-serialize-with-a-custom-data-type)  
   Explaining the serialize method in active record by [Zachary Porter](https://twitter.com/zporter9)
+
+
+http://smashingboxes.com/ideas/domain-logic-in-rails
+https://medium.com/@KamilLelonek/why-is-your-rails-application-still-coupled-to-activerecord-efe34d657c91
+http://victorsavkin.com/post/41016739721/building-rich-domain-models-in-rails-separating
