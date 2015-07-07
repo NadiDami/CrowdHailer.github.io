@@ -178,3 +178,5 @@ This is my take on entities and records. I encourage you to give them a try as m
 http://smashingboxes.com/ideas/domain-logic-in-rails
 https://medium.com/@KamilLelonek/why-is-your-rails-application-still-coupled-to-activerecord-efe34d657c91
 http://victorsavkin.com/post/41016739721/building-rich-domain-models-in-rails-separating
+http://blog.joncairns.com/2013/04/fat-model-skinny-controller-is-a-load-of-rubbish/
+https://robots.thoughtbot.com/skinny-controllers-skinny-models
