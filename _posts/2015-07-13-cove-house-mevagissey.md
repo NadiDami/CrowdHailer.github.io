@@ -1,9 +1,9 @@
 ---
 layout: post
 title: Cove House Mevagissey
-description: Static site with great performance from using the correct tools
-date: 2015-05-24 10:36:05
-tags: portfolio performance
+description: Improving performance for a static webpage using page speed insights
+date: 2015-07-13 21:05:00
+tags: portfolio performance web
 author: Peter Saxton
 share-image: http://insights.workshop14.io/assets/cove_house_mevagissey_home_page.png
 ---
