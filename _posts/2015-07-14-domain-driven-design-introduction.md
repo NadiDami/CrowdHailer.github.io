@@ -44,6 +44,11 @@ There are many more but these are the ones I have found most useful so far. I wi
 I started this process with a desire to deliberately over design so I could understand the patterns I was encountering. If making a simple blogging platform then a lot of the things we will discuss are far from necessary. You could have a separate view object, interactor, repository, entity and data layer but it is not going to be worthwhile for anything other than a learning exercise. As with everything in software there is a trade-off, sophisticated architecture has a time cost to understand it and the benefits do not always outweigh these costs. If your problem is simple, the solution should also be simple.
 
 ### Resources
+Domain Driven Design and tangential topics.
 
 - [Domain Driven Design building blocks in Ruby](http://www.iain.nl/domain-driven-design-building-blocks-in-ruby)
-  Quickly introduces entities, value objects, and services
+  Quickly introduces entities, value objects, and services according to [Iain Hecker](https://twitter.com/iain_nl)
+- [Hexagonal Architecture](http://alistair.cockburn.us/Hexagonal+architecture)
+  (a.k.a. Ports and Adapters) by [Alistair Cockburn](https://twitter.com/totheralistair)
+- [The Clean Architecture](https://blog.8thlight.com/uncle-bob/2012/08/13/the-clean-architecture.html)
+  Layers in domain architecture and respecting boundaries described by [Robert Martin](https://twitter.com/unclebobmartin)
