@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Building on Solid foundations
-description: Moving from your language to your domain.
-date: 2015-07-23 17:20:05
+description: Moving mindset from language to domain with value objects.
+date: 2015-07-15 21:00:05
 tags: ruby design
 author: Peter Saxton
 ---
@@ -11,23 +11,19 @@ author: Peter Saxton
 
 A fundamental tenant of domain driven design (DDD) is that you create software in an environment rooted in the problem domain. Before prescribing some new objects, I would like to start with a question: which of these lines of code should return true and which should return false?
 
-```rb
-# {% highlight ruby %}
+{% highlight ruby %}
 'January'.winter?
 'password'.secure?
 'B-'.pass?
-# {% endhighlight %}
-```
+{% endhighlight %}
 
 Perhaps you got it, perhaps not. Let's make it clearer with some small changes:
 
-```rb
-# {% highlight ruby %}
+{% highlight ruby %}
 'January'.secure?
 'password'.pass?
 'B-'.winter?
-# {% endhighlight %}
-```
+{% endhighlight %}
 
 The answer is neither. Every line will, as it should, raise a `NoMethodError`. These two code samples have exactly the same outcome and yet they read very differently to us as humans. In the first example, we see 'January' as a month and so make sense of the question 'is it winter?'.
 
@@ -35,22 +31,18 @@ Let us imagine the system is asking about months and seasons and we want to impl
 
 DDD will tell us the answer to this is as follows. Our problem domain doesn't have strings, it has months. When talking to stakeholders no one ever said 'then the user enters the string of their birthday'. It's the month of their birthday. The refinement we make is to create a Month object to encapsulate the data and behaviour of what a month means to our system. With that concept in mine, we can write the following code:
 
-```rb
-# {% highlight ruby %}
+{% highlight ruby %}
 month = Month.new 'January'
 month.winter?
 # => true
-# {% endhighlight %}
-```
+{% endhighlight %}
 
 And if we start putting in invalid months, the program fails before we even ask the question 'is it winter?'.
 
-```rb
-# {% highlight ruby %}
+{% highlight ruby %}
 month = Month.new 'B-'
 # !! InvalidMonth
-# {% endhighlight %}
-```
+{% endhighlight %}
 
 The solution to our problem has been to create a value object for our program that represents a month.
 
@@ -58,27 +50,23 @@ The solution to our problem has been to create a value object for our program th
 
 A value object is any object whose identity is characterized by its attributes. Ruby primitives such as `String`, `Integer`, and `DateTime` are all value objects. It is not possible for value objects to have a history — any instance of our Month class should be treated as exactly the same regardless of source. For example, with strings:
 
-```rb
-# {% highlight ruby %}
+{% highlight ruby %}
 string1 = 'hello'
 string2 = 'hello'
 
 string1 == string2
 # => true
-# {% endhighlight %}
-```
+{% endhighlight %}
 
 This is in contrast to entities that can have an identity that is based on more than their attributes. For example, take a user object that has only a single attribute:
 
-```rb
-# {% highlight ruby %}
+{% highlight ruby %}
 user1 = User.new :name => 'Peter'
 user2 = User.new :name => 'Peter'
 
 user1 == user2
 # => false
-# {% endhighlight %}
-```
+{% endhighlight %}
 
 Our users can have a history —  user2 can update their name and they will still be user2.
 
@@ -95,8 +83,7 @@ Implementation is up to the programmer and as long as the interface is passing a
 
 First ,think hard about subclassing the primitive you are trying to escape when building your domain object. It can implement things that might not make any sense any more. For example, let's extend our Month class so it can be initialized with 'Jan' but still keeps the internal string representation as 'January':
 
-```rb
-# {% highlight ruby %}
+{% highlight ruby %}
 # if subclassed from String
 january = Month.new 'Jan'
 
@@ -105,8 +92,7 @@ january.to_s
 
 january.length
 # => 7
-# {% endhighlight %}
-```
+{% endhighlight %}
 
 In reality we probably want the length of January to be '31 days', or return a 'NoMethod' error. If there is no requirement for the length of a month, don't implement it.
 
@@ -137,7 +123,5 @@ https://github.com/tcrayford/Values
 - [Why Value Objects](http://thepaulrayner.com/blog/why-value-objects/) Quick recap on why use value objects form [Paul Rayner]()
 - [5 steps to mistake proof software design](http://mozaicworks.com/blog/5-steps-to-mistake-proof-software-design/)  
   Ways to reduce mistakes number 5 being to avoid primitive obsession.
-And
-
 - [Typetanic](https://github.com/CrowdHailer/typtanic)  
-  My repository of value objects that I have found  cross between projects.
+  A repository of general value objects starting with email.
