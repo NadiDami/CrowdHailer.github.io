@@ -115,13 +115,12 @@ Here are some great tutorials on value objects in Ruby:
   An excellent video from [David Copeland](https://twitter.com/davetron5000) on overusing Ruby strings
 - [String, the original value object](http://erniemiller.org/2012/11/01/ruby-tidbit-string-the-original-value-object/)  
   Article suggesting times when you should subclass String to create your value objects by [Ernie Miller](https://twitter.com/erniemiller)
-https://github.com/tcrayford/Values
 - [Using Value Objects](http://www.informit.com/articles/article.aspx?p=2220311&seqNum=11)  
   Using value objects as ActiveRecord attributes.
 - [Value Objects Explained with Ruby](http://www.sitepoint.com/value-objects-explained-with-ruby/)  
   A thorough grounding in the concept of value objects with ruby.
 - [Why Value Objects](http://thepaulrayner.com/blog/why-value-objects/) Quick recap on why use value objects form [Paul Rayner](https://twitter.com/thepaulrayner)
 - [5 steps to mistake proof software design](http://mozaicworks.com/blog/5-steps-to-mistake-proof-software-design/)  
-  Ways to reduce mistakes number 5 being to avoid primitive obsession.
+  Ways to reduce mistakes number 5 being to avoid primitive obsession from [Alexandru Bolboaca](https://twitter.com/alexboly)
 - [Typetanic](https://github.com/CrowdHailer/typtanic)  
   A repository of general value objects starting with email.
