@@ -120,7 +120,7 @@ https://github.com/tcrayford/Values
   Using value objects as ActiveRecord attributes.
 - [Value Objects Explained with Ruby](http://www.sitepoint.com/value-objects-explained-with-ruby/)  
   A thorough grounding in the concept of value objects with ruby.
-- [Why Value Objects](http://thepaulrayner.com/blog/why-value-objects/) Quick recap on why use value objects form [Paul Rayner]()
+- [Why Value Objects](http://thepaulrayner.com/blog/why-value-objects/) Quick recap on why use value objects form [Paul Rayner](https://twitter.com/thepaulrayner)
 - [5 steps to mistake proof software design](http://mozaicworks.com/blog/5-steps-to-mistake-proof-software-design/)  
   Ways to reduce mistakes number 5 being to avoid primitive obsession.
 - [Typetanic](https://github.com/CrowdHailer/typtanic)  
