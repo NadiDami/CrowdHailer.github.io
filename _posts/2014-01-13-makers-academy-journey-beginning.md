@@ -4,7 +4,7 @@ title: 'Makers Academy: Journey Beginning'
 description: 'My first week at Makers Academy developer bootcamp'
 date: '2014-01-13T21:25:00+00:00'
 tags:
-- makers
+- MakersAcademy
 - ruby
 - git
 tumblr_url: http://crowdhailer.tumblr.com/post/73235147103/makers-academy-journey-beginning
