@@ -100,6 +100,8 @@ class SignUpForm
   def initialize(**input)
     @input = input
   end
+  
+  attr_reader :input
 
   def email
     raw = input.fetch('email') { '' }
