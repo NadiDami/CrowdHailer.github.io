@@ -130,7 +130,11 @@ It can often be difficult working with form objects. They are at the point where
 ### Resources
 
 - [Writing form objects with virtus](http://hawkins.io/2014/01/form_objects_with_virtus/)  
-  The post that convinced me to try form objects. However I no longer agree with bundling detailed validation rules into forms.
+  The post that convinced me to try form objects. Although I no longer agree with bundling detailed validation rules into forms, it is a good read. Thanks for the inspiration from [@adman65](https://twitter.com/adman65)
+- [Eastward Ho! A Clear Path Through Ruby With OO](https://www.youtube.com/watch?v=kXcrClJcfm8)  
+  Avoiding ambiguity by coding with a backup plan, by [@saturnflyer](https://twitter.com/saturnflyer). This talk explains the logic behind the bad attribute handling blocks I add to forms.
+- [Nothing is Something](https://www.youtube.com/watch?v=9lv2lBq6x4A)  
+  Creating an object to represent you missing or invalid input that will not blow up your program from [@sandimetz](https://twitter.com/sandimetz)
 
 And
 
