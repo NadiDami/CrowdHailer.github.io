@@ -1,14 +1,16 @@
 ---
 layout: post
-title: Border control with form objects
-description: Using form objects to enforce your domain language.
+title: Application border control with form objects
+description: Using form objects to preserve your domain language against invalid input.
 date: 2015-07-23 17:20:06
 tags: ruby design
 author: Peter Saxton
 ---
 
+Part 3 in [Domain Drive Design series](/2015/07/14/domain-driven-design-introduction.html) following on from [value objects](/2015/07/15/value-objects-in-ruby.html).
+
 ### Introducing the gatekeepers
-At some point your programs will need to be available to the outside world. This will result in a need to send data to the application. In a web application data comes from the users in forms. This input is always as strings and we want to transform it into the form that is most useful to us. Input is most useful to us when it is transformed to concepts that are native to our problem. In Ruby, this means objects. This is to use our domain specific language, the value of which I discussed [in the previous post]().
+At some point your programs will need to be available to the outside world. This will result in a need to send data to the application. In a web application data comes from the users in forms. This input is always as strings and we want to transform it into the form that is most useful to us. Input is most useful to us when it is transformed to concepts that are native to our problem. In Ruby, this means objects. This is to use our domain specific language, the value of which I discussed [in the previous post](/2015/07/15/value-objects-in-ruby.html).
 
 Form objects exist to ensure we use our domain language. They take raw input and transform it into understandable data. Along the way they may also track errors in the transform. Once data has passed this layer of border control it is not verified again.
 
@@ -16,8 +18,7 @@ Form objects exist to ensure we use our domain language. They take raw input and
 
 A form object's singular responsibility is to shield the core of your program from unreliable and possibly unsafe input. In a web application a form object is normally used at the start of a controller action. There are always three steps. First, initialize the object with raw data. Then check the form is valid. Finally, use the form values in your process.
 
-```rb
-# {% highlight ruby %}
+{% highlight ruby %}
 
 # Instatiate with raw input
 input = request.params
@@ -29,13 +30,11 @@ return unless form.valid?
 # Carry on processing assuming everything is good.
 email = form.email
 
-# {% endhighlight %}
-```
+{% endhighlight %}
 
 There is no limit to how simple a form object can be. I almost always implement one even if there is only one input. An extremely basic form object could be created as follows.
 
-```rb
-# {% highlight ruby %}
+{% highlight ruby %}
 class SignUpForm
   def initialize(**input)
     raw = input.fetch('email') { '' }
@@ -49,8 +48,7 @@ class SignUpForm
   end
 end
 
-# {% endhighlight %}
-```
+{% endhighlight %}
 
 Trivial examples can make form objects seem very simple. However, they can quickly get complicated for a few reasons:
 
@@ -64,8 +62,7 @@ That these three issues surface on the edge of the system is a good thing. It me
 
 When creating forms I always ensure I cannot return an invalid value, for any given field. If I forget to check the form is valid, I want errors to be thrown when I try to access bad data. This is different to the behavior that is implemented in most validation libraries, such as Active Model Validation, which will return invalid data so you can redisplay it to the user.
 
-```rb
-# {% highlight ruby %}
+{% highlight ruby %}
 # Form based on ActiveRecord Validations
 form = SignUpForm.new 'email' => 'not an email'
 
@@ -73,13 +70,11 @@ form.email
 # => 'not and email'
 # This is a confusing return value from an email method
 
-# {% endhighlight %}
-```
+{% endhighlight %}
 
 To be able to access the original input and the reason for failure during coercing input, I make the form methods accept a block to be called if the coercion fails. It is passed the raw, uncoercable  value and the error that would have been raised if no block was given. This allows me to access the details about the failure and still raise exceptions in code that does not know how to handle bad data.
 
-```rb
-# {% highlight ruby %}
+{% highlight ruby %}
 form = SignUpForm.new 'email' => 'not an email'
 
 # I require an email from the form
@@ -92,8 +87,7 @@ form.email do |raw, error|
   puts "This was invalid: '#{error.message}'"
   NullEmail
 end
-# {% endhighlight %}
-```
+{% endhighlight %}
 
 ### Building a form object
 
@@ -101,8 +95,7 @@ A form object should know if input is missing or invalid, but it should not have
 
 Earlier we had an example form that returned email input as a string. Let's revisit that form assuming that we have an email class. The email class handles validation and will fail with an `ArgumentError` should it be unable to handle the input. [See an example implementation of email class](https://github.com/CrowdHailer/typtanic/blob/master/lib/typetanic/email.rb). The simple form can be changed to the following and gains the ability to handle errors:
 
-```rb
-# {% highlight ruby %}
+{% highlight ruby %}
 class SignUpForm
   def initialize(**input)
     @input = input
@@ -116,8 +109,7 @@ class SignUpForm
     return yield raw, err
   end
 end
-# {% endhighlight %}
-```
+{% endhighlight %}
 
 ### Conclusion
 

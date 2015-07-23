@@ -7,6 +7,8 @@ tags: ruby design
 author: Peter Saxton
 ---
 
+Part 2 in [Domain Drive Design series](/2015/07/14/domain-driven-design-introduction.html).
+
 ### Background
 
 A fundamental tenant of domain driven design (DDD) is that you create software in an environment rooted in the problem domain. Before prescribing some new objects, I would like to start with a question: which of these lines of code should return true and which should return false?
@@ -103,7 +105,7 @@ Value objects allow you to define more of your program in the language of the do
 
 A downside to using value objects for everything is that you need to build them, which takes time. It's just so much easier to use the ever versatile string. Even then, the time spent clarifying these concepts into dedicated objects helps with understanding the domain — this saves time in the long run.
 
-Input should be transformed to domain objects as soon as possible. Form objects are a good way to do that and will be the next post.
+Input should be transformed to domain objects as soon as possible. Form objects are a good way to do that is the [next post](/2015/07/23/application-border-control-with-ruby-form-objects.html).
 
 *Have you been building with value objects? If so, let me know how it went and what you think of them.*
 

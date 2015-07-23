@@ -31,8 +31,8 @@ The principles of DDD help add more lines of division to a program. This more so
 
 This blog series will introduce the following domain objects from DDD.
 
-1. Value objects - Object Oriented Programming all the way down
-2. Form objects - Keeping the real world from making a mess
+1. [Value objects](/2015/07/15/value-objects-in-ruby.html) - Object Oriented Programming all the way down
+2. [Form objects](/2015/07/23/application-border-control-with-ruby-form-objects.html) - Keeping the real world from making a mess
 3. Entities & Records - Keeping track of the state of affairs
 4. Repositories - Finding the answers using data
 5. Interactors - Putting it all together
