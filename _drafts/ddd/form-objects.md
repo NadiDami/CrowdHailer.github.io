@@ -62,25 +62,25 @@ That these three issues surface on the edge of the system is a good thing. It me
 
 ### Handling Errors
 
-When creating forms I always ensure I cannot return an invalid value. If I forget to check the form is valid, I want errors to be thrown if I try to access bad data. This is different to the behaviour that is implemented in most validation libraries, such as Active Model Validation, which will return invalid data so you can redisplay it to the user.
+When creating forms I always ensure I cannot return an invalid value, for any given field. If I forget to check the form is valid, I want errors to be thrown when I try to access bad data. This is different to the behavior that is implemented in most validation libraries, such as Active Model Validation, which will return invalid data so you can redisplay it to the user.
 
 ```rb
 # {% highlight ruby %}
 # Form based on ActiveRecord Validations
-form = SignUpForm.new 'email' => '!!'
+form = SignUpForm.new 'email' => 'not an email'
 
 form.email
-# => '!!'
-# This is not a sensible response
+# => 'not and email'
+# This is a confusing return value from an email method
 
 # {% endhighlight %}
 ```
 
-To be able to access the original input and the reason for failure during coercing input, I make the form methods accept a block to be called if the coercion fails. It is passed the original value and the error that would have been raised if no block was given. This allows me to access the details about the failure and still raise exceptions in code that does not know how to handle bad data.
+To be able to access the original input and the reason for failure during coercing input, I make the form methods accept a block to be called if the coercion fails. It is passed the raw, uncoercable  value and the error that would have been raised if no block was given. This allows me to access the details about the failure and still raise exceptions in code that does not know how to handle bad data.
 
 ```rb
 # {% highlight ruby %}
-form = SignUpForm.new 'email' => '!!'
+form = SignUpForm.new 'email' => 'not an email'
 
 # I require an email from the form
 form.email
@@ -90,16 +90,16 @@ form.email
 form.email do |raw, error|
   puts "Tried to create email '#{raw}'"
   puts "This was invalid: '#{error.message}'"
-  return nil
+  NullEmail
 end
 # {% endhighlight %}
 ```
 
 ### Building a form object
 
-A form object should know if input is missing or invalid, but I do not give my form objects the knowledge to decide why a given piece of data is invalid. I find that validation rules are best handled by initializing a dedicated type.
+A form object should know if input is missing or invalid, but it should not have the knowledge to decide why a given piece of data is invalid. I find that validation rules are best handled by initializing a dedicated type.
 
-Earlier we had an example form that returned email input as a string. Let's revist that form assuming that we have an email class. The email class handles validation and will fail with an `ArgumentError` should it be unable to handle the input. [See an example implementation of email class](https://github.com/CrowdHailer/typtanic/blob/master/lib/typetanic/email.rb). The simple form can be changed to the following and gains the ability to handle errors:
+Earlier we had an example form that returned email input as a string. Let's revisit that form assuming that we have an email class. The email class handles validation and will fail with an `ArgumentError` should it be unable to handle the input. [See an example implementation of email class](https://github.com/CrowdHailer/typtanic/blob/master/lib/typetanic/email.rb). The simple form can be changed to the following and gains the ability to handle errors:
 
 ```rb
 # {% highlight ruby %}
@@ -123,7 +123,7 @@ end
 
 Form objects are so called because they handle form input. Coercing raw data to domain constructs as soon as possible is worthwhile for all input regardless of source. In other contexts, they have different names. For example in hexagonal architecture they are adapters and in clean architecture, interface adapters.
 
-It can often be difficult working with form objects. They are at the point where your code and the outside world meet. Well constructed they can improve your experience working in most of the rest of your codebase.
+It can often be difficult working with form objects. They are at the point where your code and the outside world meet. Well constructed they can improve your experience working with the rest of your codebase keeping internal data clean.
 
 *Are you protecting your code with form objects? If so, let me know it is going and what you think of them.*
 
@@ -135,4 +135,4 @@ It can often be difficult working with form objects. They are at the point where
 And
 
 - [Vulcanize](https://github.com/CrowdHailer/vulcanize)  
-  An early stage library to build form objects that work well with custom types.
+  My library to build form objects that work well with custom types.
