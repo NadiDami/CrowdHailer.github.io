@@ -1,8 +1,10 @@
 ---
 layout: post
-title: Filling in my Tax Return.
+title: Filling in my tax return
+description: Registering as self employed in the UK on my way to becoming a freelancer
 date: '2014-01-27T08:30:50+00:00'
-tags: []
+tags: business money freelance
+author: Peter Saxton
 tumblr_url: http://crowdhailer.tumblr.com/post/74708629519/filling-in-my-tax-return
 ---
 <p>These days there are less and less reasons not to set up on your own. It is possible to find work on a multitude of free sites such as <a href="https://www.odesk.com/" title="oDesk Homepage" target="_blank">oDesk</a>, <a href="http://www.peopleperhour.com/" title="People Per Hour" target="_blank">PeoplePerHour</a> and <a href="http://gyantastic.com/best-freelance-websites/" title="Gyantastic" target="_blank">many more</a>. With personal websites and twitter you can advertise yourself for free and fairly small sums will get you targeted advertising on Google and Facebook. However one of the big worries I had about working for myself was paperwork and tax in particular. Last month I signed on to be self employed. I said I would record how I found filling in a tax return. I have no previous knowledge of filling in one and am interested to see if it is easier or not than I fear</p>

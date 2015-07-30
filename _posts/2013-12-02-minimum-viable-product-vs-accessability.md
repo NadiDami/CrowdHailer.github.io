@@ -7,6 +7,7 @@ tags:
 - web
 - MVP
 - accessability
+author: Peter Saxton
 share-image: http://londonlayout.co.uk/img/sample.png
 tumblr_url: http://crowdhailer.tumblr.com/post/68781121765/minimum-viable-product-vs-accessability
 ---

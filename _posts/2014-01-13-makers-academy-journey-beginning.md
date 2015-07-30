@@ -7,6 +7,7 @@ tags:
 - MakersAcademy
 - ruby
 - git
+author: Peter Saxton
 tumblr_url: http://crowdhailer.tumblr.com/post/73235147103/makers-academy-journey-beginning
 ---
 <p><strong>Last week was my first at <a href="http://www.makersacademy.com/" title="Makers Academy Homepage" target="_blank">MakersAcademy</a>, an intensive 12 week course of web development.</strong> Monday morning began first with a disclaimer of just how tough the course would be. That our happiness will be affected and  even that about 7 weeks in we are likely to be more emotional. Unexpected so lets see. The other oft repeated point was to at any and every point ask questions. Our cohort seams to have particularly taken this second piece of advice to heart. Although this is our first week nearly everyday we have ended up discussing some obscure feature of a topic. Its this kind of stuff that I love and really helps me understand the nuts and bolts. It&rsquo;s the main reason I have enjoyed this first week so much.</p>

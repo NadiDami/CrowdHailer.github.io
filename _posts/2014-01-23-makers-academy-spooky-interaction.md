@@ -4,6 +4,7 @@ title: 'Makers Academy: Spooky interaction'
 description: Creating better code with tests and pair programming
 date: '2014-01-23T19:45:08+00:00'
 tags: MakersAcademy ruby tdd
+author: Peter Saxton
 tumblr_url: http://crowdhailer.tumblr.com/post/74301129027/makers-academy-spooky-interaction
 ---
 <p><strong>Second week at <a href="http://www.makersacademy.com/" title="Makers Academy HomePage" target="_blank">Makers Academy</a> and again a storm force onset of new idea and concepts.</strong> First more Ruby, building rapidly on what we had started last week. One of the new topics this week was <a href="http://www.robertsosinski.com/2008/12/21/understanding-ruby-blocks-procs-and-lambdas/" title="Blog post on blocks in Ruby" target="_blank">blocks</a>. Not something I had encountered before, the amazingly useful structures allow you to do magical transformations on arrays using such methods as map, each and select. To try and explain blocks to myself I have tried recreating their implementation. Check out my <a href="https://github.com/CrowdHailer/Interesting/tree/master/Blocks" title="Github Repo for Blocks" target="_blank">github repo</a> to see more. I will try to extend both the explanation and examples here over the next few weeks.</p>
