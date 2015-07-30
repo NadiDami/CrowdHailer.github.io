@@ -1,12 +1,10 @@
 ---
 layout: post
 title: 'Makers Academy: Whatta lotta objects'
+description: Getting introduced to Object Oriented Programming(OOP) with Ruby
 date: '2014-02-03T08:30:53+00:00'
-tags:
-- programming
-- test driven development
-- object oriented programming
-- makers
+tags: MakersAcademy TDD OOP
+author: Peter Saxton
 tumblr_url: http://crowdhailer.tumblr.com/post/75466091801/makers-academy-whatta-lotta-objects
 ---
 <p><strong>This weeks big new topic, <a href="http://en.wikipedia.org/wiki/Object-oriented_programming" title="OOP wikipedia" target="_blank">object oriented programming</a> or OOP.</strong> Firstly it acronym is far to close to &lsquo;oops&rsquo; and is how I read it every time I see it. Setting my superstitions aside we career through the basics of objects and classes. First up is programming a selection of classes capable of tracking <a href="http://en.wikipedia.org/wiki/Boris_Bikes" title="What are Boris bikes?" target="_blank">Boris bikes</a>.</p>

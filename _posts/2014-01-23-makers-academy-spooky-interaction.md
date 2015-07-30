@@ -3,7 +3,7 @@ layout: post
 title: 'Makers Academy: Spooky interaction'
 description: Creating better code with tests and pair programming
 date: '2014-01-23T19:45:08+00:00'
-tags: MakersAcademy ruby tdd
+tags: MakersAcademy ruby TDD
 author: Peter Saxton
 tumblr_url: http://crowdhailer.tumblr.com/post/74301129027/makers-academy-spooky-interaction
 ---
