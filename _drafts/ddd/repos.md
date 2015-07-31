@@ -23,7 +23,7 @@ The database is a small concern in a system. It is easy to forget this when deve
 
 If we want to persist the records we need a way to do this. This task falls to a repository, The repository will be the only thing that knows the storage mechanism supporting the application.
 
-### Repository
+### Using a Repository
 
 One sentence summary of the repository pattern from Martin Fowler:
 
@@ -56,15 +56,63 @@ new_user.full_name = "Peter Saxton"
 # => #<User fullname="Peter Saxton">
 
 # Adding user to collection of users.
-User::Repository << new_user
+User::Repository.save new_user
 # => #<User::Repository>
 
 # {% endhighlight %}
 ```
 
-building the repository
-value of ORM,
-ode to Sequel
+### Building the Repository
+
+Next to build the above repository. There are several ways to go about this I try to go for the simplest. There are some very capable Object Relational Mappers available, the best being [Sequel](), to keep things simple I build on top of the sequel library.
+
+```rb
+# {% highlight ruby %}
+class User::Repository
+  class << self
+    def build
+      User.new record_class.new
+    end
+
+    def save(entity)
+      entity.record.save
+      self
+    end
+
+    def remove(entity)
+      entity.record.destroy
+      self
+    rescue Sequel::NoExistingObject
+      raise RecordAbsent
+    end
+
+    def last_login
+      record = User::Record
+        .sort(:last_login_at)
+        .first
+      User.new record
+    end
+
+    def family(last_name, page: 1, page_size: 15)
+      records = User::Record
+        .where(:last_name => last_name)
+        .sort(:first_name)
+        .paginate(page, page_size)
+      records.map User.new
+    end
+  end
+end
+# {% endhighlight %}
+```
+
+### Design overkill
+This example repository does everything that is required of it. Despite that it fails on being elegant code in a few places. The line `entity.record.save` fails the good advice of Demeter. It is also implicity dependant on the `User Record` and `User`. There are ways to get fix some of those design complaints. If you would like to see how have a look at [Lotus Model]() or [Ruby Object Mapper (ROM)](). BUT in all the projects where I have employed a repository I have not gone much further than the code shown above. As this series is all about well designed code and the benefits that can be got from doing the right thing, so why do I stop here.
+
+To make a generic repository that can be backed by a sequel backend or an in memory backend is complex. It requires adapters and an in memory implementation of storage. If queries are sophisticated then it seams like semantics of them needs to be reproduced at every level under the repository.
+
+So i don't do it I stick with the bad code. However the dirty code that is rather closely tied to the semantics of sequel queries is contained it is in the repository class only. The repository cannot be tested without the database in place, BUT the repository is all about the database. These tests are slower BUT as the repository is limited to a single responsibility the number of tests are small.
+
+If I want to change my storage mechanism I may need to write a brand new repository, this is going to be a bit of work. It wont be too much work tho that I feel it prevents me from changing the database. In reality the database will rarely change, knowing which battles to pick is part of a pragmatic approach to programming. As ROM and lotus model mature I might find myself using these and getting the separation I currently lack. However to build it myself, not a worthwhile use of time.
 
 Overkill
 Not found a need
