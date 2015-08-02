@@ -100,7 +100,7 @@ class SignUpForm
   def initialize(**input)
     @input = input
   end
-  
+
   attr_reader :input
 
   def email
@@ -120,6 +120,8 @@ Form objects are so called because they handle form input. Coercing raw data to 
 It can often be difficult working with form objects. They are at the point where your code and the outside world meet. Well constructed they can improve your experience working with the rest of your codebase keeping internal data clean.
 
 *Are you protecting your code with form objects? If so, let me know it is going and what you think of them.*
+
+The next post is on the core actors in our domain, [entities](http://insights.workshop14.io/2015/08/02/tackling-god-objects-in-ruby.html).
 
 ### Resources
 
