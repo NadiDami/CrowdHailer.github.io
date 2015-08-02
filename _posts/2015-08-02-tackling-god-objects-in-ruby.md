@@ -1,11 +1,13 @@
 ---
 layout: post
-title: Tackling God Objects in Ruby
-description: Managing Ruby models with entities and records
-date: 2015-07-23 17:20:06
+title: Tackling God objects in Ruby applications
+description: Breaking apart the model with entities and records
+date: 2015-08-02 21:20:00
 tags: ruby design
 author: Peter Saxton
 ---
+
+Part 4 in [Domain Drive Design series](/2015/07/14/domain-driven-design-introduction.html) following on from [form objects](/2015/07/23/application-border-control-with-ruby-form-objects.html).
 
 ### The worst advice I have followed
 
@@ -39,12 +41,10 @@ The only logic a Record object should have should be packing domain objects into
 
 Talking to a database is a solved problem and I use an ORM, either ActiveRecord or Sequel. The benefits of using an ORM library is that I can write Record very quickly. However both ORMs have many features that allow them to act as far more than a data bucket. It is only by being disciplined that the functionality of a record remains serialization only.
 
-```rb
-# {% highlight ruby %}
+{% highlight ruby %}
 class UserRecord < Sequel::Model(:users)
 end
-# {% endhighlight %}
-```
+{% endhighlight %}
 
 #### Entities
 
@@ -61,8 +61,7 @@ Following good design principles we have dedicated value objects for email, pass
 
 Authentication is often a good candidate to be separated to a single purpose entity. In this example we have done just that and named the extracted class 'Credentials'.  
 
-```rb
-# {% highlight ruby %}
+{% highlight ruby %}
 class UserRecord < Sequel::Model(:users)
   # Turns database friendly representations of values in to rich objects specific to our domain
   plugin :serialization
@@ -122,16 +121,14 @@ class Credentials
   end
 end
 
-# {% endhighlight %}
-```
+{% endhighlight %}
 
 ### Testing
 Testing records is done in much the same way as you would have tested methods on any ActiveRecord model. The main difference is that there should be much fewer tests and these tests should be simply setting a value and testing the same value is retrieved.
 
 Tests that hit the database are slower because of their interaction with the database. I don't stub the database out at this level as a record is only about talking to the database. These tests are few enough that slower tests are not a problem.
 
-```rb
-# {% highlight ruby %}
+{% highlight ruby %}
 class UserRecordTests < MiniTest::Test
   # My helper to refresh the database after each test
   include DatabaseTesting
@@ -147,13 +144,11 @@ class UserRecordTests < MiniTest::Test
     assert_equal first_name, record.first_name
   end
 end
-# {% endhighlight %}
-```
+{% endhighlight %}
 
 Testing for entities can easily be separated from the database by providing them with a stand in record. My tests all initialize the entity with an openstruct to stand in for the record. There are then two kinds of tests. First setting values on the openstruct and testing the entities behave correctly. Otherwise, manipulating the entity and asserting the correct values are in the openstruct
 
-```rb
-# {% highlight ruby %}
+{% highlight ruby %}
 class UserTest < Minitest::Test
   def record
     @record ||= OpenStruct.new
@@ -190,8 +185,7 @@ class UserTest < Minitest::Test
     assert_equal 'Saxton', record.last_name
   end
 end
-# {% endhighlight %}
-```
+{% endhighlight %}
 
 ### Conclusion
 
