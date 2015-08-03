@@ -110,13 +110,19 @@ end
 ```
 
 ### Design overkill
-This example repository does everything that is required of it. Despite that it fails on being elegant code in a few places. The line `entity.record.save` fails the good advice of Demeter. It is also implicity dependant on the `User Record` and `User`. There are ways to get fix some of those design complaints. If you would like to see how have a look at [Lotus Model]() or [Ruby Object Mapper (ROM)](). BUT in all the projects where I have employed a repository I have not gone much further than the code shown above. As this series is all about well designed code and the benefits that can be got from doing the right thing, so why do I stop here.
+This example repository does everything that is required of it. Despite that it fails on being elegant code in a few places. The line `entity.record.save` goes against the good advice of Demeter. It is also implicity dependent on the `User::Record` and `User` classes. There are ways to get fix some of those design complaints. If you would like to see some of these solutions have a look at [Lotus Model]() or [Ruby Object Mapper (ROM)](). However in all the projects where I have employed a repository I have not gone much further than the code shown in the example. As this series is all about well designed code and the benefits that can be got from doing the right thing, the question is why did I stop here.
 
-To make a generic repository that can be backed by a sequel backend or an in memory backend is complex. It requires adapters and an in memory implementation of storage. If queries are sophisticated then it seams like semantics of them needs to be reproduced at every level under the repository.
+To make a generic repository that can be backed by a sequel backend or an in memory backend is complex. It requires adapters and an in memory implementation of storage. If queries are sophisticated then the in memory adapter needs to support a similar set of queries.
 
-So i don't do it I stick with the bad code. However the dirty code that is rather closely tied to the semantics of sequel queries is contained it is in the repository class only. The repository cannot be tested without the database in place, BUT the repository is all about the database. These tests are slower BUT as the repository is limited to a single responsibility the number of tests are small.
+Creating a generic query interface when I might never use it is overkill and I choose to stick with the bad code. The saving grace with this dirty code that is contained in the repository.
 
-If I want to change my storage mechanism I may need to write a brand new repository, this is going to be a bit of work. It wont be too much work tho that I feel it prevents me from changing the database. In reality the database will rarely change, knowing which battles to pick is part of a pragmatic approach to programming. As ROM and lotus model mature I might find myself using these and getting the separation I currently lack. However to build it myself, not a worthwhile use of time.
+Another reason to create generic adapter to the database is to allow testing without the database in place. As show in the previous post I can test entities without a database by replacing the record objects with simple openstructs. This means the repository cannot be tested without the database, but the repository is all about the database. These tests are slower yet their number of tests are small because the repository is focused in handling only queries on the collection.
+
+In reality I have found this level of sophistication in the repository a good compromise between isolated code and building adapters that might never be used. As ROM or lotus model mature I might find myself using these and getting the isolation I have currently traded away. However to build it myself is not a worthwhile use of time.
+
+*Have you tried using the repository pattern or perhaps employ the datamapper pattern. Let me know in the comments below.*
+
+The next post will be the last and introduce interactors. Then we can finally mate our domain model with the framework of choice and make our program available to the world.
 
 
 http://smashingboxes.com/ideas/domain-logic-in-rails
