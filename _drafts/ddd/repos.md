@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Application border control with form objects
-description: Using form objects to preserve your domain language against invalid input.
+title: Solving a persistence problem
+description: Simple repository pattern for Ruby
 date: 2015-08-05 17:20:06
 tags: ruby design
 author: Peter Saxton
@@ -11,26 +11,26 @@ Part 5 in [Domain Drive Design series](/2015/07/14/domain-driven-design-introduc
 
 ### The Domain model is not just Model objects
 
-I have asserted that for any non-trivial program the modeling of the problem space should not be handled by individual model objects. It will be a rich interaction from the coordination of many objects. Not all of these objects will be easily classified and they certainly will not need to be derived from framework specific superclasses. Some common patterns will emerge. In the last post we introduced entities and records to handle some of the concerns of modeling a system. I would recommend reading that post first.
+I have asserted that for any non-trivial program the modeling of the problem space should not be handled by individual model objects. Instead through the coordinated action of many domain objects. In the last post we introduced entities and records to handle some of the concerns of modeling a system. In this post we discuss repository as a solution to our need to store and recover those entities and records.
 
-Don't want to? Well in summary records are dumb data stores where the state of the system resides. Entities are stateless wrappers for records that hold behavior that requires some of the records contents. We do not need to know of the existence of the records and should change their entries only through methods on entities.
+I would recommend reading the last post first. Don't want to? Well in summary records are dumb data stores where the state of the system resides. Entities are stateless wrappers for records that hold behavior that requires some of the records contents. We do not need to know of the existence of the records and should interact with them only through the entities that wrap them.
 
 ### The problem of persistence
+The database is a small concern in a system. It is easy to forget this when developing in frameworks where you have to choose the database up front, where the methods on a model are exact reflections of your database schema. The littering of database concerns across the codebase is a distraction from writing the code most suited to your domain. For this reason we treat the database as a detail and want it robustly isolated from the core entities.
 
-At this point we have record objects that I do not interact with directly and entities that have no knowledge of the database. This is excellent we have separated the concern of knowing about the database from the main description of behavior.
-
-The database is a small concern in a system. It is easy to forget this when developing in frameworks where you have to choose the database up front, where the design of your models methods are exact reflections of your database schema. The littering of database concerns across the codebase is a distraction from writing the code most suited to your needs.
+At this point we have record objects that I do not interact with directly and entities that have no knowledge of the database. This is excellent we have achieved separating  knowledge of the database and the main behavior.
 
 If we want to persist the records we need a way to do this. This task falls to a repository, The repository will be the only thing that knows the storage mechanism supporting the application.
 
 ### Using a Repository
 
-One sentence summary of the repository pattern from Martin Fowler:
+Here is a quick one sentence summary of the repository pattern from Martin Fowler:
 
 > A Repository mediates between the domain and data mapping layers, acting like an in-memory domain object collection.
 
-When using our repository it should act as a collection of entities.
-It wil probably have more sophisticated query methods than a normal collection
+The key feature of our repository it should act as a collection of entities. It does not need to look like a database, semantics of SQL or other query language should not be evident in api it exposes. The only difference between a repository and typical in memory collection is that it will probably have more sophisticated set query methods than a normal collection.
+
+Let's design how we would like a repository to be used. We will want simple queries such as `first` and `last`. Retrieving by an id value is like a key lookup and so a `[]` method is useful or even better a `fetch` method. Then there will be queries that are specific to the collection, finding all users by a family name is the example here. **Important** always design your api with pagination in mind unless you are sure it is unnecessary as adding it later can be trouble.
 
 ```rb
 # {% highlight ruby %}
@@ -63,8 +63,7 @@ User::Repository.save new_user
 ```
 
 ### Building the Repository
-
-Next to build the above repository. There are several ways to go about this I try to go for the simplest. There are some very capable Object Relational Mappers available, the best being [Sequel](), to keep things simple I build on top of the sequel library.
+Once we know how we would like to use our repository we can set about implementing it. There are several ways to go about this, I try to go for the simplest. There are some very capable Object Relational Mappers available, the best being [Sequel](). I don't want to reinvent handling SQL so I build on top of the sequel library. The following implementation will realise the behavior above.
 
 ```rb
 # {% highlight ruby %}
@@ -84,6 +83,11 @@ class User::Repository
       self
     rescue Sequel::NoExistingObject
       raise RecordAbsent
+    end
+
+    def first
+      record = User::Record.first
+      User.new record
     end
 
     def last_login
@@ -114,9 +118,7 @@ So i don't do it I stick with the bad code. However the dirty code that is rathe
 
 If I want to change my storage mechanism I may need to write a brand new repository, this is going to be a bit of work. It wont be too much work tho that I feel it prevents me from changing the database. In reality the database will rarely change, knowing which battles to pick is part of a pragmatic approach to programming. As ROM and lotus model mature I might find myself using these and getting the separation I currently lack. However to build it myself, not a worthwhile use of time.
 
-Overkill
-Not found a need
-
 
 http://smashingboxes.com/ideas/domain-logic-in-rails
 https://medium.com/@KamilLelonek/why-is-your-rails-application-still-coupled-to-activerecord-efe34d657c91
+http://hawkins.io/2014/01/pesistence_with_repository_and_query_patterns/
