@@ -103,6 +103,13 @@ class User
 end
 
 class Credentials
+  def initialize(record)
+    @record = record
+  end
+
+  attr_reader :record
+  private :record
+
   # Logic for authentication can grow and is cleanly separated from the main user object
   def authenticate(submitted_password)
     return nil unless correct_password? submitted_password
