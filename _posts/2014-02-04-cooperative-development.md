@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Cooperative development
-description: THree projects exploring the power of collaborative creation
+description: Three projects exploring the power of collaborative creation
 date: '2014-02-04T08:30:46+00:00'
 tags:
 - pair programming
