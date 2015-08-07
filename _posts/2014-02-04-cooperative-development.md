@@ -1,15 +1,16 @@
 ---
 layout: post
 title: Cooperative development
+description: THree projects exploring the power of collaborative creation
 date: '2014-02-04T08:30:46+00:00'
 tags:
 - pair programming
 - open source
-- crowd sourcing
-- start up
+- crowdfunding
+author: Peter Saxton
 tumblr_url: http://crowdhailer.tumblr.com/post/75573592852/cooperative-development
 ---
-<p>I have always had an enthusiasm for open source software. My current <a href="http://www.londonlayout.co.uk/" title="London Layout new map for London" target="_blank">project</a> has made use of <a href="http://www.inkscape.org/en/" title="Inkscape homepage" target="_blank">Inkscape</a> extensively. In addition just yesterday I finally changed over to linux something I have wanted to to for a while. With the power of pair programming becoming apparent to me through time at makers academy I am getting more interested in collaborative creating.</p>
+<p>I have always had an enthusiasm for open source software. My current <a href="http://www.londonlayout.co.uk/" title="London Layout new map for London" target="_blank">project</a> has made use of <a href="http://www.inkscape.org/en/" title="Inkscape homepage" target="_blank">Inkscape</a> extensively. In addition just yesterday I finally changed over to using Linux, something I have wanted to to for a while. With the power of pair programming becoming apparent to me through time at makers academy I am getting more interested in collaborative creating.</p>
 <p>I though it was time to share a few collaborative platforms I have been following with interest. <a href="http://www.agileventures.org/" title="Agile Ventures" target="_blank">Agile Ventures</a>, <a href="http://joltem.com/" title="Joltem" target="_blank">Joltem</a> and <a href="http://www.quirky.com/" title="Quirky" target="_blank">Quirky</a>. All three are very different ventures but show a small part of a collaborative future that is emerging.</p>
 <p><!-- more --></p>
 <p><strong>Agile Ventures describes themselves as <em>&ldquo;Crowdsourced project development and learning to code&rdquo;</em> </strong>This site explores collaboration and pair programming to help with learning and particularly to develop non-profit projects. I think it is a great idea encouraging students to work on real projects can only be beneficial. Pair programming is not difficult but starting to program remotely with people you do not know can be intimidating This venture seams to be a very friendly introduction to this with advice on such things as <a href="http://www.agileventures.org/remote-pair-programming/pair-programming-protocols" title="Agile Ventures pair programming protocols" target="_blank">pair programming protocols</a>. Obviously the organisations that are recipients of these efforts stand to gain hugely.  </p>
