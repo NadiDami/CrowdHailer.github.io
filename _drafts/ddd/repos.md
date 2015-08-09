@@ -28,11 +28,11 @@ Here is a quick one sentence summary of the repository pattern by Martin Fowler:
 
 > A Repository mediates between the domain and data mapping layers, acting like an in-memory domain object collection.
 
-Before proceeding we need to introduce the concept of an aggregate. In the last post we introduced two entities a `User` and `Credentials` both which wrapped a record object the `User::Record`. This collection of objects acted together to model a single user. Collections like this are describe in Domain Driven Design as an aggregate. Martin Fowler provides an excellent [summary on aggregates](http://martinfowler.com/bliki/DDD_Aggregate.html). This description comes with advice on handling these aggregates. Key is that one of the components should be recognisable as the aggregate root and any reference from outside the aggregate should go to the root only.
+Before proceeding we need to introduce the concept of an aggregate. In the last post we introduced two entities: a `User` and `Credentials` both of which wrapped a record object the `User::Record`. This collection of objects acted together to model a single user. Collections like this are described in Domain Driven Design as an aggregate. Martin Fowler provides an excellent [summary on aggregates](http://martinfowler.com/bliki/DDD_Aggregate.html). This description comes with advice on handling these aggregates. Key is that one of the components should be recognisable as the aggregate root and any reference from outside the aggregate should go to the root only.
 
 In our system the `User` is the root of the aggregate. This implies we should only be able to get load or save our user entity and the credentials it comes with and not directly load/save the credentials object. For this reason we need a repository of users and not one of credentials, this also explains why the record was named the `User::Record` as it is an implementation detail that will be used as a foundation to our `User::Repository`.
 
-The key feature of our repository is that it should act as a collection of user entities. It does not need to look like a database and semantics of SQL or any other query language should not be evident in the API it exposes. The only difference between a repository and typical in-memory collection is that it will probably have more sophisticated set of query methods than a normal collection.
+The key feature of our repository is that it should act as a collection of user entities. It does not need to look like a database and semantics of SQL or any other query language should not be evident in the API it exposes. The only difference between a repository and typical in-memory collection is that it will probably have a more sophisticated set of query methods than a normal collection.
 
 Let's design how we would like a repository to be used. We will want simple queries such as `first` and `last`. Retrieving by an id value is like a key lookup and so a `[]` method is useful; or even better, a `fetch` method. Then there will be queries that are specific to the collection; for example, finding all users by a family name.
 
@@ -71,7 +71,7 @@ User::Repository.save new_user
 ### Building the Repository
 Once we know how we would like to use our repository, we can set about implementing it. There are several ways to go about this but I always try to go for the simplest.
 
-There are some very capable Object Relational Mappers available, the best being [Sequel](http://sequel.jeremyevans.net/). I don't want to reinvent handling SQL so I build on top of the Sequel library. The following implementation will realise the behavior above:
+There are some very capable Object Relational Mappers available, the best being [Sequel](http://sequel.jeremyevans.net/). I don't want to reinvent handling SQL so I build on top of the Sequel library. The following implementation will realise the behaviour above:
 
 ```rb
 # {% highlight ruby %}
@@ -118,15 +118,15 @@ end
 ```
 
 ### Design Overkill
-This example repository does everything that is required of it. Despite that it fails on being elegant code. For example, the line `entity.record.save` goes against the good advice of [The Law of Demeter](https://en.wikipedia.org/wiki/Law_of_Demeter).It is also implicity dependent on the `User::Record` and `User` classes.
+This example repository does everything that is required of it. Despite that it fails on being elegant code. For example, the line `entity.record.save` goes against the good advice of [The Law of Demeter](https://en.wikipedia.org/wiki/Law_of_Demeter).It is also implicitly dependent on the `User::Record` and `User` classes.
 
-There are ways to get fix some of these design complaints. If you would like to see some of these solutions have a look at [Lotus Model](https://github.com/lotus/model) or [Ruby Object Mapper (ROM)](https://github.com/rom-rb). However, in all the projects where I have employed a repository I have not gone much further than the code shown in the example above. As this series is all about well designed code and the benefits that can be got from doing the right thing, the question is: why do I stop here?
+There are ways to fix some of these design complaints. If you would like to see some of these solutions have a look at [Lotus Model](https://github.com/lotus/model) or [Ruby Object Mapper (ROM)](https://github.com/rom-rb). However, in all the projects where I have employed a repository I have not gone much further than the code shown in the example above. As this series is all about well designed code and the benefits that can be got from doing the right thing, the question is: why do I stop here?
 
 To make a generic repository that can be backed by a sequel backend or an in-memory backend is complex. It requires adapters and an in-memory implementation of storage. If queries are sophisticated then the in memory-adapter needs to support a similar set of queries.
 
 Creating a generic query interface when I might never use it is overkill and so I choose to stick with the bad code. The saving grace with this dirty code is that it is contained within the repository.
 
-Another reason to create a generic adapter to the database is to allow testing without the database in place. As shown in the previous post I can test entities without a database by replacing the record objects with simple `OpenStructs`. The remaining tests that can't make this replacement are slower yet the number of tests are small because the repository is focused in handling only queries on the collection.
+Another reason to create a generic adapter to the database is to allow testing without the database in place. As shown in the previous post I can test entities without a database by replacing the record objects with simple `OpenStructs`. The remaining tests that can't make this replacement are slower yet the number of tests are small because the repository is focused on handling only queries on the collection.
 
 In reality I have found this level of sophistication in the repository a good compromise between isolated code and building adapters that might never be used. As ROM or the Lotus model mature I might find myself using these and getting the isolation I have currently traded away.
 
