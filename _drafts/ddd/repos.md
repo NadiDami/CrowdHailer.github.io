@@ -7,7 +7,7 @@ tags: ruby design
 author: Peter Saxton
 ---
 
-Part 5 in [Domain Drive Design series](/2015/07/14/domain-driven-design-introduction.html) following on from [Entities and Records]().
+Part 5 in [Domain Drive Design series](/2015/07/14/domain-driven-design-introduction.html) following on from [Entities and Records](http://insights.workshop14.io/2015/08/02/tackling-god-objects-in-ruby.html).
 
 ### The Domain Model is not just model objects
 
@@ -71,7 +71,7 @@ User::Repository.save new_user
 ### Building the Repository
 Once we know how we would like to use our repository, we can set about implementing it. There are several ways to go about this but I always try to go for the simplest.
 
-There are some very capable Object Relational Mappers available, the best being [Sequel](). I don't want to reinvent handling SQL so I build on top of the Sequel library. The following implementation will realise the behavior above:
+There are some very capable Object Relational Mappers available, the best being [Sequel](http://sequel.jeremyevans.net/). I don't want to reinvent handling SQL so I build on top of the Sequel library. The following implementation will realise the behavior above:
 
 ```rb
 # {% highlight ruby %}
@@ -120,13 +120,13 @@ end
 ### Design Overkill
 This example repository does everything that is required of it. Despite that it fails on being elegant code. For example, the line `entity.record.save` goes against the good advice of [The Law of Demeter](https://en.wikipedia.org/wiki/Law_of_Demeter).It is also implicity dependent on the `User::Record` and `User` classes.
 
-There are ways to get fix some of these design complaints. If you would like to see some of these solutions have a look at [Lotus Model]() or [Ruby Object Mapper (ROM)](). However, in all the projects where I have employed a repository I have not gone much further than the code shown in the example above. As this series is all about well designed code and the benefits that can be got from doing the right thing, the question is: why do I stop here?
+There are ways to get fix some of these design complaints. If you would like to see some of these solutions have a look at [Lotus Model](https://github.com/lotus/model) or [Ruby Object Mapper (ROM)](https://github.com/rom-rb). However, in all the projects where I have employed a repository I have not gone much further than the code shown in the example above. As this series is all about well designed code and the benefits that can be got from doing the right thing, the question is: why do I stop here?
 
 To make a generic repository that can be backed by a sequel backend or an in-memory backend is complex. It requires adapters and an in-memory implementation of storage. If queries are sophisticated then the in memory-adapter needs to support a similar set of queries.
 
 Creating a generic query interface when I might never use it is overkill and so I choose to stick with the bad code. The saving grace with this dirty code is that it is contained within the repository.
 
-Another reason to create a generic adapter to the database is to allow testing without the database in place. As shown in the previous post I can test entities without a database by replacing the record objects with simple `OpenStructs`. These tests are slower yet the number of tests are small because the repository is focused in handling only queries on the collection.
+Another reason to create a generic adapter to the database is to allow testing without the database in place. As shown in the previous post I can test entities without a database by replacing the record objects with simple `OpenStructs`. The remaining tests that can't make this replacement are slower yet the number of tests are small because the repository is focused in handling only queries on the collection.
 
 In reality I have found this level of sophistication in the repository a good compromise between isolated code and building adapters that might never be used. As ROM or the Lotus model mature I might find myself using these and getting the isolation I have currently traded away.
 
@@ -136,7 +136,8 @@ The next post will be the last in the series and will introduce interactors. The
 
 Further reading:
 
-[Domain Logic in Rails](http://smashingboxes.com/ideas/domain-logic-in-rails)
+- [Domain Logic in Rails](http://smashingboxes.com/ideas/domain-logic-in-rails)
+  Using Domain Driven Design instead of the Rails way, I don't think the two are as exculsive as [Alan Levine](https://twitter.com/cogdog) does but a good introduced none the less.
 
 [Why is your Rails application still coupled to ActiveRecord?](https://medium.com/@KamilLelonek/why-is-your-rails-application-still-coupled-to-activerecord-efe34d657c91)
 
