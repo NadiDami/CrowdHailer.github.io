@@ -136,9 +136,11 @@ The next post will be the last in the series and will introduce interactors. The
 
 Further reading:
 
+- [Why is your Rails application still coupled to ActiveRecord?](https://medium.com/@KamilLelonek/why-is-your-rails-application-still-coupled-to-activerecord-efe34d657c91)
+  Isolating your project from any ORM framework using the repository pattern by [Kamil Lelonek](https://twitter.com/KamilLelonek)
 - [Domain Logic in Rails](http://smashingboxes.com/ideas/domain-logic-in-rails)
   Using Domain Driven Design instead of the Rails way, I don't think the two are as exculsive as [Alan Levine](https://twitter.com/cogdog) does but a good introduced none the less.
-
-[Why is your Rails application still coupled to ActiveRecord?](https://medium.com/@KamilLelonek/why-is-your-rails-application-still-coupled-to-activerecord-efe34d657c91)
-
-[Persistence with Repository and Query Patterns](http://hawkins.io/2014/01/pesistence_with_repository_and_query_patterns/)
+- [Persistence with Repository and Query Patterns](http://hawkins.io/2014/01/pesistence_with_repository_and_query_patterns/)
+  Part of a very detailed series of posts on building DDD systems. Here [Adam Hawkins](https://twitter.com/adman65) tackles Repository and Query Patterns. Make time to read the rest they are all good references.
+- [Aggregates & Entities in Domain-Driven Design](http://thepaulrayner.com/blog/aggregates-and-entities-in-domain-driven-design/)
+  Insightful thoughts on the distinctions between aggregates and entities in domain driven design from [Paul Rayner](https://twitter.com/thepaulrayner)
