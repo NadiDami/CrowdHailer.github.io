@@ -2,8 +2,10 @@
 layout: post
 title: Solving a persistence problem
 description: Utilising the Repository Pattern for data persistence with Ruby
-date: 2015-08-05 17:20:06
-tags: ruby design
+date: 2015-08-09 20:20:06
+tags:
+- Ruby 
+- Domain Driven Design
 author: Peter Saxton
 ---
 
