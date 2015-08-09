@@ -1,13 +1,13 @@
 ---
 layout: post
 title: 'Makers Academy: Games Week'
+description: Using Test Driven Development to build Battleships and a Sudoku solver
 date: '2014-02-10T21:32:00+00:00'
 tags:
 - ruby
-- github
 - git
-- bundler
-- test driven development
+- TDD
+author: Peter Saxton
 tumblr_url: http://crowdhailer.tumblr.com/post/76254296194/makers-academy-games-week
 ---
 <p><strong>Three weeks down, nine to got. It feels like I&rsquo;ve been here much longer.</strong> Monday, after refusing the politics of picking teams, we were split into random groups. The project was to write the classes necessary to play battleships. Working in groups of 4 half the challenge was to work out how to organise ourselves. Our group started coding as two pairs. This allowed us to use the magic of Git to work on completely separate aspects of the problem. However with the our coding skills still in their infancy very quickly we were stumped on all aspects. It did not take long for all four of us to migrate around one screen and solve the problem together. Although this method was slow it was steady and completed the task, uploading our code to a server and playing several rounds. My fleet was repeatedly sunk. As fun as the task was it still amazes me how much we do not know. The server running the game is still a mysterious black box provided by someone else.</p>
