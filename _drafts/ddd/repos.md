@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Solving a persistence problem
-description: Simple repository pattern for Ruby
+description: Utilising the Repository Pattern for data persistence with Ruby
 date: 2015-08-05 17:20:06
 tags: ruby design
 author: Peter Saxton
@@ -13,7 +13,7 @@ Part 5 in [Domain Drive Design series](/2015/07/14/domain-driven-design-introduc
 
 I have asserted that for any non-trivial program the modeling of the problem space should not be handled by individual model objects. Instead it should be handled through the coordinated action of many domain objects. In the last post we introduced entities and records to handle some of the concerns of modeling a system. In this post we discuss the repository pattern as a solution to our need to store and recover those entities and records.
 
-I would recommend reading the post on [Entities and Records]() first. Don't want to? Well, in summary, records are dumb data stores where the state of the system resides. Entities are stateless wrappers for records that hold behaviour that requires some of the records contents. We do not need to know of the existence of the records and should interact with them only through the entities that wrap them.
+I would recommend reading the post on [Entities and Records](http://insights.workshop14.io/2015/08/02/tackling-god-objects-in-ruby.html) first. Don't want to? Well, in summary, records are dumb data stores where the state of the system resides. Entities are stateless wrappers for records that hold behaviour that requires some of the records contents. We do not need to know of the existence of the records and should interact with them only through the entities that wrap them.
 
 ### The Problem of Persistence
 The database is a small concern in a system. It is easy to forget this when developing in frameworks where you have to choose the database up front and where the methods on a model are exact reflections of your database schema. The littering of database concerns across the codebase is a distraction from writing the code most suited to your domain. For this reason we treat the database as a detail and want it isolated from the core entities.
@@ -28,11 +28,15 @@ Here is a quick one sentence summary of the repository pattern by Martin Fowler:
 
 > A Repository mediates between the domain and data mapping layers, acting like an in-memory domain object collection.
 
-The key feature of our repository is that it should act as a collection of entities. It does not need to look like a database and semantics of SQL or any other query language should not be evident in the API it exposes. The only difference between a repository and typical in-memory collection is that it will probably have more sophisticated set of query methods than a normal collection.
+Before proceeding we need to introduce the concept of an aggregate. In the last post we introduced two entities a `User` and `Credentials` both which wrapped a record object the `User::Record`. This collection of objects acted together to model a single user. Collections like this are describe in Domain Driven Design as an aggregate. Martin Fowler provides an excellent [summary on aggregates](http://martinfowler.com/bliki/DDD_Aggregate.html). This description comes with advice on handling these aggregates. Key is that one of the components should be recognisable as the aggregate root and any reference from outside the aggregate should go to the root only.
 
-Let's design how we would like a repository to be used. We will want simple queries such as `first` and `last`. Retrieving by an id value is like a key lookup and so a `[]` method is useful; or even better, a `fetch` method. Then there will be queries that are specific to the collection; for example, finding all users by a family name. 
+In our system the `User` is the root of the aggregate. This implies we should only be able to get load or save our user entity and the credentials it comes with and not directly load/save the credentials object. For this reason we need a repository of users and not one of credentials, this also explains why the record was named the `User::Record` as it is an implementation detail that will be used as a foundation to our `User::Repository`.
 
-**Important**: Always design your API with pagination in mind unless you are sure it is unnecessary. This is because adding it later can be trouble.
+The key feature of our repository is that it should act as a collection of user entities. It does not need to look like a database and semantics of SQL or any other query language should not be evident in the API it exposes. The only difference between a repository and typical in-memory collection is that it will probably have more sophisticated set of query methods than a normal collection.
+
+Let's design how we would like a repository to be used. We will want simple queries such as `first` and `last`. Retrieving by an id value is like a key lookup and so a `[]` method is useful; or even better, a `fetch` method. Then there will be queries that are specific to the collection; for example, finding all users by a family name.
+
+*I recommend designing your API with pagination in mind unless you are sure it is unnecessary. This is because adding it later can be trouble.*
 
 ```rb
 # {% highlight ruby %}
@@ -65,7 +69,7 @@ User::Repository.save new_user
 ```
 
 ### Building the Repository
-Once we know how we would like to use our repository, we can set about implementing it. There are several ways to go about this but I always try to go for the simplest. 
+Once we know how we would like to use our repository, we can set about implementing it. There are several ways to go about this but I always try to go for the simplest.
 
 There are some very capable Object Relational Mappers available, the best being [Sequel](). I don't want to reinvent handling SQL so I build on top of the Sequel library. The following implementation will realise the behavior above:
 
@@ -114,7 +118,7 @@ end
 ```
 
 ### Design Overkill
-This example repository does everything that is required of it. Despite that it fails on being elegant code. For example, the line `entity.record.save` goes against the good advice of [The Law of Demeter](https://en.wikipedia.org/wiki/Law_of_Demeter).It is also implicity dependent on the `User::Record` and `User` classes. 
+This example repository does everything that is required of it. Despite that it fails on being elegant code. For example, the line `entity.record.save` goes against the good advice of [The Law of Demeter](https://en.wikipedia.org/wiki/Law_of_Demeter).It is also implicity dependent on the `User::Record` and `User` classes.
 
 There are ways to get fix some of these design complaints. If you would like to see some of these solutions have a look at [Lotus Model]() or [Ruby Object Mapper (ROM)](). However, in all the projects where I have employed a repository I have not gone much further than the code shown in the example above. As this series is all about well designed code and the benefits that can be got from doing the right thing, the question is: why do I stop here?
 
