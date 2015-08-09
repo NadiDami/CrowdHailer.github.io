@@ -52,3 +52,5 @@ Domain Driven Design and tangential topics.
   (a.k.a. Ports and Adapters) by [Alistair Cockburn](https://twitter.com/totheralistair)
 - [The Clean Architecture](https://blog.8thlight.com/uncle-bob/2012/08/13/the-clean-architecture.html)
   Layers in domain architecture and respecting boundaries described by [Robert Martin](https://twitter.com/unclebobmartin)
+- [DDD building blocks](https://medium.com/@KamilLelonek/ddd-building-blocks-for-ruby-developers-cdc6c25a80d2)
+  Clearly explaining the language used by people employing DDD principles by [Kamil Lelonek](https://twitter.com/KamilLelonek)
