@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Untangle your Domain Model from the Database
-description: Utilising the Repository Pattern for data persistence with Ruby
+description: Utilising the Repository Pattern for data persistence in Ruby
 date: 2015-08-09 20:20:06
 tags:
 - Ruby

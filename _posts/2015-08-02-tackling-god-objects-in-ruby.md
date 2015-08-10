@@ -196,7 +196,7 @@ end
 
 ### Conclusion
 
-This is my take on entities and records. I encourage you to give them a try as multiple entities can be an effective cure for god objects. This is not quite the whole persistence problem solved as we still need to pull the correct records out of our database. That is my next post and it's on repositories.
+This is my take on entities and records. I encourage you to give them a try as multiple entities can be an effective cure for god objects. This is not quite the whole persistence problem solved as we still need to pull the correct records out of our database. That is my next post and it's on [repositories](http://insights.workshop14.io/2015/08/09/untangle-your-domain-model-from-the-database.html).
 
 ### Resources
 
