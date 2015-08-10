@@ -211,3 +211,7 @@ end
 With this a form object can use the forge method for each attribute.
 It knows if the result is invalid. It doesn't know how it is invalid.
 The form has no concept of what is too long for a password. or disallowed for a username
+
+https://github.com/paulrayner/ddd_sample_app_ruby
+https://github.com/emadb/ruby_loves_ddd
+https://www.youtube.com/watch?v=rGA_FNew-6g
