@@ -1,10 +1,10 @@
 ---
 layout: post
-title: Solving a persistence problem
+title: Untangle your domain model from the database
 description: Utilising the Repository Pattern for data persistence with Ruby
 date: 2015-08-09 20:20:06
 tags:
-- Ruby 
+- Ruby
 - Domain Driven Design
 author: Peter Saxton
 ---
