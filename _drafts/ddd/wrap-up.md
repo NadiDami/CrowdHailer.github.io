@@ -215,3 +215,4 @@ The form has no concept of what is too long for a password. or disallowed for a 
 https://github.com/paulrayner/ddd_sample_app_ruby
 https://github.com/emadb/ruby_loves_ddd
 https://www.youtube.com/watch?v=rGA_FNew-6g
+https://www.youtube.com/watch?v=CjNBnkMHjh4
