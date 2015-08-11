@@ -216,3 +216,6 @@ https://github.com/paulrayner/ddd_sample_app_ruby
 https://github.com/emadb/ruby_loves_ddd
 https://www.youtube.com/watch?v=rGA_FNew-6g
 https://www.youtube.com/watch?v=CjNBnkMHjh4
+
+
+Talk on DDD at 10. really good talk. explain that what i havent talked about bounded context. is the most important part. http://www.se-radio.net/2015/05/se-radio-episode-226-eric-evans-on-domain-driven-design-at-10-years/
