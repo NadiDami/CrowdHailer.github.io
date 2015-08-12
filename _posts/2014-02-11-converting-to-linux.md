@@ -1,12 +1,13 @@
 ---
 layout: post
 title: Converting to linux
+description: Setting up Linux Mint as my main working environment
 date: '2014-02-11T08:30:26+00:00'
 tags:
-- linux
-- linux mint
-- linux distro
+- Linux
+author: Peter Saxton
 tumblr_url: http://crowdhailer.tumblr.com/post/76310449453/converting-to-linux
+share_image: https://31.media.tumblr.com/3895da44668b3c35c95ce2e222854cab/tumblr_inline_n0ma2eKYxr1s4ay8u.png
 ---
 <p><strong>So I have finally taken the plunge and converted my Lenovo made Windows machine to <a href="http://www.linuxmint.com/" title="Linux Mint main page" target="_blank">Linux</a>.</strong> I have wanted to make the change for a while but always had an excuse not to before. For example, I can&rsquo;t believe there is such a thing as a free lunch and a free OS seams just that, so what is the catch. For anymore doubters reading this <a href="http://www.techradar.com/news/software/operating-systems/20-reasons-you-should-switch-to-linux-912294" title="20 reasons you should switch to Linux" target="_blank">here</a> is a quick rundown of why you should change</p>
 <p><img alt="image" src="https://31.media.tumblr.com/3895da44668b3c35c95ce2e222854cab/tumblr_inline_n0ma2eKYxr1s4ay8u.png"/></p>
