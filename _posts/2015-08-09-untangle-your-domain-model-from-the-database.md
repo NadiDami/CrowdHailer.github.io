@@ -1,10 +1,10 @@
 ---
 layout: post
-title: Solving a persistence problem
-description: Utilising the Repository Pattern for data persistence with Ruby
+title: Untangle your Domain Model from the Database
+description: Utilising the Repository Pattern for data persistence in Ruby
 date: 2015-08-09 20:20:06
 tags:
-- Ruby 
+- Ruby
 - Domain Driven Design
 author: Peter Saxton
 ---
@@ -40,8 +40,7 @@ Let's design how we would like a repository to be used. We will want simple quer
 
 *I recommend designing your API with pagination in mind unless you are sure it is unnecessary. This is because adding it later can be trouble.*
 
-```rb
-# {% highlight ruby %}
+{% highlight ruby %}
 
 # Simple query
 adam = User::Repository.first
@@ -67,16 +66,14 @@ new_user.full_name = "Peter Saxton"
 User::Repository.save new_user
 # => #<User::Repository>
 
-# {% endhighlight %}
-```
+{% endhighlight %}
 
 ### Building the Repository
 Once we know how we would like to use our repository, we can set about implementing it. There are several ways to go about this but I always try to go for the simplest.
 
 There are some very capable Object Relational Mappers available, the best being [Sequel](http://sequel.jeremyevans.net/). I don't want to reinvent handling SQL so I build on top of the Sequel library. The following implementation will realise the behaviour above:
 
-```rb
-# {% highlight ruby %}
+{% highlight ruby %}
 class User::Repository
   class << self
     def build
@@ -116,8 +113,7 @@ class User::Repository
     end
   end
 end
-# {% endhighlight %}
-```
+{% endhighlight %}
 
 ### Design Overkill
 This example repository does everything that is required of it. Despite that it fails on being elegant code. For example, the line `entity.record.save` goes against the good advice of [The Law of Demeter](https://en.wikipedia.org/wiki/Law_of_Demeter).It is also implicitly dependent on the `User::Record` and `User` classes.
