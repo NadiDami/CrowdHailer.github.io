@@ -67,7 +67,7 @@ When creating forms I always ensure I cannot return an invalid value, for any gi
 form = SignUpForm.new 'email' => 'not an email'
 
 form.email
-# => 'not and email'
+# => 'not an email'
 # This is a confusing return value from an email method
 
 {% endhighlight %}
