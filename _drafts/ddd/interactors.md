@@ -16,10 +16,10 @@ Interactors suffer from a bit of an identity crisis. I have seen them called 'in
 
 > **Interactor** is the technical term for the Ruby object that is used to perform a given use case.
 
-I believe 'interactor' is the most useful term when talking about an implementation and will therefore to stick to that.
+I believe 'interactor' is the most useful term when talking about an implementation and will therefore stick to that.
 
 ### What are interactors?
-An interactor orchestrates components in a system to complete a specific business use case. It is important that an interactor knows how to delegate — the desired result should be acheived without the interactor carrying out any of the work itself. It should also know nothing about how the result of its action will be presented to the user.
+An interactor orchestrates components in a system to complete a specific business use case. It is important that an interactor knows how to delegate — the desired result should be achieved without the interactor carrying out any of the work itself. It should also know nothing about how the result of its action will be presented to the user.
 
 As something that is defined by what they do not do, it is tricky to see the value out of context. However the separation they enforce between the code that deals with rendering, HTTP, and sessions from the code with the important business logic rapidly increases in value as the system grows. It also removes dependence on any particular framework; when all the framework code is outside the interactors then it can be replaced whilst leaving the business logic untouched.
 
@@ -106,7 +106,7 @@ end
 ```
 
 ### Testing the view
-Working with interactors does not improve dealing with HTML parsing but it does make those tests as a whole lot simpler. Not only are you not hitting the database, you won't be touching any part of the domain:
+Working with interactors does not improve dealing with HTML parsing but it does make those tests a whole lot simpler. Not only are you not hitting the database, you won't be touching any part of the domain:
 
 ```rb
 interactor.stub :result, [:success, dummy_post]
@@ -117,7 +117,7 @@ assert_includes last_response.body.input form.title
 ```
 
 ### Testing
-It would certainly be possible to implement interactors without a gem. I am also a fan of not letting heavy dependencies get out of hand. However using a very small gem allows me reuse the tests. This is particularly important as I normally have a few tests crossing the interactiors. At this point I will introduce my gem 'AllSystems'
+It would certainly be possible to implement interactors without a gem. I am also a fan of not letting heavy dependencies get out of hand. However using a very small gem allows me reuse the tests. This is particularly important as I normally have a few tests crossing the interactors. At this point I will introduce my gem 'AllSystems'
 
 blocks with east oriented code confident code sandy at bath
 
