@@ -1,12 +1,13 @@
 ---
 layout: post
 title: 'Makers Academy: Weeks 5 & 6'
+description: Introducing the web with Sinatra and data storage with postgres
 date: '2014-02-19T09:17:00+00:00'
 tags:
+- Makers Academy
+- Sinatra
 - ruby
-- programming
-- sinatra ruby
-- postgresql
+author: Peter Saxton
 tumblr_url: http://crowdhailer.tumblr.com/post/77160811925/makers-academy-weeks-5-6
 ---
 <p><strong>Week five was our first introduction to programming for the web and therefore a week I had been looking forward to from the start.</strong> We began with <a href="http://www.sinatrarb.com/" title="Sinatra" target="_blank">Sinatra</a>, a fantastic lightweight framework or DSL (Domain Specific Language). With Sinatra just 4 lines of code is all it takes to make the most rudimentary server </p>
