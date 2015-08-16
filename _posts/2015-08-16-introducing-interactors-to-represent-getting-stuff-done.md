@@ -2,10 +2,12 @@
 layout: post
 title: Introducing Interactors to represent getting stuff done.
 description: The line in the sand between domain code and the framework
-date: 2015-08-16 16:30:05
+date: 2015-08-16 16:56:05
 tags: ruby design
 author: Peter Saxton
 ---
+
+Part 5 in [Domain Drive Design series](/2015/07/14/domain-driven-design-introduction.html) following on from [Repositories](/2015/08/09/untangle-your-domain-model-from-the-database.html).
 
 ### What's in a name?
 Interactors suffer from a bit of an identity crisis. I have seen them called 'interactors', 'use cases' and 'service objects'. Here is my take on each of those terms:
@@ -120,13 +122,18 @@ Compare this with the last test you wrote where you had to check an action from 
 ### Testing the controllers and views
 Working with interactors does not improve dealing with HTML parsing or setting up session data. In those test you will still want to make use of RackTest or Capybara. What it does do is make those tests a whole lot simpler. You can write a single test for each possible outcome for a given interactor where the outcome is stubbed. With one logical test for each usecase outcome you can escape from trying to test the domain through the unwieldy web based interface.
 
-### My implementation AllSystems
+### My interactor implementation AllSystems
 It would certainly be possible to implement interactors without a gem. I am also a fan of less dependencies where possible. However using a very small gem allows me not have to keep checking the plumbing of my interactor objects. I have written a gem called AllSystems that allows blocks to be passed for each possible outcome. This follows the principle of tell don't ask which is best laid out in the talk eastward oriented code.
 
 So what do you think? Will you be tempted to try interactors or do you have a way to keep the framework you use encapsulated? Leave me a comment I will be very interested.
 
-blocks with east oriented code confident code sandy at bath
+### Resources
 
-http://technology.stitchfix.com/blog/2015/06/02/anatomy-of-service-objects-in-rails/
-
-https://medium.com/@KamilLelonek/what-service-objects-are-not-7abef8aa2f99
+- [Anatomy of a Rails Service Object](http://technology.stitchfix.com/blog/2015/06/02/anatomy-of-service-objects-in-rails/)  
+  Overview on designing a service object in rails from [David Copeland](https://twitter.com/davetron5000). These are interactors as describe here and they should work outside of rails.
+- [What service objects are not](https://medium.com/@KamilLelonek/what-service-objects-are-not-7abef8aa2f99)  
+  Again called service objects this is a good post from [Kamil Lelonek](https://twitter.com/KamilLelonek). Good advice on what does not belong in an interactor, hint it's nearly everything.
+- [Eastward Ho! A Clear Path Through Ruby With OO](http://confreaks.tv/videos/rubyconf2014-eastward-ho-a-clear-path-through-ruby-with-oo)  
+  One of the best talks online. Jim Gay gives advice for writing code that follows tell don't ask.
+- [AllSystems gem](https://github.com/CrowdHailer/AllSystems)  
+  Simple interactor objects in Ruby written by myself.

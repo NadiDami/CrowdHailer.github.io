@@ -130,7 +130,7 @@ In reality I have found this level of sophistication in the repository a good co
 
 *Have you tried using the repository pattern or perhaps employ the datamapper pattern? Let me know in the comments below.*
 
-The next post will be the last in the series and will introduce interactors. Then we can finally mate our domain model with the framework of choice and make our program available to the world.
+The next post will be the last in the series and will introduce [interactors](/2015/08/16/introducing-interactors-to-represent-getting-stuff-done.html). Then we can finally mate our domain model with the framework of choice and make our program available to the world.
 
 Further reading:
 
