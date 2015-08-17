@@ -1,3 +1,6 @@
+Domain Driven Design, Where the real value lies.
+have conversation once
+concepts not constructs
 found the rails way
 A model is not made of models
 A view is not made of views
