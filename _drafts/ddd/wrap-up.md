@@ -16,6 +16,8 @@ A view is not made of views
 and controllers are not inherited from controllers
 Pushing logic below the model layer
 
+http://gorodinski.com/blog/2013/03/11/the-two-sides-of-domain-driven-design/
+
 The problem with misunderstood MVC. Breaking things into small pieces is pretty universally accepted as a good idea. MVC offers a nice way to break up an application into logically distinct layers. A model, a view and a controller. Three nice pieces, However as an application grows each piece grows and you end up with 3 big pieces. Obviously we want to break into more pieces and the question becomes where. This is not a problem with MVC there is noting in MVC that prevents you have an M made from 10 nice pieces but it doesn't care what these pieces are. It also means it is no help in deciding what these pieces should be.
 
 The problem with rails. Rails is an excellent too which has a problem that because it does everything you need for so long you don't know when to leave.
@@ -74,3 +76,4 @@ https://www.youtube.com/watch?v=CjNBnkMHjh4
 
 
 Talk on DDD at 10. really good talk. explain that what i havent talked about bounded context. is the most important part. http://www.se-radio.net/2015/05/se-radio-episode-226-eric-evans-on-domain-driven-design-at-10-years/
+https://subvisual.co/blog/posts/20-clean-architecture
