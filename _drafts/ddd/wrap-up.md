@@ -7,6 +7,8 @@ tags: ruby design
 author: Peter Saxton
 ---
 
+Conclusion of [Domain Drive Design series](/2015/07/14/domain-driven-design-introduction.html) following on from [Interactors](/2015/08/16/introducing-interactors-to-represent-getting-stuff-done.html).
+
 ### Admission
 
 A small admission to lead this post. What has been discussed so far has not been domain driven design, or at least not all of it.
@@ -38,21 +40,21 @@ With an understanding of the strategy we can explore the patterns see so with mo
 Development should be discussed using the domain specific language that time was invested in to create.
 We can split our tactics into patterns that represent concepts from the domain.
 
-- Entities - A domain object with an identity that can change over time, such as customer.
-- Values - A domain object that's identified by its attributes e.g. price, discount code or address.
-- Interactors - A domain object that represents an action or activity e.g. login, checkout, signup etc.
+- [Entities](/2015/08/02/tackling-god-objects-in-ruby.html) - A domain object with an identity that can change over time, such as customer.
+- [Values](/2015/07/15/value-objects-in-ruby.html) - A domain object that's identified by its attributes e.g. price, discount code or address.
+- [Interactors](/2015/08/16/introducing-interactors-to-represent-getting-stuff-done.html) - A domain object that represents an action or activity e.g. login, checkout, signup etc.
 
 Or patterns that protect those domain concepts from technical concerns.
 
-- Form object - Prevents the html form considerations effecting our domain
-- Repository - Prevents the database language from penetrating the domain model
+- [Form objects](/2015/07/23/application-border-control-with-ruby-form-objects.html) - Prevents the html form considerations effecting our domain
+- [Repository](/2015/08/09/untangle-your-domain-model-from-the-database.html) - Prevents the database language from penetrating the domain model
 
 It is tempting to focus on these tactics and to ask other developers what should my entities look like your project.
 The answers to this can only be a suggestion as they should look like whatever makes most sense in the domain.
 I have tried writing gems for most of these concepts but they have necessarily been very minimal.
 
-In the readme for [Typetanic]()(my library of value objects) I have said if these do not match then you should throw them away and not try to extend them.  
-[Vulcanize]()(my library for building form objects) handles the domain representation by value objects that the consumer needs to provide while it handles the HTML form side of things which is a technical consideration.
+In the README for [Typetanic](https://github.com/CrowdHailer/typetanic)(my library of value objects) I have said if these do not match then you should throw them away and not try to extend them.  
+[Vulcanize](https://github.com/CrowdHailer/vulcanize)(my library for building form objects) handles the domain representation by value objects that the consumer needs to provide while it handles the HTML form side of things which is a technical consideration.
 
 > My mantra for domain driven design to developers is 'Use domain concepts not language constructs, have each conversation only once'. for the non technical I would say 'have each conversation only once'
 
@@ -119,5 +121,9 @@ A few final thoughts that might be DDD or not
 https://www.youtube.com/watch?v=rGA_FNew-6g
 https://www.youtube.com/watch?v=CjNBnkMHjh4
 
-
-Talk on DDD at 10. really good talk. explain that what i havent talked about bounded context. is the most important part. http://www.se-radio.net/2015/05/se-radio-episode-226-eric-evans-on-domain-driven-design-at-10-years/
+- [The Two Sides of Domain-Driven Design (DDD)](http://gorodinski.com/blog/2013/03/11/the-two-sides-of-domain-driven-design/#.VdO9AIJSIUA.twitter)  
+  This post from [Lev Gorodinski](https://twitter.com/eulerfx) explores Domain-Driven Design from the tactical and strategic perspectives
+- [Clean Architecture](https://subvisual.co/blog/posts/20-clean-architecture)  
+  A really comprehensive article on employing clean architecture with the rails stack by [Luis Zamith](https://twitter.com/zamith)
+- [Eric Evans on Domain-Driven Design at 10 Years](http://www.se-radio.net/2015/05/se-radio-episode-226-eric-evans-on-domain-driven-design-at-10-years/)  
+  Really interesting chat with [Eric Evans]() on the 10 years of Domain Driven Design since his book was released.
