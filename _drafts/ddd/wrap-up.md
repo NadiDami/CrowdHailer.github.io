@@ -120,3 +120,5 @@ A few parting thoughts on lessons I have learnt:
   Really interesting chat with [Eric Evans](https://twitter.com/ericevans0) on the 10 years of Domain Driven Design since his book was released.
 - [Just Job](https://github.com/CrowdHailer/just-job)  
   A todo list built from the ground up using the principles of Domain Driven Design(DDD)
+- [Dicovering the joy of over design](/2015/07/14/domain-driven-design-introduction.html)  
+  The begging of these articles, getting started with domain driven design.
