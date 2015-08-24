@@ -65,50 +65,40 @@ I have written gems to help with value objects and form objects, both are small 
 - [Vulcanize](https://github.com/CrowdHailer/vulcanize) A library for building form objects. Domain representation is handled by value objects that the consumer needs to provide.
 
 ### Rails, friend or foe?
-When I started this exploration I tried to push as far away from rails conventions as possible, not due to any dislike of rails but to get the perspective that comes with distance.
-With Rails I can also see a strategy, the Rails way, and tactics, all the Active* Gems.
-Their strategy as I see it is to define as much as possible that is common across a certain set of applications and provide that as a default without any thought needed on the developers part.
-This is exactly the opposite of defining a language specific your problem, it assumes your problem is using that common core and if that is the case allows a starting speed that is hard to argue with.
-I am of the opinion that The Rails Way is incompatible with the strategy of Domain Driven Design.
+When I started investigating domain driven design, I tried to push as far away from rails conventions as possible.
+This was not due to dislike of Rails but to get the perspective that comes with distance.
 
-To implement this strategy the Rails stack uses well defined MVC architecture.
-MVC offers a nice way to break up an application into logically distinct layers, a model, a view and a controller.
-Three helpful pieces, however as an application grows each piece grows and you end up with 3 big pieces.
-Obviously we want to break into more pieces and the question becomes where.
-MVC does not prevent you have a model layer made from many small decoupled pieces but it doesn't care what these pieces are.
-This is not a problem of MVC but does mean that it provides no help in deciding how you should decompose your model layer.
+Within Rails there is a strategy and tactics, the "Rails way" and the "Rails stack" consisting of all the "Active* Gems".
+The strategy is to define what is common across applications. Then to provide that core as a default without any thought needed on the developers part.
+This is exactly the opposite of defining a domain language specificly for your problem.
+I am of the opinion that the "Rails Way" is incompatible with the strategy of Domain Driven Design.
+
+Rails strategy is implemented with a well defined MVC architecture.
+MVC provides a clear way to break up an application into the three layers.
+However, there is no help in deciding how to break down an application further.
 The patterns from domain driven design do however help with breaking down the domain model.
-It is possible to use the rails stack as a tool set to build the delivery mechanism for your domain model.
-I am of the opinion that The Rails Stack is a great tool set to build a delivery mechanism and that if it is a good fit you should definetly use it.
-A well separated domain means that if you discover that the rails stack is no longer a good fit it should be possible to leave rails without a rewrite of your application.
+It is certainly possible to use domain driven design to break down a model with an MVC application.
+I am of the opinion that the "Rails Stack" compatible within a domain driven application.
 
-My personal journey with rails went through a prolonged period of frustration as I did not understand when to move away from the prescribed path.
-After a time I stopped using rails all together and used smaller frameworks such as sinatra, scorched and padrino.
-Once I started treating rails as a service to my domain and not a foundation I became much less pro or anti rails. The qustion was not as important as It was optional.
-
-As a new developer because it did everything I needed I was not happy when I found things it did not help me with or that it got in the way of because I had left the rails way.
-To anyone who has not experienced pain with rails yet just remember
-- A model is not made of models
-- A view is not made of views
-- and controllers are not inherited from controllers
-
-### Alternatives
+### Other views
 
 What about Domain driven design compared to hexagonal rails and clean architecture?
-Domain driven design the tactics have similarities with both of these.
-Clean architecture makes use of interactors to separate a delivery mechanism from a core full of entities.
-Hexagonal rails talks of ports to be filled by adpaters, the ui adapter is the delivery mechanism and a database adapter will be encapulated in a Repository.
+The patterns of DDD are represented in both of these architectures.
+For example, clean architecture makes use of interactors to separate a delivery mechanism from a core of entities.
+Hexagonal rails talks of ports in the domain for infrastructure adapters. The ui adapter is the delivery mechanism and a database adapter could be encapsulated by a Repository.
 
-The strategic side of Domain driven design is embodied less in the other two.
-They suggest implementation of patterns for the technical benefits that will follow.
-Your code is more extensible, more maintainable easier to test and separate into microservices.
-These improvements will of course lead to faster development cycles and happier clients/customers but the emphasis is on the technical wins.
-I think this emphasis is important because DDD gives an easier dialogue when deciding not to implement any of the advanced patterns, such as the following hypothetical conversation.
+The strategic side of Domain driven design is emphasised less in the other two.
+Patterns are suggested for technical benefits.
+Code is more extensible, more maintainable; easier to test.
+These improvements will of course lead to faster development cycles and happier clients/customers but the emphasis seams to be on the technical wins.
+I think this emphasis is important because DDD has a helpful dialogue on when not to implement any of the advanced patterns.
+Take for example the following hypothetical conversation.
 
-> After tharashing out the details we discovered that what the client wanted was a rails app, so we build a rails app.
+> After thrashing out the details we discovered that what the client wanted was a rails app, so we build a rails app.
 
-### Where next
+This has an focus on discussion the core of the Domain driven design strategy.
 
+### What's next
 
 I have been developing an example ddd project, it is a todo list as I feel that the strategy of DDD should be applicable to a project of any size. There should not be a day in you project where the complexity flips past a point where DDD starts. It is a work in progress and I would like to explore some of the tactics that I did not have time for this time round. If you want to ask about something an issue on this repo would be great.
 
