@@ -11,27 +11,30 @@ Conclusion of [Domain Drive Design series](/2015/07/14/domain-driven-design-intr
 
 ### Admission
 
-A small admission to lead this post. What has been discussed so far has not been domain driven design, or at least not all of it.
-Up to this point we have talked about a set of useful patterns to build applications, these are the tactics of domain driven design.
+This is the final post in this series, and I have an admission.
+What has been discussed so far has not been  the whole story of domain driven design.
+
+So far several useful patterns have been covered.
+These make up the tactics of domain driven design.
 However tactics should not be employed without a strategy. Without an understanding of the strategy you will end up with a cargo cult.
-In my defense I did not realise the importance of the strategy when I started writing these posts.
-It also turns out that even Eric Evans has said he wishes that he put more emphasis on the strategy his book that introduced domain driven design.
+I did not realise the importance of the strategy when I started writing these articles.
+And in my defence, even Eric Evans has said he wishes that he put more emphasis on the strategy in his [book](http://www.amazon.co.uk/Domain-driven-Design-Tackling-Complexity-Software/dp/0321125215) that started domain driven design.
 
 ### Explaining the strategy.
-Domain driven design has much to say on the working environment of a project and the communication structure that is most helpful to development.
-Key is that all interested parties in a project's development are speaking the same language.
-These parties will be the developers, managers, client and may include designers, customers and more.
-The process of defining this shared language may not always be fast but once uncovered it allows conversations to be had between any members of the team.
-There are many reasons why this language might not be easy to define.
-Business people use terms that they understand even without a critical definition.
-Developers however need terms to be specific enough that the can be turned into classes and methods within the program.
+Domain driven design has much to say on the best environment for development.
+Key is that all interested parties in a project are able to understand each other.
+These parties could be developers, managers, client, designers, customers and more.
+To ensue understanding, time should be spent to develop a domain specific language.
+In addition barriers between those developing the software and the users of the software should be eliminated as much as possible.
 
-Once this has been achieved the development should not need to make assumptions as the domain experts can be consulted whenever this is ambiguity to be resolved.
+Once this has been achieved the developers should not need to make assumptions and instead consult stakeholders when making decisions.
 Implementing software is difficult enough and without distilled domain knowledge it has very little chance of solving the problem at hand.
-I think it is unhelpful that both the tactics and strategy of domain driven design are interlaced.
-Much of the strategy can be described as common sense but that doesn't mean it does not bear repeating or explicitly naming, to capture some of the core concepts of the strategy I would like to try the following definition.
 
-> **Knowledge Limited Programming:** The decision to not develop a piece of code until you know the situation that is requiring its development.  
+Much of the strategy can be described as common sense but that doesn't mean it does not bear repeating or explicitly naming.
+I think it is unhelpful that both the tactics and strategy of domain driven design are interlaced.
+To encapsulate the core concepts of the strategy in Domain driven design I would like to try the following definition.
+
+> **Knowledge Limited Programming:** The decision to not develop a piece of code until the situation requiring its development is known.  
 
 ### Revisiting the tactics
 
