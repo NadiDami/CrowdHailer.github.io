@@ -1,9 +1,9 @@
 ---
 layout: post
 title: Domain Driven Design, Where the real value lies.
-description: The line in the sand between domain code and the framework
+description: Seeing the tactics and the strategy in Domain Driven Design
 date: 2015-08-20 16:56:05
-tags: ruby design
+tags: Ruby Design
 author: Peter Saxton
 ---
 
@@ -100,21 +100,23 @@ This has an focus on discussion the core of the Domain driven design strategy.
 
 ### What's next
 
-I have been developing an example ddd project, it is a todo list as I feel that the strategy of DDD should be applicable to a project of any size. There should not be a day in you project where the complexity flips past a point where DDD starts. It is a work in progress and I would like to explore some of the tactics that I did not have time for this time round. If you want to ask about something an issue on this repo would be great.
+I have been developing an [example ddd project](https://github.com/CrowdHailer/just-job), it is a todo list.
+It may be small but the strategy of DDD should be applicable to a project of any size. It is a work in progress and would be a great place to discuss DDD. Just open an issue if you think I can do it better.
 
-A few final thoughts that might be DDD or not
+A few parting thoughts on lessons I have learnt:
 
-- If there is such a thing as strings in your domain there length method should return a number of centimeters
-- prefer vertical grouping, section not layers
-- Do not redesign code for tests but if its hard to test put that as one red mark
-- Design patterns are most useful in creating a language. Language is important.
-  I want to be able to discuss about value objects without explaining about them first. A value object is an object with no history. An entity is an object with durable identity and not something that subclasses ActiveEntity.
-- I now have one remain peeve with rails that I feel is justified. I dislike if for convolution the 'Active record' pattern with the 'ActiveRecord' implementation.
+- If there is such a thing as strings in your domain their length method should return a number in centimeters
+- Prefer vertical grouping, section not layers
+- Do not redesign code for tests but if its hard to test that is a warning
+- Design patterns are most useful for communication between humans
 
+### Resources
 
 - [The Two Sides of Domain-Driven Design (DDD)](http://gorodinski.com/blog/2013/03/11/the-two-sides-of-domain-driven-design/#.VdO9AIJSIUA.twitter)  
   This post from [Lev Gorodinski](https://twitter.com/eulerfx) explores Domain-Driven Design from the tactical and strategic perspectives
 - [Clean Architecture](https://subvisual.co/blog/posts/20-clean-architecture)  
   A really comprehensive article on employing clean architecture with the rails stack by [Luis Zamith](https://twitter.com/zamith)
 - [Eric Evans on Domain-Driven Design at 10 Years](http://www.se-radio.net/2015/05/se-radio-episode-226-eric-evans-on-domain-driven-design-at-10-years/)  
-  Really interesting chat with [Eric Evans]() on the 10 years of Domain Driven Design since his book was released.
+  Really interesting chat with [Eric Evans](https://twitter.com/ericevans0) on the 10 years of Domain Driven Design since his book was released.
+- [Just Job](https://github.com/CrowdHailer/just-job)  
+  A todo list built from the ground up using the principles of Domain Driven Design(DDD)
