@@ -38,28 +38,31 @@ To encapsulate the core concepts of the strategy in Domain driven design I would
 
 ### Revisiting the tactics
 
-With an understanding of the strategy we can explore the patterns see so with more context.
-Development should be discussed using the domain specific language that time was invested in to create.
-We can split our tactics into patterns that represent concepts from the domain.
+With an understanding of the strategy we can reexamine the patterns in a more informed context.
+There are two distinct groups for the design objects.
+First, those that represent concepts from the domain.
+They are:
 
 - [Entities](/2015/08/02/tackling-god-objects-in-ruby.html) - A domain object with an identity that can change over time, such as customer.
-- [Values](/2015/07/15/value-objects-in-ruby.html) - A domain object that's identified by its attributes e.g. price, discount code or address.
+- [Values](/2015/07/15/value-objects-in-ruby.html) - A domain object without an identity separate its attributes e.g. price, discount code or address.
 - [Interactors](/2015/08/16/introducing-interactors-to-represent-getting-stuff-done.html) - A domain object that represents an action or activity e.g. login, checkout, signup etc.
 
-Or patterns that protect those domain concepts from technical concerns.
+The rest with the purpose of protecting the core domain from technical concerns.
 
-- [Form objects](/2015/07/23/application-border-control-with-ruby-form-objects.html) - Prevents the html form considerations effecting our domain
-- [Repository](/2015/08/09/untangle-your-domain-model-from-the-database.html) - Prevents the database language from penetrating the domain model
+- [Form objects](/2015/07/23/application-border-control-with-ruby-form-objects.html) - Prevents the HTML form considerations effecting our domain
+- [Repository](/2015/08/09/untangle-your-domain-model-from-the-database.html) - Prevents the database structure from penetrating the domain model
 
-It is tempting to focus on these tactics and to ask other developers what should my entities look like your project.
-The answers to this can only be a suggestion as they should look like whatever makes most sense in the domain.
-I have tried writing gems for most of these concepts but they have necessarily been very minimal.
+Without the strategy it is tempting to ask developers entities should look like.
+With the strategy the answer is whatever makes most sense in the domain.
+Of course there are many similarities between projects that allow common behaviour to be reused but the domain model should not be tied the libraries language or layout.
+My mantra for employing the tactics of domain driven design would be.
 
-In the README for [Typetanic](https://github.com/CrowdHailer/typetanic)(my library of value objects) I have said if these do not match then you should throw them away and not try to extend them.  
-[Vulcanize](https://github.com/CrowdHailer/vulcanize)(my library for building form objects) handles the domain representation by value objects that the consumer needs to provide while it handles the HTML form side of things which is a technical consideration.
+> Use domain concepts not language constructs.
 
-> My mantra for domain driven design to developers is 'Use domain concepts not language constructs, have each conversation only once'. for the non technical I would say 'have each conversation only once'
+I have written gems to help with value objects and form objects, both are small so they encroach as little as possible on the domain.
 
+- [Typetanic](https://github.com/CrowdHailer/typetanic) A library of value objects to help start a project, at the moment just email. As your domain grows richer you should throw out the Typetanic version and replace with custom implementations.
+- [Vulcanize](https://github.com/CrowdHailer/vulcanize) A library for building form objects. Domain representation is handled by value objects that the consumer needs to provide.
 
 ### Rails, friend or foe?
 When I started this exploration I tried to push as far away from rails conventions as possible, not due to any dislike of rails but to get the perspective that comes with distance.
