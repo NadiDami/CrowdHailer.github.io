@@ -32,7 +32,6 @@ I think it is unhelpful that both the tactics and strategy of domain driven desi
 Much of the strategy can be described as common sense but that doesn't mean it does not bear repeating or explicitly naming, to capture some of the core concepts of the strategy I would like to try the following definition.
 
 > **Knowledge Limited Programming:** The decision to not develop a piece of code until you know the situation that is requiring its development.  
-> not technical must know a business
 
 ### Revisiting the tactics
 
@@ -116,10 +115,6 @@ A few final thoughts that might be DDD or not
   I want to be able to discuss about value objects without explaining about them first. A value object is an object with no history. An entity is an object with durable identity and not something that subclasses ActiveEntity.
 - I now have one remain peeve with rails that I feel is justified. I dislike if for convolution the 'Active record' pattern with the 'ActiveRecord' implementation.
 
-
-
-https://www.youtube.com/watch?v=rGA_FNew-6g
-https://www.youtube.com/watch?v=CjNBnkMHjh4
 
 - [The Two Sides of Domain-Driven Design (DDD)](http://gorodinski.com/blog/2013/03/11/the-two-sides-of-domain-driven-design/#.VdO9AIJSIUA.twitter)  
   This post from [Lev Gorodinski](https://twitter.com/eulerfx) explores Domain-Driven Design from the tactical and strategic perspectives
