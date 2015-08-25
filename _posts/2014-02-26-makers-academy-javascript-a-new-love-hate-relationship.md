@@ -1,19 +1,17 @@
 ---
 layout: post
-title: 'Makers Academy: Love it or Hate it'
+title: 'Maker Academy: JavaScript a new love-hate relationship'
+description: Our introduction to JavaScript at Makers Academy
 date: '2014-02-26T21:54:42+00:00'
 tags:
-- javascript
-- clojure
-- object oriented programming
-- programming
-- makers academy
+- JavaScript
+- Makers Academy
+author: Peter Saxton
 tumblr_url: http://crowdhailer.tumblr.com/post/77940881211/makers-academy-love-it-or-hate-it
 ---
-<p><strong>This week was our introduction to JavaScript (JS).</strong> JS is like Marmite most people have a strong feeling about, only in this case almost no one likes it. I have spent quite along time on this language before and thought this might be an easier week. That however would not be the makers way.</p>
+<p><strong>This week was our introduction to JavaScript (JS).</strong> JS is like Marmite, most people have a strong feeling about. Osnly in this case almost no one likes it. I have spent quite along time on this language before and thought this might be an easier week. That however would not be the makers way.</p>
 <p><img alt="image" src="https://31.media.tumblr.com/a269cf935752aa1b1fea7d9b4aa7c400/tumblr_inline_n1mf3t8bdf1s4ay8u.jpg"/></p>
 
-<p><!-- more --></p>
 <p>First I had never tested JS code before so development was fundamentally different right away. Jasmine is the testing framework we used and it tries its best to share format with rspec. It was never going to look as nice because of the parentheses and semi-colons that are needed in JS. I am going to admit now that I quite like javascript and I think all this brackets and explicit line end characters  mostly add to clarity and better explain what each bit of the code is.</p>
 <p><strong>This week I was most pleased with finally understanding what a closure is</strong>. I knew it was an important thing, there is a whole language called <a href="http://clojure.org/" title="Clojure main page" target="_blank">Clojure</a> after all. In my own words it is the fact that functions remember the situation when they were created. They can use resources that were available at the time but no longer.</p>
 <p>Closures cause problems with testing as there are private functions in the closure that are not visible to the rest of the program or testing framework. I found this <a href="http://philipwalton.com/articles/how-to-unit-test-private-functions-in-javascript/" title="How to test private functions in JavaScript" target="_blank">good post</a> explain one solution to this, and I have created a tested <a href="https://github.com/CrowdHailer/fizzbuzzes" title="Fizzbuzz kata" target="_blank">fizzbuzz kata</a> to demonstrate this method. Despite the fact that extra code is added just to make the tests work I think it is quite an acceptable solution.</p>

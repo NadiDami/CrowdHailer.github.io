@@ -6,7 +6,7 @@ date: '2014-02-19T09:17:00+00:00'
 tags:
 - Makers Academy
 - Sinatra
-- ruby
+- Ruby
 author: Peter Saxton
 tumblr_url: http://crowdhailer.tumblr.com/post/77160811925/makers-academy-weeks-5-6
 ---
