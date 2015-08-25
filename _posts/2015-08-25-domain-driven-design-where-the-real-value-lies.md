@@ -9,7 +9,7 @@ author: Peter Saxton
 
 Conclusion of [Domain Drive Design series](/2015/07/14/domain-driven-design-introduction.html) following on from [Interactors](/2015/08/16/introducing-interactors-to-represent-getting-stuff-done.html).
 
-### Admission
+### Confession
 
 This is the final post in this series, and I have a confession.
 What has been discussed so far has not been the whole story of Domain Driven Design.
