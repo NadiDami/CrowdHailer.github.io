@@ -1,13 +1,13 @@
 ---
 layout: post
 title: Tooling up my text editor
+description: Getting professional about the tools of the trade.
 date: '2014-03-08T08:30:00+00:00'
 tags:
-- makers academy
-- coding
-- sublime text
-- linting
-- linux
+- Workflow
+- Makers Academy
+- Sublime Text
+author: Peter Saxton
 tumblr_url: http://crowdhailer.tumblr.com/post/78931473520/tooling-up-my-text-editor
 ---
 <p><strong>After watching this <a href="http://www.youtube.com/watch?v=f7AU2Ozu8eo" title="JavaScript Development Workflow" target="_blank">talk from Paul Irish</a> the only logical this was to follow his advice and become enthusiastic about my tools.</strong> In the last two months I have learnt so much about programming from <a href="http://www.makersacademy.com/" title="Makers Academy" target="_blank">Makers Academy</a>. In addition I have learn a surprising amount about things that aren&rsquo;t directly programming. I started this post writing about all the tools that I use; the terminal, testing frameworks, dotfiles, text editor and possibly more. As this rapidly grew out of control I have cut it back to just the text editor with the others to follow in the future.</p>
