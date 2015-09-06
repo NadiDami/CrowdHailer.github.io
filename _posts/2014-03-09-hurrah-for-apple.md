@@ -1,10 +1,12 @@
 ---
 layout: post
 title: Hurrah for Apple
+description: Renewable energy use at Apple
 date: '2014-03-09T08:30:45+00:00'
 tags:
 - climate change
 - technology
+author: Peter Saxton
 tumblr_url: http://crowdhailer.tumblr.com/post/79038048933/hurrah-for-apple
 ---
 <p>First things first I am not normally an Apple fan. I have nothing against their products some of them are very nice I&rsquo;m just not that flush with disposable income. As fun as these discussions often are today&rsquo;s post has nothing to do with:- Apple vs (Windows/Google/Linux/Samsung..).</p>
