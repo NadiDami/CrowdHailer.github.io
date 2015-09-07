@@ -1,11 +1,14 @@
 ---
 layout: post
 title: The trouble with Postgres and Rails
+description: Setting up PostgreSQL on Linux Mint
 date: '2014-03-10T08:30:00+00:00'
 tags:
 - postgresql
 - linux
 - database
+author: Peter Saxton
+share_url: https://31.media.tumblr.com/9f511acf35003536871163f0f11da829/tumblr_inline_n25uz2uZV31s4ay8u.jpg
 tumblr_url: http://crowdhailer.tumblr.com/post/79150713896/the-trouble-with-postgres-and-rails
 ---
 <p><strong>PostgreSQL is an object-relational database management system , snappy abbreviation <em>&lsquo;ORDBMS&rsquo;</em>.</strong> It is often known as postgres and is<span> available on many platforms. It has also been an unequaled pain for the last few weeks and I don&rsquo;t think it need be. Here are my notes on what to do next time. <em>NOTE all of this is related to installing onto Linux Mint.</em></span><span><br/></span></p>
