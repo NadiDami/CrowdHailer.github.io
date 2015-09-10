@@ -1,14 +1,15 @@
 ---
 layout: post
-title: 'Opening Clojure '
+title: Opening Clojure
+description: Impression from my first day with clojure
 date: '2014-03-13T10:01:00+00:00'
 tags:
-- clojure
-- programming
+- Clojure
 - functional programming
+author: Peter Saxton
 tumblr_url: http://crowdhailer.tumblr.com/post/79448251181/opening-clojure
 ---
-<p>Today was my first day playing with Clojure. I have head snippets about it from so many different sources most recently in a talk at makers from <a href="https://twitter.com/fgeorge52" title="Fred George on Twitter" target="_blank">Fred George.</a> </p>
+<p>Today was my first day playing with Clojure. I have heard snippets about it from so many different sources, most recently in a talk at makers from <a href="https://twitter.com/fgeorge52" title="Fred George on Twitter" target="_blank">Fred George.</a> </p>
 <p><img alt="image" src="https://31.media.tumblr.com/516e5be0cc307adbdc22f811eeed91e4/tumblr_inline_n2dgj4yDHX1s4ay8u.png"/></p>
 
 <p><!-- more --></p>
