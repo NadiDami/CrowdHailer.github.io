@@ -3,7 +3,9 @@ layout: post
 title: Discovering the joy of over design
 description: Domain Driven Design a practical introduction with Ruby.
 date: 2015-07-14 17:20:05
-tags: ruby design
+tags:
+- Ruby
+- Domain Driven Design
 author: Peter Saxton
 ---
 

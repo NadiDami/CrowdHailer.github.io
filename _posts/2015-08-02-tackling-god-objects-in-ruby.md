@@ -3,7 +3,9 @@ layout: post
 title: Tackling God objects in Ruby applications
 description: Breaking apart the model with entities and records
 date: 2015-08-02 21:20:00
-tags: ruby design
+tags:
+- Ruby
+- Domain Driven Design
 author: Peter Saxton
 ---
 

@@ -3,7 +3,9 @@ layout: post
 title: Building on Solid foundations
 description: Moving mindset from language to domain with value objects.
 date: 2015-07-15 21:00:05
-tags: ruby design
+tags:
+- Ruby
+- Domain Driven Design
 author: Peter Saxton
 ---
 

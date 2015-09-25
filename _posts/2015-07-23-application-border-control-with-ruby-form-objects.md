@@ -3,7 +3,9 @@ layout: post
 title: Application border control with form objects
 description: Using form objects to preserve your domain language against invalid input.
 date: 2015-07-23 17:20:06
-tags: ruby design
+tags:
+- Ruby
+- Domain Driven Design
 author: Peter Saxton
 ---
 

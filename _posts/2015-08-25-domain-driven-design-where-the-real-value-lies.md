@@ -3,7 +3,9 @@ layout: post
 title: Domain Driven Design, Where the real value lies.
 description: Seeing the tactics and the strategy in Domain Driven Design
 date: 2015-08-20 16:56:05
-tags: Ruby Design
+tags:
+- Ruby
+- Domain Driven Design
 author: Peter Saxton
 ---
 

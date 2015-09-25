@@ -3,7 +3,9 @@ layout: post
 title: Introducing Interactors to represent getting stuff done.
 description: The line in the sand between domain code and the framework
 date: 2015-08-16 16:56:05
-tags: ruby design
+tags:
+- Ruby
+- Domain Driven Design
 author: Peter Saxton
 ---
 
