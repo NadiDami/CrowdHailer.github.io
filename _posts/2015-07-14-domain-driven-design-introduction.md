@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Dicovering the joy of over design
+title: Discovering the joy of over design
 description: Domain Driven Design a practical introduction with Ruby.
 date: 2015-07-14 17:20:05
 tags: ruby design
