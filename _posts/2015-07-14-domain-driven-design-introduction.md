@@ -11,18 +11,13 @@ author: Peter Saxton
 
 ### Introduction
 
-Over the last year of working with Ruby, I have learned the difference between hacking code and designing a program. Now I hope that I do more of the latter than the former. Several concepts and practices helped me advance my development, but perhaps the most influential are those from Domain Driven Design(DDD). This series of blog posts covers what I have found most useful in my work as I have explored, and continue to explore, DDD.
+Over the last year of working with Ruby, I have improved by learning the difference between hacking code and designing an application. Now I am sure, most of my code is of the latter rather than the former. Several concepts and practices helped me advance my development, but perhaps the most influential are those from Domain Driven Design(DDD). This series of blog posts covers what I have found most useful in my work as I have explored, and continue to explore, DDD.
 
-Domain Driven Design can be a nebulous term that in summary seams to lack concrete advice. However when examined in detail extremely well thought through advice.
+Domain Driven Design can be a nebulous term that in summary seams to provide minimal concrete advice to you as a developer. When examined in detail I found it full of extremely well thought through advice. It is important to realise DDD takes a complete world view. This is to reflect that software does not exist in isolation, non-technical stakeholders are present throughout a project. As a developer it is tempting to shy away from non-technical issues but accepting them can help clarify problems. This is true at many different levels in the software development process. From the naming of individual methods to the layout of directories in a project.
 
-Domain Driven Design can help clarify thinking on problems at many different levels in the software development process. From the naming of individual methods to the layout of directories in a project (team organisation). There are design patterns that are available with a proven record of solving specific problems. All of this is discussed with the wider context taken into consideration.
+### Useful Terms
 
-Software development suffers from a chronic abundance of nebulous terms, particularly when it comes to architecture. They all sound very helpful when summed up in a sentence or two, but the process of summing up these concepts usually removes what is interesting about them. The first piece of advice for this series is to always read at least two opinions, preferably five, before you discount or adopt an idea. Your problem is never completely new and some of the people who have thought about it before are extremely smart.
-
-### Some Terms
-
-Let's get started with some overly brief summaries of some of the concepts that will be brought up.
-To get started we will have some brief summaries of the most important terms that will be discussed. Don't worry, further information will be available very soon. 
+I will expand on them further but to get started some brief summaries of the most important terms.
 
 **Model View Controller (MVC)** is the architecture of Rails and as such something that most Ruby developers are very familiar with. This architecture simply breaks the code into layers. The part describing the system data and state belongs in the Model, all presentation belongs in the View and the Controller connects the other two. This is a simple architecture that is very accessible. It can lack the sophistication required to help organise complex problems. It was while I struggled with what constituted a model in MVC that I started looking for other ways of thinking.
 
@@ -34,7 +29,7 @@ To get started we will have some brief summaries of the most important terms tha
 
 It is widely accepted that modularity in code is beneficial. It allows developers to understand a large complex program one manageable piece at a time. MVC helps with modularity by providing a way to break a program into 3 basic layers. However, if a program is very large when separated into three, each piece is still large.
 
-The principles of DDD help add more lines of division to a program. This more sophisticated way to add separation can be used to create an arbitrary number of components until they are again understandable.
+The principles of DDD help add more lines of division to a program. This more sophisticated way to add separation can be used to create an arbitrary number of components until they are again understandable. I will begin with some of the patterns promoted in Domain Driven design, such as the Repository and Value objects. 
 
 This blog series will introduce the following domain objects from DDD.
 
@@ -43,6 +38,7 @@ This blog series will introduce the following domain objects from DDD.
 3. [Entities & Records](/2015/08/02/tackling-god-objects-in-ruby.html) - Keeping track of the state of affairs
 4. [Repositories](/2015/08/09/untangle-your-domain-model-from-the-database.html) - Finding the answers using data
 5. [Interactors](/2015/08/16/introducing-interactors-to-represent-getting-stuff-done.html) - Putting it all together
+STRATEGY LINK
 
 There are many more but these are the ones I have found most useful so far. I will also discuss how and when to use them, as well as how I test them.
 
