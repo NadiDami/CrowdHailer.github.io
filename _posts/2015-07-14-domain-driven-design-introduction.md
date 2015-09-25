@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Discovering the joy of over design
-description: Domain Driven Design a practical introduction with Ruby.
+description: Introducing Domain Driven Design with Ruby.
 date: 2015-07-14 17:20:05
 tags:
 - Ruby
@@ -11,13 +11,18 @@ author: Peter Saxton
 
 ### Introduction
 
-The Ruby language and I have been working together for over a year now. In that time I have learned the difference between hacking code and designing a program. Now I hope that I do more of the latter than the former. I wanted to write up some of the things I learned while making the change.
+Over the last year of working with Ruby, I have learned the difference between hacking code and designing a program. Now I hope that I do more of the latter than the former. Several concepts and practices helped me advance my development, but perhaps the most influential are those from Domain Driven Design(DDD). This series of blog posts covers what I have found most useful in my work as I have explored, and continue to explore, DDD.
+
+Domain Driven Design can be a nebulous term that in summary seams to lack concrete advice. However when examined in detail extremely well thought through advice.
+
+Domain Driven Design can help clarify thinking on problems at many different levels in the software development process. From the naming of individual methods to the layout of directories in a project (team organisation). There are design patterns that are available with a proven record of solving specific problems. All of this is discussed with the wider context taken into consideration.
 
 Software development suffers from a chronic abundance of nebulous terms, particularly when it comes to architecture. They all sound very helpful when summed up in a sentence or two, but the process of summing up these concepts usually removes what is interesting about them. The first piece of advice for this series is to always read at least two opinions, preferably five, before you discount or adopt an idea. Your problem is never completely new and some of the people who have thought about it before are extremely smart.
 
 ### Some Terms
 
 Let's get started with some overly brief summaries of some of the concepts that will be brought up.
+To get started we will have some brief summaries of the most important terms that will be discussed. Don't worry, further information will be available very soon. 
 
 **Model View Controller (MVC)** is the architecture of Rails and as such something that most Ruby developers are very familiar with. This architecture simply breaks the code into layers. The part describing the system data and state belongs in the Model, all presentation belongs in the View and the Controller connects the other two. This is a simple architecture that is very accessible. It can lack the sophistication required to help organise complex problems. It was while I struggled with what constituted a model in MVC that I started looking for other ways of thinking.
 
