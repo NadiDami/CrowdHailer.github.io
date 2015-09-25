@@ -35,9 +35,9 @@ This blog series will introduce the following domain objects from DDD.
 
 1. [Value objects](/2015/07/15/value-objects-in-ruby.html) - Object Oriented Programming all the way down
 2. [Form objects](/2015/07/23/application-border-control-with-ruby-form-objects.html) - Keeping the real world from making a mess
-3. [Entities & Records](http://insights.workshop14.io/2015/08/02/tackling-god-objects-in-ruby.html) - Keeping track of the state of affairs
-4. [Repositories](http://insights.workshop14.io/2015/08/09/untangle-your-domain-model-from-the-database.html) - Finding the answers using data
-5. Interactors - Putting it all together
+3. [Entities & Records](/2015/08/02/tackling-god-objects-in-ruby.html) - Keeping track of the state of affairs
+4. [Repositories](/2015/08/09/untangle-your-domain-model-from-the-database.html) - Finding the answers using data
+5. [Interactors](/2015/08/16/introducing-interactors-to-represent-getting-stuff-done.html) - Putting it all together
 
 There are many more but these are the ones I have found most useful so far. I will also discuss how and when to use them, as well as how I test them.
 
