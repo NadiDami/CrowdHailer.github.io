@@ -9,11 +9,15 @@ tags:
 author: Peter Saxton
 ---
 
-### Introduction
+### Beginning with design
 
-Over the last year of working with Ruby, I have improved by learning the difference between hacking code and designing an application. Now I am sure, most of my code is of the latter rather than the former. Several concepts and practices helped me advance my development, but perhaps the most influential are those from Domain Driven Design(DDD). This series of blog posts covers what I have found most useful in my work as I have explored, and continue to explore, DDD.
+The Ruby language and I have been working together for over a year now. As I have worked on larger programs I have had to spend more time thinking about the design of programs. I have improved by learning the difference between hacking code and designing an application. Now more of my code is of the latter rather than the former.
 
-Domain Driven Design can be a nebulous term that in summary seams to provide minimal concrete advice to you as a developer. When examined in detail I found it full of extremely well thought through advice. It is important to realise DDD takes a complete world view. This is to reflect that software does not exist in isolation, non-technical stakeholders are present throughout a project. As a developer it is tempting to shy away from non-technical issues but accepting them can help clarify problems. This is true at many different levels in the software development process. From the naming of individual methods to the layout of directories in a project.
+There are many good sources that can help when designing applications. The ideas that influenced me the most where the concepts and practices from Domain Driven Design(DDD). This series of blog posts aims to share what I have learned from exploring DDD.
+
+Domain Driven Design can be a nebulous term that seams to provide minimal concrete advice to you as a developer. I hope to convince you that it is full of extremely well thought through, practical advice. It is important to realise DDD takes a complete world view. This is to reflect that software does not exist in isolation, non-technical stakeholders are present throughout a project.
+
+As a developer I would separate the technical issues of writing code from the non-technical concerns of the wider project. Domain Driven Design encouraged me to consider both parts together. This view can help clarify problems at many levels of the development process, from the naming of individual methods to the layout of directories in a project.
 
 ### Useful Terms
 
@@ -27,24 +31,23 @@ I will expand on them further but to get started some brief summaries of the mos
 
 ### What's coming
 
-It is widely accepted that modularity in code is beneficial. It allows developers to understand a large complex program one manageable piece at a time. MVC helps with modularity by providing a way to break a program into 3 basic layers. However, if a program is very large when separated into three, each piece is still large.
+It is widely accepted that modularity in code is beneficial. It allows developers to understand a large complex program one manageable piece at a time. MVC helps with modularity by providing a way to break a program into 3 basic layers. However, if a program is very large then when separated into three, each piece is still large.
 
-The principles of DDD help add more lines of division to a program. This more sophisticated way to add separation can be used to create an arbitrary number of components until they are again understandable. I will begin with some of the patterns promoted in Domain Driven design, such as the Repository and Value objects. 
-
-This blog series will introduce the following domain objects from DDD.
+The principles of Domain Driven Design help add more lines of division to a program. This more sophisticated way to add separation can be used to create an arbitrary number of components until they are again understandable. I will begin with some of the patterns promoted in DDD, such as the Repository and Value objects. I will also discuss how and when to use them, as well as how I test them. The patterns discussed are,
 
 1. [Value objects](/2015/07/15/value-objects-in-ruby.html) - Object Oriented Programming all the way down
 2. [Form objects](/2015/07/23/application-border-control-with-ruby-form-objects.html) - Keeping the real world from making a mess
 3. [Entities & Records](/2015/08/02/tackling-god-objects-in-ruby.html) - Keeping track of the state of affairs
 4. [Repositories](/2015/08/09/untangle-your-domain-model-from-the-database.html) - Finding the answers using data
 5. [Interactors](/2015/08/16/introducing-interactors-to-represent-getting-stuff-done.html) - Putting it all together
-STRATEGY LINK
 
-There are many more but these are the ones I have found most useful so far. I will also discuss how and when to use them, as well as how I test them.
+There are many patterns I don't have time to discuss so I have picked the ones I find most useful. To finish I will discuss the strategy behind the DDD in general terms and compare it to other design thinking in the Ruby, such as "hexagonal architecture" and "The Rails Way".
+
+1. [Strategy of Domain Driven Design](/2015/08/20/domain-driven-design-where-the-real-value-lies.html)
 
 ### Why over design?
 
-I started this process with a desire to deliberately over design so I could understand the patterns I was encountering. If making a simple blogging platform then a lot of the things we will discuss are far from necessary. You could have a separate view object, interactor, repository, entity and data layer but it is not going to be worthwhile for anything other than a learning exercise. As with everything in software there is a trade-off, sophisticated architecture has a time cost to understand it and the benefits do not always outweigh these costs. If your problem is simple, the solution should also be simple.
+I started exploring Domain Driven Design by deliberately over designing, This was necessary to really experiment with some of the patterns. If making a simple blogging platform then a lot of the things we will discuss are far from necessary. You could have a separate view object, interactor, repository, entity and data layer but it is not going to be worthwhile for anything other than a learning exercise. As with everything in software there is a trade-off, sophisticated architecture has a time cost associated with understanding the code. The benefits will not always outweigh these costs. If your problem is simple, the solution should also be simple.
 
 ### Resources
 Domain Driven Design and tangential topics.
