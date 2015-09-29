@@ -17,7 +17,7 @@ There are many good sources that can help when designing applications, some of t
 
 Domain Driven Design can look as though it provides minimal concrete advice to you as a developer. However I think it is full of extremely well thought through, practical advice. It is important to realise DDD is a large topic. This is because it acknowledges that software does not exist in isolation, DDD takes a complete world view. From this foundation are derived best practices in design patterns. Covering the most common of these patterns, such as value objects and form objects, are the first few posts.
 
-As a developer I have many times tried separate the technical issues of writing code from the non-technical concerns of the wider project. Domain Driven Design encouraged me to consider both parts together. Non-technical stakeholders are present throughout the life of a project. Considering their contribution to a project can help clarify problems at many levels of the development process. The final part of this blog is discussing how the strategy of DDD helps this occur.
+As a developer I have many times tried separate the technical issues of writing code from the non-technical concerns of the wider project. Domain Driven Design encouraged me to consider both parts together. Non-technical stakeholders are present throughout the life of a project and their collaboration can help clarify problems at many stages of the development process. The final part of this series is to discuss how the strategies of DDD helps this collaboration.
 
 ### Useful Terms
 
