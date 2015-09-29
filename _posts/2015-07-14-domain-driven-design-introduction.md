@@ -11,13 +11,13 @@ author: Peter Saxton
 
 ### Beginning with design
 
-The Ruby language and I have been working together for over a year now. As I have worked on larger programs I have had to spend more time thinking about the design of programs. I have improved by learning the difference between hacking code and designing an application. Now more of my code is of the latter rather than the former.
+Ruby has been my language of choice for about 18 months now. In that time the programs I have worked on have got larger. Considering design is a priority in larger programs. To improve I have had to learn the difference between hacking code and designing an application.
 
-There are many good sources that can help when designing applications. The ideas that influenced me the most where the concepts and practices from Domain Driven Design(DDD). This series of blog posts aims to share what I have learned from exploring DDD.
+There are many good sources that can help when designing applications, some of the best are included in the links at the end of this post. The design ideas that have influenced me the most are the concepts and practices from Domain Driven Design(DDD). This series of blog posts is aimed towards sharing what I have learned from Domain Driven Design.
 
-Domain Driven Design can be a nebulous term that seams to provide minimal concrete advice to you as a developer. I hope to convince you that it is full of extremely well thought through, practical advice. It is important to realise DDD takes a complete world view. This is to reflect that software does not exist in isolation, non-technical stakeholders are present throughout a project.
+Domain Driven Design can look as though it provides minimal concrete advice to you as a developer. However I think it is full of extremely well thought through, practical advice. It is important to realise DDD is a large topic. This is because it acknowledges that software does not exist in isolation, DDD takes a complete world view. From this foundation are derived best practices in design patterns. Covering the most common of these patterns, such as value objects and form objects, are the first few posts.
 
-As a developer I would separate the technical issues of writing code from the non-technical concerns of the wider project. Domain Driven Design encouraged me to consider both parts together. This view can help clarify problems at many levels of the development process, from the naming of individual methods to the layout of directories in a project.
+As a developer I have many times tried separate the technical issues of writing code from the non-technical concerns of the wider project. Domain Driven Design encouraged me to consider both parts together. Non-technical stakeholders are present throughout the life of a project. Considering their contribution to a project can help clarify problems at many levels of the development process. The final part of this blog is discussing how the strategy of DDD helps this occur.
 
 ### Useful Terms
 
