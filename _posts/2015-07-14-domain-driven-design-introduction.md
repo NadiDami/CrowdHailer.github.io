@@ -17,7 +17,7 @@ There are many good sources that can help when designing applications and some o
 
 When you first explore DDD, it can seem as though there minimal concrete advice for you to take away. However I think it is full of extremely well thought-through, practical advice. It is important to realise DDD is a large topic. This is because it acknowledges that software does not exist in isolation — it takes a complete world view. From this foundation are derived best practices in design patterns. In the first few post I will cover the most common of these patterns, such as value objects and form objects.
 
-As a developer I have many times tried to separate the technical issues of writing code from the non-technical concerns of the wider project. DDD encourages me to consider both parts together. Non-technical stakeholders are present throughout the life of a project and their collaboration can help clarify problems at many stages of the development process. The final part of this series will to discuss how the strategies of DDD helps this collaboration.
+As a developer I have many times tried to separate the technical issues of writing code from the non-technical concerns of the wider project. DDD encourages me to consider both parts together. Non-technical stakeholders are present throughout the life of a project and their collaboration can help clarify problems at many stages of the development process. The final part of this series will discuss how the strategies of DDD helps this collaboration.
 
 ### Useful Terms
 
