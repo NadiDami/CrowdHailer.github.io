@@ -11,13 +11,13 @@ author: Peter Saxton
 
 ### Beginning with design
 
-Ruby has been my language of choice for about 18 months now. In that time the programs I have worked on have become larger. Considering design is a priority in larger programs. To improve I have had to learn the difference between hacking code and designing an application.
+Ruby has been my language of choice for about 18 months now. In that time the programs I have worked on have become larger. Considering design is a priority in larger programs. To improve, I have had to learn the difference between hacking code and designing an application.
 
 There are many good sources that can help when designing applications and some of the best are included in the links at the end of this post. The design ideas that have influenced me the most are the concepts and practices from Domain Driven Design (DDD). This series of blog posts is aimed towards sharing what I have learned from DDD.
 
-When you first explore DDD, it can seem as though there minimal concrete advice for you to take away. However I think it is full of extremely well thought-through, practical advice. It is important to realise DDD is a large topic. This is because it acknowledges that software does not exist in isolation — it takes a complete world view. From this foundation are derived best practices in design patterns. In the first few post I will cover the most common of these patterns, such as value objects and form objects.
+When you first explore DDD, it can seem as though there is minimal concrete advice for you to take away. However I think it is full of extremely well thought-through, practical advice. It is important to realise DDD is a large topic. This is because it acknowledges that software does not exist in isolation — it takes a complete world view. From this foundation are derived best practices in design patterns. In the first few posts I will cover the most common of these patterns, such as value objects and form objects.
 
-As a developer I have many times tried to separate the technical issues of writing code from the non-technical concerns of the wider project. DDD encourages me to consider both parts together. Non-technical stakeholders are present throughout the life of a project and their collaboration can help clarify problems at many stages of the development process. The final part of this series will to discuss how the strategies of DDD helps this collaboration.
+As a developer I have many times tried to separate the technical issues of writing code from the non-technical concerns of the wider project. DDD encourages me to consider both parts together. Non-technical stakeholders are present throughout the life of a project and their collaboration can help clarify problems at many stages of the development process. The final part of this series will discuss how the strategies of DDD helps this collaboration.
 
 ### Useful Terms
 
@@ -25,7 +25,7 @@ I will expand on them further but to get started some brief summaries of the mos
 
 **Model View Controller (MVC)** is the architecture of Rails and as such something that most Ruby developers are very familiar with. This architecture simply breaks the code into layers. The part describing the system data and state belongs in the Model, all presentation belongs in the View and the Controller connects the other two. This is a simple architecture that is very accessible. It can lack the sophistication required to help organise complex problems. It was while I struggled with what constituted a model in MVC that I started looking for other ways of thinking.
 
-**Domain driven design (DDD)** is one of several 'frameworks' to add structure to your thinking. The idea is to add abstractions to your program that mean it can be discussed using the terms familiar to the non technical stakeholders, people who care about what your software is doing usually a user or client often both. It has more similarities than differences with 'hexagonal architecture' and 'clean code'. Reading about any of these will expose you to good ideas that will compliment what I want talk about here.
+**Domain driven design (DDD)** is one of several 'frameworks' to add structure to your thinking. The idea is to add abstractions to your program that mean it can be discussed using the terms familiar to the non technical stakeholders, people who care about what your software is doing, usually a user or client often both. It has more similarities than differences with 'hexagonal architecture' and 'clean code'. Reading about any of these will expose you to good ideas that will compliment what I want talk about here.
 
 **Test driven development** is the discipline of writing tests before the code that will make those tests pass. The argument between test first and test after is not important. All that is required of tests, in my opinion, is that as a developer you are confident your code works.
 
@@ -41,13 +41,13 @@ The principles of Domain Driven Design help add more lines of division to a prog
 4. [Repositories](/2015/08/09/untangle-your-domain-model-from-the-database.html) - Finding the answers using data
 5. [Interactors](/2015/08/16/introducing-interactors-to-represent-getting-stuff-done.html) - Putting it all together
 
-There are many patterns I don't have time to discuss so I have picked the ones I find most useful. To finish I will discuss the strategy behind the DDD in general terms and compare it to other design thinking in the Ruby, such as "hexagonal architecture" and "The Rails Way".
+There are many patterns I don't have time to discuss so I have picked the ones I find most useful. To finish I will discuss the strategy behind the DDD in general terms and compare it to other design thinking in the Ruby community, such as "hexagonal architecture" and "The Rails Way".
 
 1. [Strategy of Domain Driven Design](/2015/08/20/domain-driven-design-where-the-real-value-lies.html)
 
 ### Why over design?
 
-I started exploring Domain Driven Design by deliberately over designing, This was necessary to really experiment with some of the patterns. If making a simple blogging platform then a lot of the things we will discuss are far from necessary. You could have a separate view object, interactor, repository, entity and data layer but it is not going to be worthwhile for anything other than a learning exercise. As with everything in software there is a trade-off, sophisticated architecture has a time cost associated with understanding the code. The benefits will not always outweigh these costs. If your problem is simple, the solution should also be simple.
+I started exploring Domain Driven Design by deliberately over designing, This was necessary to really experiment with some of the patterns. If you are making a simple blogging platform then a lot of the things we will discuss are far from necessary. You could have a separate view object, interactor, repository, entity and data layer but it is not going to be worthwhile for anything other than a learning exercise. As with everything in software there is a trade-off, sophisticated architecture has a time cost associated with understanding the code. The benefits will not always outweigh these costs. If your problem is simple, the solution should also be simple.
 
 ### Resources
 Domain Driven Design and tangential topics.
