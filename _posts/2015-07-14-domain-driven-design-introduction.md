@@ -11,13 +11,13 @@ author: Peter Saxton
 
 ### Beginning with design
 
-Ruby has been my language of choice for about 18 months now. In that time the programs I have worked on have got larger. Considering design is a priority in larger programs. To improve I have had to learn the difference between hacking code and designing an application.
+Ruby has been my language of choice for about 18 months now. In that time the programs I have worked on have become larger. Considering design is a priority in larger programs. To improve I have had to learn the difference between hacking code and designing an application.
 
-There are many good sources that can help when designing applications, some of the best are included in the links at the end of this post. The design ideas that have influenced me the most are the concepts and practices from Domain Driven Design(DDD). This series of blog posts is aimed towards sharing what I have learned from Domain Driven Design.
+There are many good sources that can help when designing applications and some of the best are included in the links at the end of this post. The design ideas that have influenced me the most are the concepts and practices from Domain Driven Design (DDD). This series of blog posts is aimed towards sharing what I have learned from DDD.
 
-Domain Driven Design can look as though it provides minimal concrete advice to you as a developer. However I think it is full of extremely well thought through, practical advice. It is important to realise DDD is a large topic. This is because it acknowledges that software does not exist in isolation, DDD takes a complete world view. From this foundation are derived best practices in design patterns. Covering the most common of these patterns, such as value objects and form objects, are the first few posts.
+When you first explore DDD, it can seem as though there minimal concrete advice for you to take away. However I think it is full of extremely well thought-through, practical advice. It is important to realise DDD is a large topic. This is because it acknowledges that software does not exist in isolation — it takes a complete world view. From this foundation are derived best practices in design patterns. In the first few post I will cover the most common of these patterns, such as value objects and form objects.
 
-As a developer I have many times tried separate the technical issues of writing code from the non-technical concerns of the wider project. Domain Driven Design encouraged me to consider both parts together. Non-technical stakeholders are present throughout the life of a project and their collaboration can help clarify problems at many stages of the development process. The final part of this series is to discuss how the strategies of DDD helps this collaboration.
+As a developer I have many times tried to separate the technical issues of writing code from the non-technical concerns of the wider project. DDD encourages me to consider both parts together. Non-technical stakeholders are present throughout the life of a project and their collaboration can help clarify problems at many stages of the development process. The final part of this series will to discuss how the strategies of DDD helps this collaboration.
 
 ### Useful Terms
 
@@ -29,7 +29,7 @@ I will expand on them further but to get started some brief summaries of the mos
 
 **Test driven development** is the discipline of writing tests before the code that will make those tests pass. The argument between test first and test after is not important. All that is required of tests, in my opinion, is that as a developer you are confident your code works.
 
-### What's coming
+### What's coming?
 
 It is widely accepted that modularity in code is beneficial. It allows developers to understand a large complex program one manageable piece at a time. MVC helps with modularity by providing a way to break a program into 3 basic layers. However, if a program is very large then when separated into three, each piece is still large.
 
