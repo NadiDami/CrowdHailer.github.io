@@ -125,7 +125,7 @@ class Credentials
     record.password == submitted_password
   end
 
-  def record_login_at(date_time = DateTime.now)
+  def record_login(date_time = DateTime.now)
     self.last_login_at = date_time
   end
 end
