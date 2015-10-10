@@ -77,7 +77,7 @@ There are some very capable Object Relational Mappers available, the best being 
 class User::Repository
   class << self
     def build
-      User.new record_class.new
+      User.new User::Record.new
     end
 
     def save(entity)
