@@ -29,10 +29,12 @@ If the function could not return a value then it returns a tuple tagged `:error`
 This is then used in code by pattern matching on the tag and calling the behaviour you want
 
 {% highlight elixir %}
+```elixir
 case MyModule.flaky_method do
   {:ok, value} -> IO.puts "All good value was: #{value}."
   {:error, reason} -> IO.puts "Uh oh! Failed due to #{reason}."
 end
+```
 {% endhighlight %}
 
 Being a convention it can be ignored and the situation is a bit more complicated in the real world.
@@ -54,6 +56,7 @@ It is possible for each of our steps to fail and we need to handle that.
 This error handling can pollute our nice list of instructions and result in code littered with conditionals.
 
 {% highlight elixir %}
+```elixir
 result = case File.read("my_company/employees.json") do
   {:ok, contents} ->
     case Poison.decode(contents) do
@@ -68,6 +71,7 @@ result = case File.read("my_company/employees.json") do
     end
   {:error, reason} -> {:error, reason}
 end
+```
 {% endhighlight %}
 
 Well thats ugly can we do this better?
@@ -87,15 +91,18 @@ The method of interest is bind (It is called bind to make further reading easier
 - If the result is a failure don't invoke the function.
 
 {% highlight elixir %}
+```elixir
 defmodule Result do
   def bind({:ok, value}, func) when is_function(func, 1), do: func.(value)
   def bind(failure = {:error, _}, _func), do: failure
 end
+```
 {% endhighlight %}
 
 With the bind method we can then return to a linear set of steps.
 
 {% highlight elixir %}
+```elixir
 import Result
 
 {:ok, "my_company/employees.json"}
@@ -106,6 +113,7 @@ import Result
   (_) -> {:error, :key_not_found}
   # This noise here is only necessary as the Dict returns :error without a reason
 end)
+```
 {% endhighlight %}
 
 Not bad we have a single list of steps back, but bind everywhere and function capture still makes this a bit messy.
@@ -127,6 +135,7 @@ Even with the associated code to report to the user what happened this code is s
 *I have assumed the API for dict is updated*
 
 {% highlight elixir %}
+```elixir
 use Result
 
 def get_employee_data(file, name) do
@@ -143,6 +152,7 @@ def handle_user_data({:error, :key_not_found}), do: IO.puts("Could not find empl
 
 get_employee_data("my_company/employees.json")
 |> handle_user_data
+```
 {% endhighlight %}
 
 ### Conclusion
